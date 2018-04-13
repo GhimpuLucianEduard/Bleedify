@@ -1,0 +1,1038 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BleedifyEFModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adresa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Judet" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Oras" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Strada" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Numarul" Type="int" Nullable="false" />
+          <Property Name="CodPostal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnuntDonator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDonator" Type="int" />
+          <Property Name="TipAnuntDonator" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mesaj" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="DataAnunt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CerereMedicPacient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPacient" Type="int" />
+          <Property Name="IdMedic" Type="int" />
+          <Property Name="GrupaDeSange" Type="int" />
+          <Property Name="TipComponenta" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Stare" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DataDepunere" Type="datetime" Nullable="false" />
+          <Property Name="DataServire" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Componenta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipComponenta" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IdDonatie" Type="int" Nullable="false" />
+          <Property Name="DataDepunere" Type="datetime" Nullable="false" />
+          <Property Name="IdPrimitor" Type="int" />
+          <Property Name="InstitutieAsociata" Type="int" />
+          <Property Name="GrupaDeSange" Type="int" />
+          <Property Name="DataDonare" Type="datetime" Nullable="false" />
+          <Property Name="Stare" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donatie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDonator" Type="int" />
+          <Property Name="EtapaDonare" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MotivRefuz" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="Donator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUtilizator" Type="int" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DataDonarePosibila" Type="datetime" Nullable="false" />
+          <Property Name="GrupaDeSange" Type="int" />
+        </EntityType>
+        <EntityType Name="GrupaDeSange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InstitutieAsociata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adresa" Type="int" />
+          <Property Name="TipInstitutie" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="NumarTelefon" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUtilizator" Type="int" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdentificatorMedic" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DataNastere" Type="datetime" Nullable="false" />
+          <Property Name="GrupaDeSange" Type="int" />
+          <Property Name="InstitutieAsociata" Type="int" />
+        </EntityType>
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUtilizator" Type="int" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilizator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TipUtilizator" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="InstitutieAsociata" Type="int" />
+        </EntityType>
+        <Association Name="FK__AnuntDona__IdDon__3A81B327">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="0..1" />
+          <End Role="AnuntDonator" Type="Self.AnuntDonator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AnuntDonator">
+              <PropertyRef Name="IdDonator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CerereMed__Grupa__4222D4EF">
+          <End Role="GrupaDeSange" Type="Self.GrupaDeSange" Multiplicity="0..1" />
+          <End Role="CerereMedicPacient" Type="Self.CerereMedicPacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrupaDeSange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CerereMedicPacient">
+              <PropertyRef Name="GrupaDeSange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CerereMed__IdMed__412EB0B6">
+          <End Role="Medic" Type="Self.Medic" Multiplicity="0..1" />
+          <End Role="CerereMedicPacient" Type="Self.CerereMedicPacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CerereMedicPacient">
+              <PropertyRef Name="IdMedic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CerereMed__IdPac__403A8C7D">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="CerereMedicPacient" Type="Self.CerereMedicPacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CerereMedicPacient">
+              <PropertyRef Name="IdPacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Component__Grupa__47DBAE45">
+          <End Role="GrupaDeSange" Type="Self.GrupaDeSange" Multiplicity="0..1" />
+          <End Role="Componenta" Type="Self.Componenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrupaDeSange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Componenta">
+              <PropertyRef Name="GrupaDeSange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Component__IdDon__44FF419A">
+          <End Role="Donatie" Type="Self.Donatie" Multiplicity="1" />
+          <End Role="Componenta" Type="Self.Componenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donatie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Componenta">
+              <PropertyRef Name="IdDonatie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Component__IdPri__45F365D3">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Componenta" Type="Self.Componenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Componenta">
+              <PropertyRef Name="IdPrimitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Component__Insti__46E78A0C">
+          <End Role="InstitutieAsociata" Type="Self.InstitutieAsociata" Multiplicity="0..1" />
+          <End Role="Componenta" Type="Self.Componenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstitutieAsociata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Componenta">
+              <PropertyRef Name="InstitutieAsociata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donatie__IdDonat__37A5467C">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="0..1" />
+          <End Role="Donatie" Type="Self.Donatie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donatie">
+              <PropertyRef Name="IdDonator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donator__GrupaDe__34C8D9D1">
+          <End Role="GrupaDeSange" Type="Self.GrupaDeSange" Multiplicity="0..1" />
+          <End Role="Donator" Type="Self.Donator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrupaDeSange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donator">
+              <PropertyRef Name="GrupaDeSange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donator__IdUtili__33D4B598">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Donator" Type="Self.Donator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donator">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Instituti__Adres__25869641">
+          <End Role="Adresa" Type="Self.Adresa" Multiplicity="0..1" />
+          <End Role="InstitutieAsociata" Type="Self.InstitutieAsociata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InstitutieAsociata">
+              <PropertyRef Name="Adresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medic__IdUtiliza__2B3F6F97">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Medic" Type="Self.Medic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medic">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacient__GrupaDe__300424B4">
+          <End Role="GrupaDeSange" Type="Self.GrupaDeSange" Multiplicity="0..1" />
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrupaDeSange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pacient">
+              <PropertyRef Name="GrupaDeSange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacient__Institu__30F848ED">
+          <End Role="InstitutieAsociata" Type="Self.InstitutieAsociata" Multiplicity="0..1" />
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstitutieAsociata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pacient">
+              <PropertyRef Name="InstitutieAsociata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Personal__IdUtil__3D5E1FD2">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilizato__Insti__286302EC">
+          <End Role="InstitutieAsociata" Type="Self.InstitutieAsociata" Multiplicity="0..1" />
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstitutieAsociata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Utilizator">
+              <PropertyRef Name="InstitutieAsociata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BleedifyEFModelsStoreContainer">
+          <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnuntDonator" EntityType="Self.AnuntDonator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CerereMedicPacient" EntityType="Self.CerereMedicPacient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Componenta" EntityType="Self.Componenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donatie" EntityType="Self.Donatie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donator" EntityType="Self.Donator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GrupaDeSange" EntityType="Self.GrupaDeSange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstitutieAsociata" EntityType="Self.InstitutieAsociata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medic" EntityType="Self.Medic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacient" EntityType="Self.Pacient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizator" EntityType="Self.Utilizator" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AnuntDona__IdDon__3A81B327" Association="Self.FK__AnuntDona__IdDon__3A81B327">
+            <End Role="Donator" EntitySet="Donator" />
+            <End Role="AnuntDonator" EntitySet="AnuntDonator" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CerereMed__Grupa__4222D4EF" Association="Self.FK__CerereMed__Grupa__4222D4EF">
+            <End Role="GrupaDeSange" EntitySet="GrupaDeSange" />
+            <End Role="CerereMedicPacient" EntitySet="CerereMedicPacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CerereMed__IdMed__412EB0B6" Association="Self.FK__CerereMed__IdMed__412EB0B6">
+            <End Role="Medic" EntitySet="Medic" />
+            <End Role="CerereMedicPacient" EntitySet="CerereMedicPacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CerereMed__IdPac__403A8C7D" Association="Self.FK__CerereMed__IdPac__403A8C7D">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="CerereMedicPacient" EntitySet="CerereMedicPacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Component__Grupa__47DBAE45" Association="Self.FK__Component__Grupa__47DBAE45">
+            <End Role="GrupaDeSange" EntitySet="GrupaDeSange" />
+            <End Role="Componenta" EntitySet="Componenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Component__IdDon__44FF419A" Association="Self.FK__Component__IdDon__44FF419A">
+            <End Role="Donatie" EntitySet="Donatie" />
+            <End Role="Componenta" EntitySet="Componenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Component__IdPri__45F365D3" Association="Self.FK__Component__IdPri__45F365D3">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Componenta" EntitySet="Componenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Component__Insti__46E78A0C" Association="Self.FK__Component__Insti__46E78A0C">
+            <End Role="InstitutieAsociata" EntitySet="InstitutieAsociata" />
+            <End Role="Componenta" EntitySet="Componenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donatie__IdDonat__37A5467C" Association="Self.FK__Donatie__IdDonat__37A5467C">
+            <End Role="Donator" EntitySet="Donator" />
+            <End Role="Donatie" EntitySet="Donatie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donator__GrupaDe__34C8D9D1" Association="Self.FK__Donator__GrupaDe__34C8D9D1">
+            <End Role="GrupaDeSange" EntitySet="GrupaDeSange" />
+            <End Role="Donator" EntitySet="Donator" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donator__IdUtili__33D4B598" Association="Self.FK__Donator__IdUtili__33D4B598">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Donator" EntitySet="Donator" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Instituti__Adres__25869641" Association="Self.FK__Instituti__Adres__25869641">
+            <End Role="Adresa" EntitySet="Adresa" />
+            <End Role="InstitutieAsociata" EntitySet="InstitutieAsociata" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medic__IdUtiliza__2B3F6F97" Association="Self.FK__Medic__IdUtiliza__2B3F6F97">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Medic" EntitySet="Medic" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient__GrupaDe__300424B4" Association="Self.FK__Pacient__GrupaDe__300424B4">
+            <End Role="GrupaDeSange" EntitySet="GrupaDeSange" />
+            <End Role="Pacient" EntitySet="Pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient__Institu__30F848ED" Association="Self.FK__Pacient__Institu__30F848ED">
+            <End Role="InstitutieAsociata" EntitySet="InstitutieAsociata" />
+            <End Role="Pacient" EntitySet="Pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Personal__IdUtil__3D5E1FD2" Association="Self.FK__Personal__IdUtil__3D5E1FD2">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilizato__Insti__286302EC" Association="Self.FK__Utilizato__Insti__286302EC">
+            <End Role="InstitutieAsociata" EntitySet="InstitutieAsociata" />
+            <End Role="Utilizator" EntitySet="Utilizator" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BleedifyEFModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adresa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Judet" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Oras" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Strada" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numarul" Type="Int32" Nullable="false" />
+          <Property Name="CodPostal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="InstitutieAsociatas" Relationship="Self.FK__Instituti__Adres__25869641" FromRole="Adresa" ToRole="InstitutieAsociata" />
+        </EntityType>
+        <EntityType Name="AnuntDonator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDonator" Type="Int32" />
+          <Property Name="TipAnuntDonator" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mesaj" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataAnunt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Donator" Relationship="Self.FK__AnuntDona__IdDon__3A81B327" FromRole="AnuntDonator" ToRole="Donator" />
+        </EntityType>
+        <EntityType Name="CerereMedicPacient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPacient" Type="Int32" />
+          <Property Name="IdMedic" Type="Int32" />
+          <Property Name="GrupaDeSange" Type="Int32" />
+          <Property Name="TipComponenta" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Stare" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataDepunere" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataServire" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GrupaDeSange1" Relationship="Self.FK__CerereMed__Grupa__4222D4EF" FromRole="CerereMedicPacient" ToRole="GrupaDeSange" />
+          <NavigationProperty Name="Medic" Relationship="Self.FK__CerereMed__IdMed__412EB0B6" FromRole="CerereMedicPacient" ToRole="Medic" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK__CerereMed__IdPac__403A8C7D" FromRole="CerereMedicPacient" ToRole="Pacient" />
+        </EntityType>
+        <EntityType Name="Componenta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipComponenta" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdDonatie" Type="Int32" Nullable="false" />
+          <Property Name="DataDepunere" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdPrimitor" Type="Int32" />
+          <Property Name="InstitutieAsociata" Type="Int32" />
+          <Property Name="GrupaDeSange" Type="Int32" />
+          <Property Name="DataDonare" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Stare" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GrupaDeSange1" Relationship="Self.FK__Component__Grupa__47DBAE45" FromRole="Componenta" ToRole="GrupaDeSange" />
+          <NavigationProperty Name="Donatie" Relationship="Self.FK__Component__IdDon__44FF419A" FromRole="Componenta" ToRole="Donatie" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK__Component__IdPri__45F365D3" FromRole="Componenta" ToRole="Pacient" />
+          <NavigationProperty Name="InstitutieAsociata1" Relationship="Self.FK__Component__Insti__46E78A0C" FromRole="Componenta" ToRole="InstitutieAsociata" />
+        </EntityType>
+        <EntityType Name="Donatie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDonator" Type="Int32" />
+          <Property Name="EtapaDonare" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MotivRefuz" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Componentas" Relationship="Self.FK__Component__IdDon__44FF419A" FromRole="Donatie" ToRole="Componenta" />
+          <NavigationProperty Name="Donator" Relationship="Self.FK__Donatie__IdDonat__37A5467C" FromRole="Donatie" ToRole="Donator" />
+        </EntityType>
+        <EntityType Name="Donator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUtilizator" Type="Int32" />
+          <Property Name="Nume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataDonarePosibila" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GrupaDeSange" Type="Int32" />
+          <NavigationProperty Name="AnuntDonators" Relationship="Self.FK__AnuntDona__IdDon__3A81B327" FromRole="Donator" ToRole="AnuntDonator" />
+          <NavigationProperty Name="Donaties" Relationship="Self.FK__Donatie__IdDonat__37A5467C" FromRole="Donator" ToRole="Donatie" />
+          <NavigationProperty Name="GrupaDeSange1" Relationship="Self.FK__Donator__GrupaDe__34C8D9D1" FromRole="Donator" ToRole="GrupaDeSange" />
+          <NavigationProperty Name="Utilizator" Relationship="Self.FK__Donator__IdUtili__33D4B598" FromRole="Donator" ToRole="Utilizator" />
+        </EntityType>
+        <EntityType Name="GrupaDeSange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CerereMedicPacients" Relationship="Self.FK__CerereMed__Grupa__4222D4EF" FromRole="GrupaDeSange" ToRole="CerereMedicPacient" />
+          <NavigationProperty Name="Componentas" Relationship="Self.FK__Component__Grupa__47DBAE45" FromRole="GrupaDeSange" ToRole="Componenta" />
+          <NavigationProperty Name="Donators" Relationship="Self.FK__Donator__GrupaDe__34C8D9D1" FromRole="GrupaDeSange" ToRole="Donator" />
+          <NavigationProperty Name="Pacients" Relationship="Self.FK__Pacient__GrupaDe__300424B4" FromRole="GrupaDeSange" ToRole="Pacient" />
+        </EntityType>
+        <EntityType Name="InstitutieAsociata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adresa" Type="Int32" />
+          <Property Name="TipInstitutie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumarTelefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adresa1" Relationship="Self.FK__Instituti__Adres__25869641" FromRole="InstitutieAsociata" ToRole="Adresa" />
+          <NavigationProperty Name="Componentas" Relationship="Self.FK__Component__Insti__46E78A0C" FromRole="InstitutieAsociata" ToRole="Componenta" />
+          <NavigationProperty Name="Pacients" Relationship="Self.FK__Pacient__Institu__30F848ED" FromRole="InstitutieAsociata" ToRole="Pacient" />
+          <NavigationProperty Name="Utilizators" Relationship="Self.FK__Utilizato__Insti__286302EC" FromRole="InstitutieAsociata" ToRole="Utilizator" />
+        </EntityType>
+        <EntityType Name="Medic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUtilizator" Type="Int32" />
+          <Property Name="Nume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdentificatorMedic" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CerereMedicPacients" Relationship="Self.FK__CerereMed__IdMed__412EB0B6" FromRole="Medic" ToRole="CerereMedicPacient" />
+          <NavigationProperty Name="Utilizator" Relationship="Self.FK__Medic__IdUtiliza__2B3F6F97" FromRole="Medic" ToRole="Utilizator" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataNastere" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GrupaDeSange" Type="Int32" />
+          <Property Name="InstitutieAsociata" Type="Int32" />
+          <NavigationProperty Name="CerereMedicPacients" Relationship="Self.FK__CerereMed__IdPac__403A8C7D" FromRole="Pacient" ToRole="CerereMedicPacient" />
+          <NavigationProperty Name="Componentas" Relationship="Self.FK__Component__IdPri__45F365D3" FromRole="Pacient" ToRole="Componenta" />
+          <NavigationProperty Name="GrupaDeSange1" Relationship="Self.FK__Pacient__GrupaDe__300424B4" FromRole="Pacient" ToRole="GrupaDeSange" />
+          <NavigationProperty Name="InstitutieAsociata1" Relationship="Self.FK__Pacient__Institu__30F848ED" FromRole="Pacient" ToRole="InstitutieAsociata" />
+        </EntityType>
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUtilizator" Type="Int32" />
+          <Property Name="Nume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Utilizator" Relationship="Self.FK__Personal__IdUtil__3D5E1FD2" FromRole="Personal" ToRole="Utilizator" />
+        </EntityType>
+        <EntityType Name="Utilizator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipUtilizator" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InstitutieAsociata" Type="Int32" />
+          <NavigationProperty Name="Donators" Relationship="Self.FK__Donator__IdUtili__33D4B598" FromRole="Utilizator" ToRole="Donator" />
+          <NavigationProperty Name="InstitutieAsociata1" Relationship="Self.FK__Utilizato__Insti__286302EC" FromRole="Utilizator" ToRole="InstitutieAsociata" />
+          <NavigationProperty Name="Medics" Relationship="Self.FK__Medic__IdUtiliza__2B3F6F97" FromRole="Utilizator" ToRole="Medic" />
+          <NavigationProperty Name="Personals" Relationship="Self.FK__Personal__IdUtil__3D5E1FD2" FromRole="Utilizator" ToRole="Personal" />
+        </EntityType>
+        <Association Name="FK__Instituti__Adres__25869641">
+          <End Role="Adresa" Type="Self.Adresa" Multiplicity="0..1" />
+          <End Role="InstitutieAsociata" Type="Self.InstitutieAsociata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InstitutieAsociata">
+              <PropertyRef Name="Adresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AnuntDona__IdDon__3A81B327">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="0..1" />
+          <End Role="AnuntDonator" Type="Self.AnuntDonator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AnuntDonator">
+              <PropertyRef Name="IdDonator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CerereMed__Grupa__4222D4EF">
+          <End Role="GrupaDeSange" Type="Self.GrupaDeSange" Multiplicity="0..1" />
+          <End Role="CerereMedicPacient" Type="Self.CerereMedicPacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrupaDeSange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CerereMedicPacient">
+              <PropertyRef Name="GrupaDeSange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CerereMed__IdMed__412EB0B6">
+          <End Role="Medic" Type="Self.Medic" Multiplicity="0..1" />
+          <End Role="CerereMedicPacient" Type="Self.CerereMedicPacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CerereMedicPacient">
+              <PropertyRef Name="IdMedic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CerereMed__IdPac__403A8C7D">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="CerereMedicPacient" Type="Self.CerereMedicPacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CerereMedicPacient">
+              <PropertyRef Name="IdPacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Component__Grupa__47DBAE45">
+          <End Role="GrupaDeSange" Type="Self.GrupaDeSange" Multiplicity="0..1" />
+          <End Role="Componenta" Type="Self.Componenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrupaDeSange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Componenta">
+              <PropertyRef Name="GrupaDeSange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Component__IdDon__44FF419A">
+          <End Role="Donatie" Type="Self.Donatie" Multiplicity="1" />
+          <End Role="Componenta" Type="Self.Componenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donatie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Componenta">
+              <PropertyRef Name="IdDonatie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Component__IdPri__45F365D3">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Componenta" Type="Self.Componenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Componenta">
+              <PropertyRef Name="IdPrimitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Component__Insti__46E78A0C">
+          <End Role="InstitutieAsociata" Type="Self.InstitutieAsociata" Multiplicity="0..1" />
+          <End Role="Componenta" Type="Self.Componenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstitutieAsociata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Componenta">
+              <PropertyRef Name="InstitutieAsociata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donatie__IdDonat__37A5467C">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="0..1" />
+          <End Role="Donatie" Type="Self.Donatie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donatie">
+              <PropertyRef Name="IdDonator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donator__GrupaDe__34C8D9D1">
+          <End Role="GrupaDeSange" Type="Self.GrupaDeSange" Multiplicity="0..1" />
+          <End Role="Donator" Type="Self.Donator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrupaDeSange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donator">
+              <PropertyRef Name="GrupaDeSange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donator__IdUtili__33D4B598">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Donator" Type="Self.Donator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donator">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacient__GrupaDe__300424B4">
+          <End Role="GrupaDeSange" Type="Self.GrupaDeSange" Multiplicity="0..1" />
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrupaDeSange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pacient">
+              <PropertyRef Name="GrupaDeSange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacient__Institu__30F848ED">
+          <End Role="InstitutieAsociata" Type="Self.InstitutieAsociata" Multiplicity="0..1" />
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstitutieAsociata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pacient">
+              <PropertyRef Name="InstitutieAsociata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilizato__Insti__286302EC">
+          <End Role="InstitutieAsociata" Type="Self.InstitutieAsociata" Multiplicity="0..1" />
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstitutieAsociata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Utilizator">
+              <PropertyRef Name="InstitutieAsociata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medic__IdUtiliza__2B3F6F97">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Medic" Type="Self.Medic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medic">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Personal__IdUtil__3D5E1FD2">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BleedifyDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adresas" EntityType="Self.Adresa" />
+          <EntitySet Name="AnuntDonators" EntityType="Self.AnuntDonator" />
+          <EntitySet Name="CerereMedicPacients" EntityType="Self.CerereMedicPacient" />
+          <EntitySet Name="Componentas" EntityType="Self.Componenta" />
+          <EntitySet Name="Donaties" EntityType="Self.Donatie" />
+          <EntitySet Name="Donators" EntityType="Self.Donator" />
+          <EntitySet Name="GrupaDeSanges" EntityType="Self.GrupaDeSange" />
+          <EntitySet Name="InstitutieAsociatas" EntityType="Self.InstitutieAsociata" />
+          <EntitySet Name="Medics" EntityType="Self.Medic" />
+          <EntitySet Name="Pacients" EntityType="Self.Pacient" />
+          <EntitySet Name="Personals" EntityType="Self.Personal" />
+          <EntitySet Name="Utilizators" EntityType="Self.Utilizator" />
+          <AssociationSet Name="FK__Instituti__Adres__25869641" Association="Self.FK__Instituti__Adres__25869641">
+            <End Role="Adresa" EntitySet="Adresas" />
+            <End Role="InstitutieAsociata" EntitySet="InstitutieAsociatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AnuntDona__IdDon__3A81B327" Association="Self.FK__AnuntDona__IdDon__3A81B327">
+            <End Role="Donator" EntitySet="Donators" />
+            <End Role="AnuntDonator" EntitySet="AnuntDonators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CerereMed__Grupa__4222D4EF" Association="Self.FK__CerereMed__Grupa__4222D4EF">
+            <End Role="GrupaDeSange" EntitySet="GrupaDeSanges" />
+            <End Role="CerereMedicPacient" EntitySet="CerereMedicPacients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CerereMed__IdMed__412EB0B6" Association="Self.FK__CerereMed__IdMed__412EB0B6">
+            <End Role="Medic" EntitySet="Medics" />
+            <End Role="CerereMedicPacient" EntitySet="CerereMedicPacients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CerereMed__IdPac__403A8C7D" Association="Self.FK__CerereMed__IdPac__403A8C7D">
+            <End Role="Pacient" EntitySet="Pacients" />
+            <End Role="CerereMedicPacient" EntitySet="CerereMedicPacients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Component__Grupa__47DBAE45" Association="Self.FK__Component__Grupa__47DBAE45">
+            <End Role="GrupaDeSange" EntitySet="GrupaDeSanges" />
+            <End Role="Componenta" EntitySet="Componentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Component__IdDon__44FF419A" Association="Self.FK__Component__IdDon__44FF419A">
+            <End Role="Donatie" EntitySet="Donaties" />
+            <End Role="Componenta" EntitySet="Componentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Component__IdPri__45F365D3" Association="Self.FK__Component__IdPri__45F365D3">
+            <End Role="Pacient" EntitySet="Pacients" />
+            <End Role="Componenta" EntitySet="Componentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Component__Insti__46E78A0C" Association="Self.FK__Component__Insti__46E78A0C">
+            <End Role="InstitutieAsociata" EntitySet="InstitutieAsociatas" />
+            <End Role="Componenta" EntitySet="Componentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donatie__IdDonat__37A5467C" Association="Self.FK__Donatie__IdDonat__37A5467C">
+            <End Role="Donator" EntitySet="Donators" />
+            <End Role="Donatie" EntitySet="Donaties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donator__GrupaDe__34C8D9D1" Association="Self.FK__Donator__GrupaDe__34C8D9D1">
+            <End Role="GrupaDeSange" EntitySet="GrupaDeSanges" />
+            <End Role="Donator" EntitySet="Donators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donator__IdUtili__33D4B598" Association="Self.FK__Donator__IdUtili__33D4B598">
+            <End Role="Utilizator" EntitySet="Utilizators" />
+            <End Role="Donator" EntitySet="Donators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient__GrupaDe__300424B4" Association="Self.FK__Pacient__GrupaDe__300424B4">
+            <End Role="GrupaDeSange" EntitySet="GrupaDeSanges" />
+            <End Role="Pacient" EntitySet="Pacients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient__Institu__30F848ED" Association="Self.FK__Pacient__Institu__30F848ED">
+            <End Role="InstitutieAsociata" EntitySet="InstitutieAsociatas" />
+            <End Role="Pacient" EntitySet="Pacients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilizato__Insti__286302EC" Association="Self.FK__Utilizato__Insti__286302EC">
+            <End Role="InstitutieAsociata" EntitySet="InstitutieAsociatas" />
+            <End Role="Utilizator" EntitySet="Utilizators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medic__IdUtiliza__2B3F6F97" Association="Self.FK__Medic__IdUtiliza__2B3F6F97">
+            <End Role="Utilizator" EntitySet="Utilizators" />
+            <End Role="Medic" EntitySet="Medics" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Personal__IdUtil__3D5E1FD2" Association="Self.FK__Personal__IdUtil__3D5E1FD2">
+            <End Role="Utilizator" EntitySet="Utilizators" />
+            <End Role="Personal" EntitySet="Personals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BleedifyEFModelsStoreContainer" CdmEntityContainer="BleedifyDB">
+          <EntitySetMapping Name="Adresas">
+            <EntityTypeMapping TypeName="BleedifyEFModels.Adresa">
+              <MappingFragment StoreEntitySet="Adresa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Judet" ColumnName="Judet" />
+                <ScalarProperty Name="Oras" ColumnName="Oras" />
+                <ScalarProperty Name="Strada" ColumnName="Strada" />
+                <ScalarProperty Name="Numarul" ColumnName="Numarul" />
+                <ScalarProperty Name="CodPostal" ColumnName="CodPostal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnuntDonators">
+            <EntityTypeMapping TypeName="BleedifyEFModels.AnuntDonator">
+              <MappingFragment StoreEntitySet="AnuntDonator">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdDonator" ColumnName="IdDonator" />
+                <ScalarProperty Name="TipAnuntDonator" ColumnName="TipAnuntDonator" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="DataAnunt" ColumnName="DataAnunt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CerereMedicPacients">
+            <EntityTypeMapping TypeName="BleedifyEFModels.CerereMedicPacient">
+              <MappingFragment StoreEntitySet="CerereMedicPacient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPacient" ColumnName="IdPacient" />
+                <ScalarProperty Name="IdMedic" ColumnName="IdMedic" />
+                <ScalarProperty Name="GrupaDeSange" ColumnName="GrupaDeSange" />
+                <ScalarProperty Name="TipComponenta" ColumnName="TipComponenta" />
+                <ScalarProperty Name="Stare" ColumnName="Stare" />
+                <ScalarProperty Name="DataDepunere" ColumnName="DataDepunere" />
+                <ScalarProperty Name="DataServire" ColumnName="DataServire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Componentas">
+            <EntityTypeMapping TypeName="BleedifyEFModels.Componenta">
+              <MappingFragment StoreEntitySet="Componenta">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipComponenta" ColumnName="TipComponenta" />
+                <ScalarProperty Name="IdDonatie" ColumnName="IdDonatie" />
+                <ScalarProperty Name="DataDepunere" ColumnName="DataDepunere" />
+                <ScalarProperty Name="IdPrimitor" ColumnName="IdPrimitor" />
+                <ScalarProperty Name="InstitutieAsociata" ColumnName="InstitutieAsociata" />
+                <ScalarProperty Name="GrupaDeSange" ColumnName="GrupaDeSange" />
+                <ScalarProperty Name="DataDonare" ColumnName="DataDonare" />
+                <ScalarProperty Name="Stare" ColumnName="Stare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donaties">
+            <EntityTypeMapping TypeName="BleedifyEFModels.Donatie">
+              <MappingFragment StoreEntitySet="Donatie">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdDonator" ColumnName="IdDonator" />
+                <ScalarProperty Name="EtapaDonare" ColumnName="EtapaDonare" />
+                <ScalarProperty Name="MotivRefuz" ColumnName="MotivRefuz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donators">
+            <EntityTypeMapping TypeName="BleedifyEFModels.Donator">
+              <MappingFragment StoreEntitySet="Donator">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="DataDonarePosibila" ColumnName="DataDonarePosibila" />
+                <ScalarProperty Name="GrupaDeSange" ColumnName="GrupaDeSange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrupaDeSanges">
+            <EntityTypeMapping TypeName="BleedifyEFModels.GrupaDeSange">
+              <MappingFragment StoreEntitySet="GrupaDeSange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstitutieAsociatas">
+            <EntityTypeMapping TypeName="BleedifyEFModels.InstitutieAsociata">
+              <MappingFragment StoreEntitySet="InstitutieAsociata">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="TipInstitutie" ColumnName="TipInstitutie" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="NumarTelefon" ColumnName="NumarTelefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medics">
+            <EntityTypeMapping TypeName="BleedifyEFModels.Medic">
+              <MappingFragment StoreEntitySet="Medic">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="IdentificatorMedic" ColumnName="IdentificatorMedic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacients">
+            <EntityTypeMapping TypeName="BleedifyEFModels.Pacient">
+              <MappingFragment StoreEntitySet="Pacient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="DataNastere" ColumnName="DataNastere" />
+                <ScalarProperty Name="GrupaDeSange" ColumnName="GrupaDeSange" />
+                <ScalarProperty Name="InstitutieAsociata" ColumnName="InstitutieAsociata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personals">
+            <EntityTypeMapping TypeName="BleedifyEFModels.Personal">
+              <MappingFragment StoreEntitySet="Personal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizators">
+            <EntityTypeMapping TypeName="BleedifyEFModels.Utilizator">
+              <MappingFragment StoreEntitySet="Utilizator">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="TipUtilizator" ColumnName="TipUtilizator" />
+                <ScalarProperty Name="InstitutieAsociata" ColumnName="InstitutieAsociata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
