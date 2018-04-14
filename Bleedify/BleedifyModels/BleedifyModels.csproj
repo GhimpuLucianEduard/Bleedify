@@ -93,6 +93,7 @@
       <DependentUpon>BleedifyModels.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\Extensions\IHasID.cs" />
+    <Compile Include="ModelsEF\Extensions\Personal.cs" />
     <Compile Include="ModelsEF\Extensions\Utilizator.cs" />
     <Compile Include="ModelsEF\GrupaDeSange.cs">
       <DependentUpon>BleedifyModels.tt</DependentUpon>
@@ -114,8 +115,10 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\PersonalRepository.cs" />
     <Compile Include="Repositories\UtilizatorRepository.cs" />
     <Compile Include="Validators\IValidator.cs" />
+    <Compile Include="Validators\PersonalValidator.cs" />
     <Compile Include="Validators\UtilizatorValidator.cs" />
     <Compile Include="Validators\ValidationException.cs" />
   </ItemGroup>

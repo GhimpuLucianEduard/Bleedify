@@ -59,6 +59,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="PersonalRepositoryTests.cs" />
+    <Compile Include="PersonalTests.cs" />
     <Compile Include="UtilizatorRepositoryTests.cs" />
     <Compile Include="UtilizatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
