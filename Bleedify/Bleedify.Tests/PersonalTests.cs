@@ -24,17 +24,14 @@ namespace Bleedify.Tests
         [TestMethod]
         public void TestGettersPersonal()
         {
-            // Arrange
             Utilizator _utilzatorForTest = new Utilizator();
             _utilzatorForTest.Id = 223;
 
-            // Act
             _testPersonal.Id = 1;
             _testPersonal.IdUtilizator = _utilzatorForTest.Id;
             _testPersonal.Nume = "Mister";
             _testPersonal.Prenume = "Bleedify";
 
-            // Assert
             Assert.IsTrue(_testPersonal.Id == 1);
             Assert.IsTrue(_testPersonal.IdUtilizator == _utilzatorForTest.Id);
             Assert.IsTrue(String.Compare(_testPersonal.Nume, "Mister") == 0);

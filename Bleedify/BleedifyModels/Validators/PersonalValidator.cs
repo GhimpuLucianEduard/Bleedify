@@ -23,16 +23,6 @@ namespace BleedifyModels.Validators
                 errorMessage += "Prenumele nu poate fi vid! \n";
             }
 
-            if(entity.Id <= 0)
-            {
-                errorMessage += "Id trebuie sa fie pozitiv! \n";
-            }
-
-            if (entity.IdUtilizator <= 0)
-            {
-                errorMessage += "IdUtilizator trebuie sa fie pozitiv! \n";
-            }
-
             if (!string.IsNullOrWhiteSpace(errorMessage))
             {
                 throw new ValidationException(errorMessage);

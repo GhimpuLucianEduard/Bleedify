@@ -10,7 +10,8 @@ namespace Bleedify.Tests
     [TestClass]
     public class PersonalRepositoryTests
     {
-        #region Init and Cleanup
+        #region Initialization and Cleanup
+
         private static PersonalRepository _personalRepository;
 
 
@@ -33,9 +34,11 @@ namespace Bleedify.Tests
                 }
             });
         }
+
         #endregion
 
         #region AddTest
+
         [TestMethod]
         public void AddPersonalTest()
         {
@@ -58,9 +61,11 @@ namespace Bleedify.Tests
 
             Assert.IsTrue(_personalRepository.GetAll().Count() == _initialSize + 1);
         }
+
         #endregion
 
         #region FindTest
+
         [TestMethod]
         public void FindPersonalTest()
         {
@@ -88,9 +93,11 @@ namespace Bleedify.Tests
             Assert.IsTrue(_foundPersonal.Nume == _personal.Nume);
             Assert.IsTrue(_foundPersonal.Prenume == _personal.Prenume);
         }
+
         #endregion
 
         #region UpdateTest
+
         [TestMethod]
         public void UpdatePersonalTest()
         {
@@ -118,9 +125,11 @@ namespace Bleedify.Tests
             Assert.IsTrue(_foundPersonal.Nume == "TESTUPDATE");
             Assert.IsTrue(_foundPersonal.Prenume == "TESTUPDATE");
         }
+
         #endregion
 
         #region DeleteTest
+
         [TestMethod]
         public void DeletePersonalTest()
         {
@@ -144,6 +153,7 @@ namespace Bleedify.Tests
 
             Assert.IsTrue(_initialSize == _personalRepository.GetAll().Count());
         }
+
         #endregion
     }
 }

@@ -79,7 +79,6 @@ namespace Bleedify.Tests
 		public void DeleteUserTest()
 		{
 			var size = _utilizatorRepository.GetAll().Count();
-            
 			try
 			{
 				var utilizatorTest1 = new Utilizator

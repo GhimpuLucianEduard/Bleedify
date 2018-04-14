@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BleedifyModels.ModelsEF
 {
-    partial class Personal : IHasID<int>
+    partial class Personal : Utilizator
     {
         public Utilizator UtilizatorObj
         {
