@@ -59,6 +59,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DonatorRepositoryTests.cs" />
+    <Compile Include="DonatorTests.cs" />
     <Compile Include="PersonalRepositoryTests.cs" />
     <Compile Include="PersonalTests.cs" />
     <Compile Include="UtilizatorRepositoryTests.cs" />
