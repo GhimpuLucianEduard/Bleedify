@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\EtapaDonare.cs" />
+    <Compile Include="Enums\GrupeDeSange.cs" />
+    <Compile Include="Enums\StareCerere.cs" />
+    <Compile Include="Enums\TipAnuntDonator.cs" />
+    <Compile Include="Enums\TipComponenta.cs" />
+    <Compile Include="Enums\TipInstitutieAsociata.cs" />
     <Compile Include="Enums\TipUtilizator.cs" />
     <Compile Include="ModelsEF\Adresa.cs">
       <DependentUpon>BleedifyModels.tt</DependentUpon>
