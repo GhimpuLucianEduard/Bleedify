@@ -14,6 +14,7 @@ namespace Bleedify.Tests
     public class MedicRepositoryTests
     {
         #region Initialization and Clean
+
         private static MedicRepository _medicRepository;
 
         [ClassInitialize]
@@ -28,13 +29,13 @@ namespace Bleedify.Tests
             _medicRepository.GetAll().ToList().ForEach(x =>
            {
                if (String.Compare(x.Nume, "TEST", StringComparison.Ordinal) == 0 ||
-                   String.Compare(x.Nume, "TESTUPDATE", StringComparison.Ordinal) == 0
-               )
+                   String.Compare(x.Nume, "TESTUPDATE", StringComparison.Ordinal) == 0)
                {
                    _medicRepository.Delete(x.Id);
                }
            });
         }
+
         #endregion
 
         #region AddTest
@@ -48,9 +49,7 @@ namespace Bleedify.Tests
             _medic.Nume = "TEST";
             _medic.Prenume = "TEST";
             _medic.IdentificatorMedic = "TEST";
-
             var _initialSize = _medicRepository.GetAll().Count();
-
             try
             {
                 _medicRepository.Add(_medic);
@@ -61,6 +60,7 @@ namespace Bleedify.Tests
             }
             Assert.IsTrue(_medicRepository.GetAll().Count() == _initialSize + 1);
         }
+
         #endregion
 
         #region FindTest
@@ -74,9 +74,7 @@ namespace Bleedify.Tests
             _medic.Nume = "TEST";
             _medic.Prenume = "TEST";
             _medic.IdentificatorMedic = "TEST";
-
             Medic _foundMedic = null;
-
             try
             {
                 _medicRepository.Add(_medic);
@@ -86,7 +84,6 @@ namespace Bleedify.Tests
             {
                 Assert.Fail();
             }
-
             Assert.IsTrue(_foundMedic != null);
             Assert.IsTrue(_foundMedic.Id == _medic.Id);
             Assert.IsTrue(_foundMedic.IdUtilizator == _medic.IdUtilizator);
@@ -140,7 +137,6 @@ namespace Bleedify.Tests
             _medic.Nume = "TEST";
             _medic.Prenume = "TEST";
             _medic.IdentificatorMedic = "TEST";
-
             var _initialSize = _medicRepository.GetAll().Count();
 
             try

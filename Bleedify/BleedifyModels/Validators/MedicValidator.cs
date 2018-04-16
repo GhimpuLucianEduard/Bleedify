@@ -32,7 +32,6 @@ namespace BleedifyModels.Validators
             {
                 throw new ValidationException(errorMessage);
             }
-
         }
     }
 }

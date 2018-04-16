@@ -13,7 +13,5 @@ namespace BleedifyModels.ModelsEF
             get { return Utilizator; }
             set { Utilizator = value; }
         }
-
-
     }
 }
