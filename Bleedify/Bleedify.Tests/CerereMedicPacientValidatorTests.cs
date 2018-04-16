@@ -16,6 +16,16 @@ namespace Bleedify.Tests
 
         #endregion
 
+        #region Initialize and Cleanup
+
+        [ClassInitialize]
+        public static void InitializeTest(TestContext context)
+        {
+            _cerereMedicPacientValidator = new CerereMedicPacientValidator();
+        }
+
+        #endregion
+
         #region ValidatorTest
 
         [TestMethod]
