@@ -68,7 +68,7 @@ namespace Bleedify.Tests
                 _cerereMedicPacientRepository.Add(cerereTest1);
                 _cerereMedicPacientRepository.Add(cerereTest2);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
