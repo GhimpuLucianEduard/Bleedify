@@ -5,6 +5,7 @@ using BleedifyModels.ModelsEF;
 using BleedifyModels.Repositories;
 using BleedifyModels.Enums;
 using BleedifyModels.Validators;
+using System.Data.Entity.Validation;
 
 namespace Bleedify.Tests
 {
@@ -46,31 +47,28 @@ namespace Bleedify.Tests
         {
             var size = _cerereMedicPacientRepository.GetAll().Count();
 
-            try
+            var cerereTest1 = new CerereMedicPacient
             {
-                var cerereTest1 = new CerereMedicPacient
-                {
-                    Id = 1,
-                    IdMedic = 2,
-                    IdPacient = 3,
-                    TipComponenta = TipComponenta.GlobuleRosii.ToString(),
-                    Stare = "TEST"
-                };
+                TipComponenta = TipComponenta.Trombocite.ToString(),
+                DataDepunere = DateTime.Now,
+                DataServire = DateTime.Now,
+                Stare = "TEST"
+            };
 
-                var cerereTest2 = new CerereMedicPacient
-                {
-                    Id = 2,
-                    IdMedic = 2,
-                    IdPacient = 4,
-                    TipComponenta = TipComponenta.Plasma.ToString(),
-                    Stare = "TEST"
-                };
+            var cerereTest2 = new CerereMedicPacient
+            {
+                TipComponenta = TipComponenta.Plasma.ToString(),
+                DataDepunere = DateTime.Now,
+                DataServire = DateTime.Now,
+                Stare = "TEST"
+            };
 
+            try
+            { 
                 _cerereMedicPacientRepository.Add(cerereTest1);
                 _cerereMedicPacientRepository.Add(cerereTest2);
-
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Assert.Fail();
             }
@@ -81,15 +79,6 @@ namespace Bleedify.Tests
 
             try
             {
-                var cerereTest1 = new CerereMedicPacient
-                {
-                    Id = 1,
-                    IdMedic = 2,
-                    IdPacient = 3,
-                    TipComponenta = TipComponenta.GlobuleRosii.ToString(),
-                    Stare = "TEST"
-                };
-
                 _cerereMedicPacientRepository.Add(cerereTest1);
 
                 Assert.Fail();
@@ -112,19 +101,17 @@ namespace Bleedify.Tests
             {
                 var cerereTest1 = new CerereMedicPacient
                 {
-                    Id = 4,
-                    IdMedic = 2,
-                    IdPacient = 3,
-                    TipComponenta = TipComponenta.GlobuleRosii.ToString(),
+                    TipComponenta = TipComponenta.Trombocite.ToString(),
+                    DataDepunere = DateTime.Now,
+                    DataServire = DateTime.Now,
                     Stare = "TEST"
                 };
 
                 var cerereTest2 = new CerereMedicPacient
                 {
-                    Id = 5,
-                    IdMedic = 2,
-                    IdPacient = 4,
                     TipComponenta = TipComponenta.Plasma.ToString(),
+                    DataDepunere = DateTime.Now,
+                    DataServire = DateTime.Now,
                     Stare = "TEST"
                 };
 
@@ -148,10 +135,9 @@ namespace Bleedify.Tests
             {
                 var cerereTest1 = new CerereMedicPacient
                 {
-                    Id = 10,
-                    IdMedic = 2,
-                    IdPacient = 3,
-                    TipComponenta = TipComponenta.GlobuleRosii.ToString(),
+                    TipComponenta = TipComponenta.Trombocite.ToString(),
+                    DataDepunere = DateTime.Now,
+                    DataServire = DateTime.Now,
                     Stare = "TEST"
                 };
 
@@ -177,20 +163,17 @@ namespace Bleedify.Tests
             {
                 var cerereTest1 = new CerereMedicPacient
                 {
-                    Id = 12,
-                    IdMedic = 2,
-                    IdPacient = 3,
-                    TipComponenta = TipComponenta.GlobuleRosii.ToString(),
+                    TipComponenta = TipComponenta.Trombocite.ToString(),
+                    DataDepunere = DateTime.Now,
+                    DataServire = DateTime.Now,
                     Stare = "TEST"
                 };
 
                 _cerereMedicPacientRepository.Add(cerereTest1);
 
-                var cerereFind = _cerereMedicPacientRepository.Find(1);
+                var cerereFind = _cerereMedicPacientRepository.Find(cerereTest1.Id);
 
                 Assert.IsTrue(cerereFind.Id == cerereTest1.Id);
-                Assert.IsTrue(cerereFind.IdMedic == cerereTest1.IdMedic);
-                Assert.IsTrue(cerereFind.IdPacient == cerereTest1.IdPacient);
                 Assert.IsTrue(String.Compare(cerereFind.TipComponenta, cerereTest1.TipComponenta, StringComparison.Ordinal) == 0);
 
             }
@@ -212,37 +195,24 @@ namespace Bleedify.Tests
             {
                 var cerereUpdate = new CerereMedicPacient
                 {
-                    Id = 15,
-                    IdMedic = 2,
-                    IdPacient = 3,
                     TipComponenta = TipComponenta.Trombocite.ToString(),
+                    DataDepunere = DateTime.Now,
+                    DataServire = DateTime.Now,
                     Stare = "TEST"
                 };
 
                 _cerereMedicPacientRepository.Add(cerereUpdate);
                 
-                Assert.IsTrue(cerereUpdate.Id == 15);
-                Assert.IsTrue(cerereUpdate.IdMedic == 2);
-                Assert.IsTrue(cerereUpdate.IdPacient == 3);
-                Assert.IsTrue(String.Compare(cerereUpdate.TipComponenta, TipComponenta.GlobuleRosii.ToString(), StringComparison.Ordinal) == 0);
 
-                var cerereUpdate1 = new CerereMedicPacient
-                {
-                    Id = 15,
-                    IdMedic = 22,
-                    IdPacient = 33,
-                    TipComponenta = TipComponenta.Trombocite.ToString(),
-                    Stare = "TEST"
-                };
-
-                _cerereMedicPacientRepository.Update(cerereUpdate1);
-
-                cerereUpdate = _cerereMedicPacientRepository.Find(1);
-
-                Assert.IsTrue(cerereUpdate.Id == 15);
-                Assert.IsTrue(cerereUpdate.IdMedic == 22);
-                Assert.IsTrue(cerereUpdate.IdPacient == 33);
                 Assert.IsTrue(String.Compare(cerereUpdate.TipComponenta, TipComponenta.Trombocite.ToString(), StringComparison.Ordinal) == 0);
+
+                cerereUpdate.TipComponenta = TipComponenta.Plasma.ToString();
+
+                _cerereMedicPacientRepository.Update(cerereUpdate);
+
+                cerereUpdate = _cerereMedicPacientRepository.Find(cerereUpdate.Id);
+
+                Assert.IsTrue(String.Compare(cerereUpdate.TipComponenta, TipComponenta.Plasma.ToString(), StringComparison.Ordinal) == 0);
 
             }
             catch (Exception)

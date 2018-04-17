@@ -58,7 +58,7 @@ namespace Bleedify.Tests
                     Id = 1,
                     IdMedic = 2,
                     IdPacient = 3,
-                    TipComponenta = TipComponenta.GlobuleRosii.ToString(),
+                    TipComponenta = TipComponenta.GlobuleR.ToString(),
                     Stare = ""
                 };
 
@@ -98,7 +98,7 @@ namespace Bleedify.Tests
                     Id = 1,
                     IdMedic = 2,
                     IdPacient = 3,
-                    TipComponenta = TipComponenta.GlobuleRosii.ToString(),
+                    TipComponenta = TipComponenta.GlobuleR.ToString(),
                     Stare = "TEST"
                 };
 

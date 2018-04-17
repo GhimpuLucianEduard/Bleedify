@@ -38,7 +38,7 @@ namespace Bleedify.Tests
             _testCerereMedicPacient.IdPacient = 3;
             _testCerereMedicPacient.GrupaDeSange = 4;
 
-            _testCerereMedicPacient.TipComponenta = TipComponenta.GlobuleRosii.ToString();
+            _testCerereMedicPacient.TipComponenta = TipComponenta.GlobuleR.ToString();
             _testCerereMedicPacient.Stare = StareCerere.InAsteptare.ToString();
 
             // Assert
@@ -47,7 +47,7 @@ namespace Bleedify.Tests
             Assert.IsTrue(_testCerereMedicPacient.IdPacient == 3);
             Assert.IsTrue(_testCerereMedicPacient.GrupaDeSange == 4);
 
-            Assert.IsTrue(String.Compare(_testCerereMedicPacient.TipComponenta, TipComponenta.GlobuleRosii.ToString(), StringComparison.Ordinal) == 0);
+            Assert.IsTrue(String.Compare(_testCerereMedicPacient.TipComponenta, TipComponenta.GlobuleR.ToString(), StringComparison.Ordinal) == 0);
             Assert.IsTrue(String.Compare(_testCerereMedicPacient.Stare, StareCerere.InAsteptare.ToString(), StringComparison.Ordinal) == 0);
         }
 
