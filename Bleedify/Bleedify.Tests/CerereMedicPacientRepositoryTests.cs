@@ -74,7 +74,6 @@ namespace Bleedify.Tests
             }
 
             var size2 = _cerereMedicPacientRepository.GetAll().Count();
-
             Assert.IsTrue(size2 == size + 2);
 
             try
@@ -128,7 +127,6 @@ namespace Bleedify.Tests
             }
 
             var size2 = _cerereMedicPacientRepository.GetAll().Count();
-
             Assert.IsTrue(size2 == size);
 
             try
@@ -149,7 +147,6 @@ namespace Bleedify.Tests
             {
                 // Test passed
             }
-
         }
 
         #endregion
@@ -175,13 +172,11 @@ namespace Bleedify.Tests
 
                 Assert.IsTrue(cerereFind.Id == cerereTest1.Id);
                 Assert.IsTrue(String.Compare(cerereFind.TipComponenta, cerereTest1.TipComponenta, StringComparison.Ordinal) == 0);
-
             }
             catch (Exception)
             {
                 Assert.Fail();
             }
-
         }
 
         #endregion
@@ -202,24 +197,18 @@ namespace Bleedify.Tests
                 };
 
                 _cerereMedicPacientRepository.Add(cerereUpdate);
-                
-
                 Assert.IsTrue(String.Compare(cerereUpdate.TipComponenta, TipComponenta.Trombocite.ToString(), StringComparison.Ordinal) == 0);
 
                 cerereUpdate.TipComponenta = TipComponenta.Plasma.ToString();
-
                 _cerereMedicPacientRepository.Update(cerereUpdate);
 
                 cerereUpdate = _cerereMedicPacientRepository.Find(cerereUpdate.Id);
-
                 Assert.IsTrue(String.Compare(cerereUpdate.TipComponenta, TipComponenta.Plasma.ToString(), StringComparison.Ordinal) == 0);
-
             }
             catch (Exception)
             {
                 Assert.Fail();
             }
-
         }
 
         #endregion
