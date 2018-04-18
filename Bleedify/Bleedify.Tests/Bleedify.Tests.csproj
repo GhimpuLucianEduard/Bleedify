@@ -65,6 +65,7 @@
     <Compile Include="AnuntDonatorTests.cs" />
     <Compile Include="DonatieTests.cs" />
     <Compile Include="DonatorTests.cs" />
+    <Compile Include="GrupaDeSangeTests.cs" />
     <Compile Include="MedicRepositoryTests.cs" />
     <Compile Include="MedicTests.cs" />
     <Compile Include="PersonalRepositoryTests.cs" />
