@@ -54,7 +54,7 @@ namespace Bleedify.Tests
             {
                 _personalRepository.Add(_personal);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -82,7 +82,7 @@ namespace Bleedify.Tests
                 _personalRepository.Add(_personal);
                 _foundPersonal = _personalRepository.Find(_personal.Id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -115,7 +115,7 @@ namespace Bleedify.Tests
                 _personal.Prenume = "TESTUPDATE";
                 _personalRepository.Update(_personal);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -146,7 +146,7 @@ namespace Bleedify.Tests
                 _personalRepository.Add(_personal);
                 _personalRepository.Delete(_personal.Id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }

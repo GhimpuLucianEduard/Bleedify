@@ -65,7 +65,7 @@ namespace Bleedify.Tests
 				_utilizatorRepository.Add(utilizatorTest2);
 
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				Assert.Fail();
 			}
@@ -102,7 +102,7 @@ namespace Bleedify.Tests
 				_utilizatorRepository.Delete(utilizatorTest1.Id);
 
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				Assert.Fail();
 			}
