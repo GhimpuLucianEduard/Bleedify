@@ -149,7 +149,9 @@ namespace Bleedify.Tests
                 Assert.Fail();
             }
 
-            Assert.IsTrue(_initialSize == _medicRepository.GetAll().Count());
+	        var size = _medicRepository.GetAll().Count();
+
+			Assert.IsTrue(_initialSize == _medicRepository.GetAll().Count());
         }
 
         #endregion
