@@ -67,6 +67,7 @@
     <Compile Include="AnuntDonatorTests.cs" />
     <Compile Include="DonatieTests.cs" />
     <Compile Include="DonatorTests.cs" />
+    <Compile Include="GrupaDeSangeTests.cs" />
     <Compile Include="MedicRepositoryTests.cs" />
     <Compile Include="MedicTests.cs" />
     <Compile Include="PersonalRepositoryTests.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="UtilizatorRepositoryTests.cs" />
     <Compile Include="UtilizatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ComponentaRepositoryTests.cs" />
+    <Compile Include="ComponentaTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BleedifyModels\BleedifyModels.csproj">
