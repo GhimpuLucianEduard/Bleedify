@@ -59,7 +59,7 @@ namespace Bleedify.Tests
             {
                 _donatorRepository.Add(_donator);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
