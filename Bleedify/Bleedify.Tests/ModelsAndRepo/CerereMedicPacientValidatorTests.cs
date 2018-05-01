@@ -24,11 +24,11 @@ namespace Bleedify.Tests
             _cerereMedicPacientValidator = new CerereMedicPacientValidator();
         }
 
-        #endregion
+		#endregion
 
-        #region ValidatorTest
+		#region ValidatorTest
 
-        [TestMethod]
+		[TestMethod]
         public void CerereValidatorTest()
         {
             try

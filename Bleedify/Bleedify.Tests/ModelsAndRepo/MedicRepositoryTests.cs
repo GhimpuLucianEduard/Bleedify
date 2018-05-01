@@ -17,19 +17,19 @@ namespace Bleedify.Tests
 
         private static MedicRepository _medicRepository;
 
-        [ClassInitialize]
-        public static void InitializeTest(TestContext context)
+        [TestInitialize]
+        public void InitializeTest()
         {
             _medicRepository = new MedicRepository(new MedicValidator());
         }
 
-        [ClassCleanup]
-        public static void CleanUpTest()
+        [TestCleanup]
+        public void CleanUpTest()
         {
             _medicRepository.GetAll().ToList().ForEach(x =>
            {
-               if (String.Compare(x.Nume, "TEST", StringComparison.Ordinal) == 0 ||
-                   String.Compare(x.Nume, "TESTUPDATE", StringComparison.Ordinal) == 0)
+               if (x.Nume.CompareTo("TEST")  == 0 ||
+                   x.Nume.CompareTo("TESTUPDATE") == 0)
                {
                    _medicRepository.Delete(x.Id);
                }

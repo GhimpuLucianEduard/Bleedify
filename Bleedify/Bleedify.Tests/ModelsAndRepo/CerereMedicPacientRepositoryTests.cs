@@ -20,18 +20,18 @@ namespace Bleedify.Tests
 
         #region Initialize and Cleanup
 
-        [ClassInitialize]
-        public static void InitializeTest(TestContext context)
+        [TestInitialize]
+        public  void InitializeTest()
         {
             _cerereMedicPacientRepository = new CerereMedicPacientRepository(new CerereMedicPacientValidator());
         }
 
-        [ClassCleanup]
-        public static void CleanUpTest()
+        [TestCleanup]
+        public void CleanUpTest()
         {
             _cerereMedicPacientRepository.GetAll().ToList().ForEach(x =>
             {
-                if (String.Compare(x.Stare, "TEST", StringComparison.Ordinal) == 0)
+                if (x.Stare.CompareTo("TEST")==0)
                 {
                     _cerereMedicPacientRepository.Delete(x.Id);
                 }

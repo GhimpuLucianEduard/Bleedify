@@ -18,20 +18,19 @@ namespace Bleedify.Tests
 
         private static ComponentaRepository _componentaRepository;
 
-        [ClassInitialize]
-        public static void InitializeTest(TestContext context)
+        [TestInitialize]
+        public void InitializeTest()
         {
             _componentaRepository = new ComponentaRepository(new ComponentaValidator());
         }
 
 
-        [ClassCleanup]
-        public static void CleanUpTest()
+        [TestCleanup]
+        public void CleanUpTest()
         {
             _componentaRepository.GetAll().ToList().ForEach(x =>
             {
-                if (String.Compare(x.TipComponenta, "TEST", StringComparison.Ordinal) == 0 ||
-                    String.Compare(x.TipComponenta, "TESTUPDATE", StringComparison.Ordinal) == 0)
+                if (x.Stare.CompareTo("TEST")==0)
                 {
                     _componentaRepository.Delete(x.Id);
                 }

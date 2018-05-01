@@ -18,18 +18,18 @@ namespace Bleedify.Tests
 
 		#region Initialize and Cleanup
 
-		[ClassInitialize]
-		public static void InitializeTest(TestContext context)
+		[TestInitialize]
+		public void InitializeTest()
 		{
 			_utilizatorRepository = new UtilizatorRepository(new UtilizatorValidator());
 		}
 
-		[ClassCleanup]
-		public static void CleanUpTest()
+		[TestCleanup]
+		public void CleanUpTest()
 		{
 			_utilizatorRepository.GetAll().ToList().ForEach(x =>
 			{
-				if (String.Compare(x.TipUtilizator, "TEST", StringComparison.Ordinal)==0)
+				if ((x.TipUtilizator.CompareTo("TEST")==0))
 				{
 					_utilizatorRepository.Delete(x.Id);
 				}

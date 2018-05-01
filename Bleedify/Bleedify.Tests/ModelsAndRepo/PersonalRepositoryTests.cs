@@ -15,20 +15,19 @@ namespace Bleedify.Tests
         private static PersonalRepository _personalRepository;
 
 
-        [ClassInitialize]
-        public static void InitializeTest(TestContext context)
+        [TestInitialize]
+        public void InitializeTest()
         {
             _personalRepository = new PersonalRepository(new PersonalValidator());
         }
 
 
-        [ClassCleanup]
-        public static void CleanUpTest()
+        [TestCleanup]
+        public void CleanUpTest()
         {
             _personalRepository.GetAll().ToList().ForEach(x =>
             {
-                if (String.Compare(x.Nume, "TEST", StringComparison.Ordinal) == 0 ||
-                    String.Compare(x.Nume, "TESTUPDATE", StringComparison.Ordinal) == 0)
+                if (x.Nume.CompareTo("TEST")==0)
                 {
                     _personalRepository.Delete(x.Id);
                 }

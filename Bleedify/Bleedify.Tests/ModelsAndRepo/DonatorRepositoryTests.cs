@@ -18,20 +18,20 @@ namespace Bleedify.Tests
         private static DonatorRepository _donatorRepository;
 
 
-        [ClassInitialize]
-        public static void InitializeTest(TestContext context)
+        [TestInitialize]
+        public void InitializeTest()
         {
             _donatorRepository = new DonatorRepository(new DonatorValidator());
         }
 
 
-        [ClassCleanup]
-        public static void CleanUpTest()
+        [TestCleanup]
+        public void CleanUpTest()
         {
             _donatorRepository.GetAll().ToList().ForEach(x =>
             {
-                if (String.Compare(x.Nume, "TEST", StringComparison.Ordinal) == 0 ||
-                    String.Compare(x.Nume, "TESTUPDATE", StringComparison.Ordinal) == 0)
+                if (x.Nume.CompareTo("TEST")== 0 ||
+                    x.Nume.CompareTo("TESTUPDATE") == 0)
                 {
                     _donatorRepository.Delete(x.Id);
                 }
