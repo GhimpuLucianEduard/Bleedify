@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bleedify", "Bleedify\Bleedify.csproj", "{0C97CB98-82D1-41D2-8203-440E943A40DC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BleedifyModels", "BleedifyModels\BleedifyModels.csproj", "{775861A0-8BD8-4CAE-B217-201DE90FDA85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bleedify.Tests", "Bleedify.Tests\Bleedify.Tests.csproj", "{DB5AA6E2-265D-4562-9191-035076112E74}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0C97CB98-82D1-41D2-8203-440E943A40DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C97CB98-82D1-41D2-8203-440E943A40DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C97CB98-82D1-41D2-8203-440E943A40DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C97CB98-82D1-41D2-8203-440E943A40DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{775861A0-8BD8-4CAE-B217-201DE90FDA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{775861A0-8BD8-4CAE-B217-201DE90FDA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{775861A0-8BD8-4CAE-B217-201DE90FDA85}.Release|Any CPU.ActiveCfg = Release|Any CPU

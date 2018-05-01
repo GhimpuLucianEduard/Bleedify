@@ -50,9 +50,8 @@ namespace Bleedify.Tests
             var _componenta = new Componenta();
 
             _componenta.TipComponenta = "TEST";
-            _componenta.IdDonatie = 1;
+            _componenta.IdDonatie = 2;
             _componenta.DataDepunere = _datetimeDepunere;
-            _componenta.DataDonare = _datetimeDonare;
             _componenta.Stare = "TEST";
            
             var _initialSize = _componentaRepository.GetAll().Count();
@@ -80,9 +79,8 @@ namespace Bleedify.Tests
             var _datetimeDonare = new DateTime(2018, 4, 14);
             var _componenta = new Componenta();
             _componenta.TipComponenta = "TEST";
-            _componenta.IdDonatie = 1;
+            _componenta.IdDonatie = 2;
             _componenta.DataDepunere = _datetimeDepunere;
-            _componenta.DataDonare = _datetimeDonare;
             _componenta.Stare = "TEST";
 
             Componenta _foundComponenta = null;
@@ -112,9 +110,8 @@ namespace Bleedify.Tests
             var _componenta = new Componenta();
 
             _componenta.TipComponenta = "TEST";
-            _componenta.IdDonatie = 1;
+            _componenta.IdDonatie = 2;
             _componenta.DataDepunere = _datetimeDepunere;
-            _componenta.DataDonare = _datetimeDonare;
             _componenta.Stare = "TEST";
 
             var _newDateTime = new DateTime(2018, 4, 13);
@@ -129,7 +126,7 @@ namespace Bleedify.Tests
             }
 
             var _foundComponenta = _componentaRepository.Find(_componenta.Id);
-            Assert.IsTrue(_foundComponenta.IdDonatie == 1);
+            Assert.IsTrue(_foundComponenta.IdDonatie == 2);
         }
 
         #endregion
@@ -145,7 +142,6 @@ namespace Bleedify.Tests
             _componenta.TipComponenta = "TEST";
             _componenta.IdDonatie = 1;
             _componenta.DataDepunere = _datetimeDepunere;
-            _componenta.DataDonare = _datetimeDonare;
             _componenta.Stare = "TEST";
 
             var _initialSize = _componentaRepository.GetAll().Count();

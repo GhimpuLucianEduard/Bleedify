@@ -8,12 +8,6 @@ namespace BleedifyModels.ModelsEF
 {
     partial class Componenta : IHasID<int>
     {
-        public GrupaDeSange GrupaDeSangeObj
-        {
-            get { return GrupaDeSange1; }
-            set { GrupaDeSange1 = value; }
-        }
-
         public Donatie DonatieObj
         {
             get { return Donatie; }
@@ -26,10 +20,5 @@ namespace BleedifyModels.ModelsEF
             set { Pacient = value; }
         }
 
-        public InstitutieAsociata InstitutieAsociataObj
-        {
-            get { return InstitutieAsociata1; }
-            set { InstitutieAsociata1 = value; }
-        }
     }
 }

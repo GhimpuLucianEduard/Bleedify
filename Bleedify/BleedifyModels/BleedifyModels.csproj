@@ -59,39 +59,40 @@
     <Compile Include="Enums\TipInstitutieAsociata.cs" />
     <Compile Include="Enums\TipUtilizator.cs" />
     <Compile Include="ModelsEF\Adresa.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\AnuntDonator.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelsEF\BleedifyModels.Context.cs">
+    <Compile Include="ModelsEF\BleedifyDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BleedifyModels.Context.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelsEF\BleedifyModels.cs">
+    <Compile Include="ModelsEF\BleedifyDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelsEF\BleedifyModels.Designer.cs">
+    <Compile Include="ModelsEF\BleedifyDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BleedifyModels.edmx</DependentUpon>
+      <DependentUpon>BleedifyDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\CerereMedicPacient.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\Componenta.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\ContextGetter.cs" />
     <Compile Include="ModelsEF\Donatie.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\Donator.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelsEF\Extensions\Adresa.cs" />
     <Compile Include="ModelsEF\Extensions\CerereMedicPacient.cs" />
     <Compile Include="ModelsEF\Extensions\AnuntDonator.cs" />
     <Compile Include="ModelsEF\Extensions\Componenta.cs" />
@@ -99,26 +100,27 @@
     <Compile Include="ModelsEF\Extensions\Donator.cs" />
     <Compile Include="ModelsEF\Extensions\GrupaDeSange.cs" />
     <Compile Include="ModelsEF\Extensions\IHasID.cs" />
+    <Compile Include="ModelsEF\Extensions\InstitutieAsociata.cs" />
     <Compile Include="ModelsEF\Extensions\Medic.cs" />
     <Compile Include="ModelsEF\Extensions\Personal.cs" />
     <Compile Include="ModelsEF\Extensions\Utilizator.cs" />
     <Compile Include="ModelsEF\GrupaDeSange.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\InstitutieAsociata.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\Medic.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\Pacient.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\Personal.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelsEF\Utilizator.cs">
-      <DependentUpon>BleedifyModels.tt</DependentUpon>
+      <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AnuntDonatorRepository.cs" />
@@ -147,28 +149,30 @@
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="ModelsEF\BleedifyModels.edmx">
+    <EntityDeploy Include="ModelsEF\BleedifyDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BleedifyModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>BleedifyDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModelsEF\BleedifyModels.edmx.diagram">
-      <DependentUpon>BleedifyModels.edmx</DependentUpon>
+    <None Include="ModelsEF\BleedifyDB.edmx.diagram">
+      <DependentUpon>BleedifyDB.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelsEF\BleedifyModels.Context.tt">
+    <Content Include="ModelsEF\BleedifyDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BleedifyModels.edmx</DependentUpon>
-      <LastGenOutput>BleedifyModels.Context.cs</LastGenOutput>
+      <DependentUpon>BleedifyDB.edmx</DependentUpon>
+      <LastGenOutput>BleedifyDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelsEF\BleedifyModels.tt">
+    <Content Include="ModelsEF\BleedifyDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BleedifyModels.edmx</DependentUpon>
-      <LastGenOutput>BleedifyModels.cs</LastGenOutput>
+      <DependentUpon>BleedifyDB.edmx</DependentUpon>
+      <LastGenOutput>BleedifyDB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

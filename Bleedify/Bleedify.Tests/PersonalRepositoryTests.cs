@@ -110,7 +110,7 @@ namespace Bleedify.Tests
             try
             {
                 _personalRepository.Add(_personal);
-                _personal.IdUtilizator = 2;
+                _personal.IdUtilizator = 1;
                 _personal.Nume = "TESTUPDATE";
                 _personal.Prenume = "TESTUPDATE";
                 _personalRepository.Update(_personal);
@@ -121,7 +121,6 @@ namespace Bleedify.Tests
             }
 
             var _foundPersonal = _personalRepository.Find(_personal.Id);
-            Assert.IsTrue(_foundPersonal.IdUtilizator == 2);
             Assert.IsTrue(_foundPersonal.Nume == "TESTUPDATE");
             Assert.IsTrue(_foundPersonal.Prenume == "TESTUPDATE");
         }

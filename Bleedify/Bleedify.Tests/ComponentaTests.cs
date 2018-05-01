@@ -30,9 +30,6 @@ namespace Bleedify.Tests
             _testComponenta.IdDonatie = 1;
             _testComponenta.DataDepunere = _datetimeDepunere;
             _testComponenta.IdPrimitor = 1;
-            _testComponenta.InstitutieAsociata = 1;
-            _testComponenta.GrupaDeSange = 1;
-            _testComponenta.DataDonare = _datetimeDonatie;
             _testComponenta.Stare = "Stare1";
 
             Assert.IsTrue(_testComponenta.Id == 1);
@@ -40,9 +37,6 @@ namespace Bleedify.Tests
             Assert.IsTrue(_testComponenta.IdDonatie == 1);
             Assert.IsTrue(_testComponenta.DataDepunere == _datetimeDepunere);
             Assert.IsTrue(_testComponenta.IdPrimitor == 1);
-            Assert.IsTrue(_testComponenta.InstitutieAsociata == 1);
-            Assert.IsTrue(_testComponenta.GrupaDeSange == 1);
-            Assert.IsTrue(_testComponenta.DataDonare == _datetimeDonatie);
             Assert.IsTrue(String.Compare(_testComponenta.Stare, "Stare1") == 0);
         }
 
@@ -57,9 +51,6 @@ namespace Bleedify.Tests
             _testComponenta.IdDonatie = 1;
             _testComponenta.DataDepunere = _datetimeDepunere;
             _testComponenta.IdPrimitor = 1;
-            _testComponenta.InstitutieAsociata = 1;
-            _testComponenta.GrupaDeSange = 1;
-            _testComponenta.DataDonare = _datetimeDonatie;
             _testComponenta.Stare = "Stare1";
 
             Assert.IsTrue(_testComponenta.Id == 1);
@@ -67,9 +58,6 @@ namespace Bleedify.Tests
             Assert.IsTrue(_testComponenta.IdDonatie == 1);
             Assert.IsTrue(_testComponenta.DataDepunere == _datetimeDepunere);
             Assert.IsTrue(_testComponenta.IdPrimitor == 1);
-            Assert.IsTrue(_testComponenta.InstitutieAsociata == 1);
-            Assert.IsTrue(_testComponenta.GrupaDeSange == 1);
-            Assert.IsTrue(_testComponenta.DataDonare == _datetimeDonatie);
             Assert.IsTrue(String.Compare(_testComponenta.Stare, "Stare1") == 0);
         }
     }

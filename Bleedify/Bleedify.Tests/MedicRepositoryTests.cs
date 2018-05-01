@@ -70,7 +70,7 @@ namespace Bleedify.Tests
         {
             var _medic = new Medic();
             _medic.Id = 1;
-            _medic.IdUtilizator = 2;
+            _medic.IdUtilizator = 1;
             _medic.Nume = "TEST";
             _medic.Prenume = "TEST";
             _medic.IdentificatorMedic = "TEST";

@@ -25,14 +25,12 @@ namespace Bleedify.Tests
             _testGrupaDeSange.Id = 1;
             _testGrupaDeSange.Nume = "NumeGrupaDeSange";
             _testGrupaDeSange.CerereMedicPacients = new List<CerereMedicPacient>();
-            _testGrupaDeSange.Componentas = new List<Componenta>();
             _testGrupaDeSange.Donators = new List<Donator>();
             _testGrupaDeSange.Pacients = new List<Pacient>();
 
             Assert.IsTrue(_testGrupaDeSange.Id == 1);
             Assert.IsTrue(String.Compare(_testGrupaDeSange.Nume, "NumeGrupaDeSange") == 0);
             Assert.IsTrue(_testGrupaDeSange.CerereMedicPacients.Count == 0);
-            Assert.IsTrue(_testGrupaDeSange.Componentas.Count == 0);
             Assert.IsTrue(_testGrupaDeSange.Donators.Count == 0);
             Assert.IsTrue(_testGrupaDeSange.Pacients.Count == 0);
         }
@@ -43,14 +41,12 @@ namespace Bleedify.Tests
             _testGrupaDeSange.Id = 1;
             _testGrupaDeSange.Nume = "NumeGrupaDeSange";
             _testGrupaDeSange.CerereMedicPacients = new List<CerereMedicPacient>();
-            _testGrupaDeSange.Componentas = new List<Componenta>();
             _testGrupaDeSange.Donators = new List<Donator>();
             _testGrupaDeSange.Pacients = new List<Pacient>();
 
             Assert.IsTrue(_testGrupaDeSange.Id == 1);
             Assert.IsTrue(String.Compare(_testGrupaDeSange.Nume, "NumeGrupaDeSange") == 0);
             Assert.IsTrue(_testGrupaDeSange.CerereMedicPacients.Count == 0);
-            Assert.IsTrue(_testGrupaDeSange.Componentas.Count == 0);
             Assert.IsTrue(_testGrupaDeSange.Donators.Count == 0);
             Assert.IsTrue(_testGrupaDeSange.Pacients.Count == 0);
         }

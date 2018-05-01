@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e39a8ba841d746828b1fa99f1e1be8ac" Name="Diagram1">
+        <EntityTypeShape EntityType="BleedifyModel.Adresa" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.AnuntDonator" Width="1.5" PointX="9.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.CerereMedicPacient" Width="1.5" PointX="12.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.Componenta" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.Donatie" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.Donator" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.GrupaDeSange" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.InstitutieAsociata" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.Medic" Width="1.5" PointX="7.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.Pacient" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.Personal" Width="1.5" PointX="7.5" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BleedifyModel.Utilizator" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <AssociationConnector Association="BleedifyModel.FK__Instituti__Adres__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__AnuntDona__IdDon__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__CerereMed__Grupa__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__CerereMed__IdMed__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__CerereMed__IdPac__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Component__IdDon__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Component__IdPri__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Donatie__GrupaDe__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Donatie__IdDonat__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Donatie__Institu__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Donator__GrupaDe__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Donator__IdUtili__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Pacient__GrupaDe__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Pacient__Institu__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Utilizato__Insti__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Medic__IdUtiliza__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="BleedifyModel.FK__Personal__IdUtil__3F466844" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

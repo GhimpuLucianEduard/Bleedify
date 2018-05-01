@@ -77,7 +77,7 @@ namespace Bleedify.Tests
             var _datetime = new DateTime(2018, 4, 14);
             var _donator = new Donator();
             _donator.Id = 1;
-            _donator.IdUtilizator = 2;
+            _donator.IdUtilizator = 1;
             _donator.Nume = "TEST";
             _donator.Prenume = "TEST";
             _donator.DataDonarePosibila = _datetime;
@@ -114,7 +114,7 @@ namespace Bleedify.Tests
             var _datetime = new DateTime(2018, 4, 14);
             var _donator = new Donator();
             _donator.Id = 1;
-            _donator.IdUtilizator = 2;
+            _donator.IdUtilizator = 1;
             _donator.Nume = "TEST";
             _donator.Prenume = "TEST";
             _donator.DataDonarePosibila = _datetime;
@@ -123,7 +123,7 @@ namespace Bleedify.Tests
             try
             {
                 _donatorRepository.Add(_donator);
-                _donator.IdUtilizator = 2;
+                _donator.IdUtilizator = 1;
                 _donator.Nume = "TESTUPDATE";
                 _donator.Prenume = "TESTUPDATE";
                 _donator.DataDonarePosibila = _newDateTime;
@@ -135,7 +135,6 @@ namespace Bleedify.Tests
             }
 
             var _foundDonator = _donatorRepository.Find(_donator.Id);
-            Assert.IsTrue(_foundDonator.IdUtilizator == 2);
             Assert.IsTrue(_foundDonator.Nume == "TESTUPDATE");
             Assert.IsTrue(_foundDonator.Prenume == "TESTUPDATE");
             Assert.IsTrue(_foundDonator.DataDonarePosibila == _newDateTime);
@@ -151,7 +150,7 @@ namespace Bleedify.Tests
             var _datetime = new DateTime(2018, 4, 14);
             var _donator = new Donator();
             _donator.Id = 1;
-            _donator.IdUtilizator = 2;
+            _donator.IdUtilizator = 1;
             _donator.Nume = "TEST";
             _donator.Prenume = "TEST";
             _donator.DataDonarePosibila = _datetime;
