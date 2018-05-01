@@ -18,7 +18,7 @@ namespace BleedifyModels.ModelsEF
         public GrupaDeSange()
         {
             this.CerereMedicPacients = new HashSet<CerereMedicPacient>();
-            this.Componentas = new HashSet<Componenta>();
+            this.Donaties = new HashSet<Donatie>();
             this.Donators = new HashSet<Donator>();
             this.Pacients = new HashSet<Pacient>();
         }
@@ -29,7 +29,7 @@ namespace BleedifyModels.ModelsEF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CerereMedicPacient> CerereMedicPacients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Componenta> Componentas { get; set; }
+        public virtual ICollection<Donatie> Donaties { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donator> Donators { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

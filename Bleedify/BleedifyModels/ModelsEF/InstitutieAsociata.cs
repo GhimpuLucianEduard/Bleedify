@@ -17,7 +17,7 @@ namespace BleedifyModels.ModelsEF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public InstitutieAsociata()
         {
-            this.Componentas = new HashSet<Componenta>();
+            this.Donaties = new HashSet<Donatie>();
             this.Pacients = new HashSet<Pacient>();
             this.Utilizators = new HashSet<Utilizator>();
         }
@@ -31,7 +31,7 @@ namespace BleedifyModels.ModelsEF
     
         public virtual Adresa Adresa1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Componenta> Componentas { get; set; }
+        public virtual ICollection<Donatie> Donaties { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pacient> Pacients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

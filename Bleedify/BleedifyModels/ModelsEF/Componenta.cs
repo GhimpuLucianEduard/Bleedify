@@ -19,14 +19,9 @@ namespace BleedifyModels.ModelsEF
         public int IdDonatie { get; set; }
         public System.DateTime DataDepunere { get; set; }
         public Nullable<int> IdPrimitor { get; set; }
-        public Nullable<int> InstitutieAsociata { get; set; }
-        public Nullable<int> GrupaDeSange { get; set; }
-        public System.DateTime DataDonare { get; set; }
         public string Stare { get; set; }
     
-        public virtual GrupaDeSange GrupaDeSange1 { get; set; }
         public virtual Donatie Donatie { get; set; }
         public virtual Pacient Pacient { get; set; }
-        public virtual InstitutieAsociata InstitutieAsociata1 { get; set; }
     }
 }

@@ -22,11 +22,16 @@ namespace BleedifyModels.ModelsEF
     
         public int Id { get; set; }
         public Nullable<int> IdDonator { get; set; }
+        public System.DateTime DataDonare { get; set; }
         public string EtapaDonare { get; set; }
+        public Nullable<int> InstitutieAsociata { get; set; }
+        public Nullable<int> GrupaDeSange { get; set; }
         public string MotivRefuz { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Componenta> Componentas { get; set; }
+        public virtual GrupaDeSange GrupaDeSange1 { get; set; }
         public virtual Donator Donator { get; set; }
+        public virtual InstitutieAsociata InstitutieAsociata1 { get; set; }
     }
 }
