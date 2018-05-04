@@ -102,6 +102,7 @@
     <Compile Include="ModelsEF\Extensions\IHasID.cs" />
     <Compile Include="ModelsEF\Extensions\InstitutieAsociata.cs" />
     <Compile Include="ModelsEF\Extensions\Medic.cs" />
+    <Compile Include="ModelsEF\Extensions\Pacient.cs" />
     <Compile Include="ModelsEF\Extensions\Personal.cs" />
     <Compile Include="ModelsEF\Extensions\Utilizator.cs" />
     <Compile Include="ModelsEF\GrupaDeSange.cs">
@@ -131,6 +132,7 @@
     <Compile Include="Repositories\GrupaDeSangeRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\MedicRepository.cs" />
+    <Compile Include="Repositories\PacientRepository.cs" />
     <Compile Include="Repositories\PersonalRepository.cs" />
     <Compile Include="Repositories\UtilizatorRepository.cs" />
     <Compile Include="Validators\CerereMedicPacientValidator.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="Validators\GrupaDeSangeValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />
     <Compile Include="Validators\MedicValidator.cs" />
+    <Compile Include="Validators\PacientValidator.cs" />
     <Compile Include="Validators\PersonalValidator.cs" />
     <Compile Include="Validators\UtilizatorValidator.cs" />
     <Compile Include="Validators\ValidationException.cs" />

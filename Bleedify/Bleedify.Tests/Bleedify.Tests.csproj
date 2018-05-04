@@ -70,6 +70,8 @@
     <Compile Include="ModelsAndRepo\GrupaDeSangeTests.cs" />
     <Compile Include="ModelsAndRepo\MedicRepositoryTests.cs" />
     <Compile Include="ModelsAndRepo\MedicTests.cs" />
+    <Compile Include="ModelsAndRepo\PacientRepositoryTests.cs" />
+    <Compile Include="ModelsAndRepo\PacientTests.cs" />
     <Compile Include="ModelsAndRepo\PersonalRepositoryTests.cs" />
     <Compile Include="ModelsAndRepo\PersonalTests.cs" />
     <Compile Include="ModelsAndRepo\UtilizatorRepositoryTests.cs" />
