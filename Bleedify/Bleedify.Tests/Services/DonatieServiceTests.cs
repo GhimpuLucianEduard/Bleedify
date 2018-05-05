@@ -31,12 +31,6 @@ namespace Bleedify.Tests.Services
         }
 
         [TestMethod]
-        public void GetAllDonatiiTest()
-        {
-            Assert.IsTrue(_service.GetAll().Count() == 2);
-        }
-
-        [TestMethod]
         public void FindDonatieTest()
         {
             var findResult = _service.Find(1);
