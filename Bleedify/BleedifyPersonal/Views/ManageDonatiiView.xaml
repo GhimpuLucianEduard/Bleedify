@@ -8,9 +8,18 @@
 
 Title="Donations" Height="750" Width="1100">
     <Grid>
-        <DataGrid ItemsSource="{Binding Donatii}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="961"/>
+        <DataGrid AutoGenerateColumns="False" x:Name="DonationDataGrid" SelectedItem="{Binding SelectedDonatie, Mode=TwoWay}" ItemsSource="{Binding Donatii}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="961">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data" Binding="{Binding DataDonare}"/>
+                <DataGridTextColumn Header="Nume" Binding="{Binding Donator.Nume}"/>
+                <DataGridTextColumn Header="Prenume" Binding="{Binding Donator.Prenume}"/>
+                <DataGridTextColumn Header="Etapa donatiei" Binding="{Binding EtapaDonare}"/>
+                <DataGridTextColumn Header="Grupa De Sange" Binding="{Binding GrupaDeSange.Nume}"/>
+                <DataGridTextColumn Header="Motivul Refuzului" Binding="{Binding MotivRefuz}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Content="Add" HorizontalAlignment="Left" Margin="65,516,0,0" VerticalAlignment="Top" Width="188" RenderTransformOrigin="-0.074,-0.68" Height="64"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="452,516,0,0" VerticalAlignment="Top" Width="188" Height="64"/>
+        <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" HorizontalAlignment="Left" Margin="452,516,0,0" VerticalAlignment="Top" Width="188" Height="64"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="838,516,0,0" VerticalAlignment="Top" Width="188" Height="64"/>
     </Grid>
 </Window>
