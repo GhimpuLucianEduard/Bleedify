@@ -41,8 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseViewModel.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Commands\BasicCommand.cs" />
+    <Compile Include="Commands\BasicCommandWithParameter.cs" />
+    <Compile Include="DonatieViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BleedifyModels\BleedifyModels.csproj">
+      <Project>{775861A0-8BD8-4CAE-B217-201DE90FDA85}</Project>
+      <Name>BleedifyModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

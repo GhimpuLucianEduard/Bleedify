@@ -1,12 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BleedifyModels.ModelsEF;
+using System;
 
 namespace DomainViewModels
 {
-    class DonatieViewModel : BaseViewModel
+    public class DonatieViewModel : BaseViewModel
     {
+        public DonatieViewModel ()
+        {
+
+        }
+
+        public DonatieViewModel (Donatie donatie)
+        {
+            DataDonare = donatie.DataDonare;
+            EtapaDonare = donatie.EtapaDonare;
+            InstitutieAsociata = donatie.InstitutieAsociataObj.Nume;
+            GrupaDeSange = donatie.GrupaDeSangeObj.Nume;
+            MotivRefuz = donatie.MotivRefuz;
+        }
+
+        public DateTime DataDonare { get; set; }
+        public string EtapaDonare { get; set; }
+        public string InstitutieAsociata { get; set; }
+        public string GrupaDeSange { get; set; }
+        public string MotivRefuz { get; set; }
     }
 }

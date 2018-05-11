@@ -8,7 +8,7 @@
 
 Title="Donations" Height="750" Width="1100">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="961"/>
+        <DataGrid ItemsSource="{Binding Donatii}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="961"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="65,516,0,0" VerticalAlignment="Top" Width="188" RenderTransformOrigin="-0.074,-0.68" Height="64"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="452,516,0,0" VerticalAlignment="Top" Width="188" Height="64"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="838,516,0,0" VerticalAlignment="Top" Width="188" Height="64"/>

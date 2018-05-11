@@ -25,6 +25,8 @@ namespace BleedifyPersonal.Views
             ViewModel = new ManageDonatiiViewModel();
 
             InitializeComponent();
+
+            ViewModel.LoadDonationsCommand.Execute(null);
         }
 
         public ManageDonatiiViewModel ViewModel
