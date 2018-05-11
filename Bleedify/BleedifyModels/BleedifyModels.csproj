@@ -130,6 +130,7 @@
     <Compile Include="Repositories\CerereMedicPacientRepository.cs" />
     <Compile Include="Repositories\DonatorRepository.cs" />
     <Compile Include="Repositories\GrupaDeSangeRepository.cs" />
+    <Compile Include="Repositories\InstitutieAsociataRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\MedicRepository.cs" />
     <Compile Include="Repositories\PacientRepository.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Validators\DonatieValidator.cs" />
     <Compile Include="Validators\DonatorValidator.cs" />
     <Compile Include="Validators\GrupaDeSangeValidator.cs" />
+    <Compile Include="Validators\InstitutieAsociataValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />
     <Compile Include="Validators\MedicValidator.cs" />
     <Compile Include="Validators\PacientValidator.cs" />

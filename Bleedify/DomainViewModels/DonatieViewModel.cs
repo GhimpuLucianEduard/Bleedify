@@ -30,13 +30,57 @@ namespace DomainViewModels
 
         public int Id { get; set; }
         public Nullable<int> InstitutieAsociataId { get; set; }
-        public InstitutieAsociata InstitutieAsociataObj{get;set;}
-        public DateTime DataDonare { get; set; }
-        public string EtapaDonare { get; set; }
-        public string MotivRefuz { get; set; }
+        public InstitutieAsociata InstitutieAsociataObj { get; set; } = new InstitutieAsociata();
         public Nullable<int> GrupaDeSangeId { get; set; }
-        public GrupaDeSange GrupaDeSange { get; set; }
+        public GrupaDeSange GrupaDeSange { get; set; } = new GrupaDeSange();
         public Nullable<int> DonatorId { get; set; }
-        public Donator Donator { get; set; }
+        public Donator Donator { get; set; } = new Donator();
+
+        public override string ToString()
+        {
+            return DonatorId.ToString() + DataDonare.ToString() + EtapaDonare + InstitutieAsociataId + GrupaDeSangeId + MotivRefuz;
+            
+        }
+
+        private DateTime _dataDonare;
+        public DateTime DataDonare
+        {
+            get
+            {
+                return _dataDonare;
+            }
+            set
+            {
+                SetValue(ref _dataDonare, value);
+            }
+        }
+
+        private string _etapaDonare;
+        public string EtapaDonare
+        {
+            get
+            {
+                return _etapaDonare;
+            }
+            set
+            {
+                SetValue(ref _etapaDonare, value);
+            }
+        }
+
+        private string _motivRefuz;
+        public string MotivRefuz
+        {
+            get
+            {
+                return _motivRefuz;
+            }
+            set
+            {
+                SetValue(ref _motivRefuz, value);
+            }
+        }
+
+
     }
 }
