@@ -22,5 +22,10 @@ namespace BleedifyServices
         {
             return _repository.GetAll();
         }
+
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
+        }
     }
 }
