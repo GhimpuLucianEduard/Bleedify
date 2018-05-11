@@ -18,6 +18,11 @@ namespace BleedifyServices
             _repository = new DonatieRepository(new DonatieValidator());
         }
 
+	    public void Add(Donatie donatie)
+	    {
+			_repository.Add(donatie);
+	    }
+
         public void Delete(int id)
         {
             _repository.Delete(id);
