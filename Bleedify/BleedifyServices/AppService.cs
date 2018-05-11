@@ -10,15 +10,22 @@ namespace BleedifyServices
     {
         private static AppService _instance;
         private DonatieService _donatieService;
+        private CerereMedicPacientService _cerereService;
 
         private AppService ()
         {
             _donatieService = new DonatieService();
+            _cerereService = new CerereMedicPacientService();
         }
 
         public DonatieService DonatieService
         {
             get { return _donatieService; }
+        }
+
+        public CerereMedicPacientService CerereService
+        {
+            get { return _cerereService; }
         }
 
         public static AppService Instance

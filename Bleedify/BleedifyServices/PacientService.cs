@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BleedifyServices
 {
-    class PacientService
+    public class PacientService
     {
         private IRepository<int, Pacient> _repository;
 

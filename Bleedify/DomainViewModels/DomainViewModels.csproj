@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="CerereViewModel.cs" />
     <Compile Include="Commands\BasicCommand.cs" />
     <Compile Include="Commands\BasicCommandWithParameter.cs" />
     <Compile Include="DonatieViewModel.cs" />
