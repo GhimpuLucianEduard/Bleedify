@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace BleedifyPersonal.ViewModels
+namespace DomainViewModels
 {
 	/// <summary>
 	/// Clasa de baza pentru orice ViewModel

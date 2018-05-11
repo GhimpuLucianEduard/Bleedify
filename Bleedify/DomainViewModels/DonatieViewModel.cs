@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewModels
+namespace DomainViewModels
 {
-    public class Class1
+    class DonatieViewModel : BaseViewModel
     {
     }
 }
