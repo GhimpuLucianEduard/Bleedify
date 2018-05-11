@@ -22,6 +22,5 @@ namespace BleedifyServices
         {
             return _repository.GetAll();
         }
-
     }
 }
