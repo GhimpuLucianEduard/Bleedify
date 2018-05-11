@@ -1,0 +1,29 @@
+﻿<Window x:Class="BleedifyMedic.Views.ManageCereriView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BleedifyMedic.Views"
+        mc:Ignorable="d"
+
+Title="Cereri" Height="750" Width="1100">
+    <Grid>
+        <DataGrid ItemsSource="{Binding Cereri}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="961" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Medic" Binding="{Binding Medic}" />
+                <DataGridTextColumn Header="Pacient" Binding="{Binding Pacient}"/>
+                <DataGridTextColumn Header="Grupa" Binding="{Binding GrupaDeSange}"/>
+                <DataGridTextColumn Header="Tip" Binding="{Binding TipComponenta}"/>
+                <DataGridTextColumn Header="Stare" Binding="{Binding Stare}"/>
+                <DataGridTextColumn Header="Data Depunere" Binding="{Binding DataDepunere}"/>
+                <DataGridTextColumn Header="Data Servire" Binding="{Binding DataServire}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="65,543,0,0" VerticalAlignment="Top" Width="188" RenderTransformOrigin="-0.074,-0.68" Height="64"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="452,543,0,0" VerticalAlignment="Top" Width="188" Height="64"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="838,543,0,0" VerticalAlignment="Top" Width="188" Height="64"/>
+        <ComboBox SelectionChanged="ComboBox_SelectionChanged" SelectedItem="{Binding SelectedStare}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" Margin="533,477,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Filtrare dupa stare" HorizontalAlignment="Left" Margin="422,473,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.93,-0.769"/>
+
+    </Grid>
+</Window>

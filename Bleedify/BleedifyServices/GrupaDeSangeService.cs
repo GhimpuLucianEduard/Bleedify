@@ -5,7 +5,7 @@ using BleedifyModels.Validators;
 
 namespace BleedifyServices
 {
-    class GrupaDeSangeService
+    public class GrupaDeSangeService
     {
         private IRepository<int, GrupaDeSange> _repository;
 

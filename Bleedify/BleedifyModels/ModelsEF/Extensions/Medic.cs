@@ -13,5 +13,10 @@ namespace BleedifyModels.ModelsEF
             get { return Utilizator; }
             set { Utilizator = value; }
         }
+
+        public override string ToString()
+        {
+            return Nume + " " + Prenume + " " + IdentificatorMedic;
+        }
     }
 }

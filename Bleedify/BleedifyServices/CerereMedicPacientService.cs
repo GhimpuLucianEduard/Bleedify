@@ -2,10 +2,11 @@
 using BleedifyModels.Repositories;
 using BleedifyModels.Validators;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BleedifyServices
 {
-    class CerereMedicPacientService
+    public class CerereMedicPacientService
     {
         private IRepository<int, CerereMedicPacient> _repository;
 
@@ -24,9 +25,15 @@ namespace BleedifyServices
             return _repository.Find(id);
         }
 
-        public IEnumerable<CerereMedicPacient> GetAll()
+        public IEnumerable<CerereMedicPacient> GetAll(string stare)
         {
-            return _repository.GetAll();
+            if (null == stare)
+            {
+                return _repository.GetAll();
+            }
+
+            var list = _repository.GetAll();
+            return list.Where(x => x.Stare.CompareTo(stare) == 0).ToList(); 
         }
 
         public void Update(CerereMedicPacient entity)
