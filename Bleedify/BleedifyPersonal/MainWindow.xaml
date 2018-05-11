@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BleedifyPersonal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="800" Width="1400">
     <Grid>
-        
+
+        <Grid HorizontalAlignment="Left" 
+              Height="750" Margin="10,10,0,0" 
+              VerticalAlignment="Top" 
+              Width="255" 
+              Style="{DynamicResource GridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="button" Content="Manage Donatii" HorizontalAlignment="Left" Margin="50,60,0,0" VerticalAlignment="Top" Width="140" Height="45"/>
+        </Grid>
+
+
+
     </Grid>
 </Window>

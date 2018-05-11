@@ -4,6 +4,18 @@
              xmlns:local="clr-namespace:BleedifyPersonal"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Style x:Key="Container" TargetType="{x:Type StackPanel}">
+
+            <Setter Property="Background" Value="#f2f2f2" />
+
+        </Style>
+        <Style x:Key="GridStyle" TargetType="{x:Type Grid}">
+
+            <Setter Property="Background" Value="#f2f2f2" />
+            
+        </Style>
+
+
     </Application.Resources>
 </Application>
