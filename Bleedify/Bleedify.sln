@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BleedifyMedic", "BleedifyMe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BleedifyDonator", "BleedifyDonator\BleedifyDonator.csproj", "{88A1D90C-3137-45A6-93F3-2C8CF84C6A53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainViewModels", "DomainViewModels\DomainViewModels.csproj", "{D509C736-6755-46D8-B935-B2DE086E6851}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{88A1D90C-3137-45A6-93F3-2C8CF84C6A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88A1D90C-3137-45A6-93F3-2C8CF84C6A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88A1D90C-3137-45A6-93F3-2C8CF84C6A53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D509C736-6755-46D8-B935-B2DE086E6851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D509C736-6755-46D8-B935-B2DE086E6851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D509C736-6755-46D8-B935-B2DE086E6851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D509C736-6755-46D8-B935-B2DE086E6851}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

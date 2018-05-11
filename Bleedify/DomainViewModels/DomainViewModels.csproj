@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CC81D58D-7080-4653-8F74-36072599B82A}</ProjectGuid>
+    <ProjectGuid>{D509C736-6755-46D8-B935-B2DE086E6851}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BleedifyServices</RootNamespace>
-    <AssemblyName>BleedifyServices</AssemblyName>
+    <RootNamespace>DomainViewModels</RootNamespace>
+    <AssemblyName>DomainViewModels</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,10 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppService.cs" />
-    <Compile Include="DonatieService.cs" />
+    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="Commands\BasicCommand.cs" />
+    <Compile Include="Commands\BasicCommandWithParameter.cs" />
+    <Compile Include="DonatieViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UtilizatorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BleedifyModels\BleedifyModels.csproj">
