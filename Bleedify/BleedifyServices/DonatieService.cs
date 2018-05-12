@@ -43,5 +43,21 @@ namespace BleedifyServices
         {
             _repository.Update(donatie);
         }
+
+        public IEnumerable<Donatie> Filter(string etapaDonare, Nullable<int> grupaDeSange = null)
+        {          
+            return _repository.GetAll()
+                .Where(x => {
+                    if (null == grupaDeSange || !grupaDeSange.HasValue)
+                        return true;
+                    return x.GrupaDeSange.HasValue && x.GrupaDeSange.Value == grupaDeSange;
+                    })
+                .Where(x =>
+                {
+                    if (string.IsNullOrEmpty(etapaDonare))
+                        return true;
+                    return x.EtapaDonare.ToLower().Equals(etapaDonare.ToLower());
+                });
+        }
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="Commands\BasicCommand.cs" />
     <Compile Include="Commands\BasicCommandWithParameter.cs" />
     <Compile Include="ComponentaViewModel.cs" />
+    <Compile Include="Converters\VmToDmConverter.cs" />
     <Compile Include="DonatieViewModel.cs" />
     <Compile Include="InverseBooleanConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

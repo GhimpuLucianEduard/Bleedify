@@ -1,6 +1,7 @@
 ﻿using BleedifyModels.ModelsEF;
 using BleedifyModels.Repositories;
 using BleedifyModels.Validators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,15 +26,9 @@ namespace BleedifyServices
             return _repository.Find(id);
         }
 
-        public IEnumerable<CerereMedicPacient> GetAll(string stare)
-        {
-            if (null == stare)
-            {
-                return _repository.GetAll();
-            }
-
-            var list = _repository.GetAll();
-            return list.Where(x => x.Stare.CompareTo(stare) == 0).ToList(); 
+        public IEnumerable<CerereMedicPacient> GetAll()
+        {            
+            return _repository.GetAll();          
         }
 
         public void Update(CerereMedicPacient entity)
@@ -44,6 +39,30 @@ namespace BleedifyServices
         public void Delete(int id)
         {
             _repository.Delete(id);
+        }
+
+        public IEnumerable<CerereMedicPacient> Filter(int? grupaDeSange, string tipComponenta, string stare)
+        {            
+            return _repository.GetAll()
+                .Where(x =>
+                {
+                    if (null == grupaDeSange || !grupaDeSange.HasValue)
+                        return true;
+                    return x.GrupaDeSange.HasValue && x.GrupaDeSange.Value == grupaDeSange.Value;
+                })
+                .Where(x =>
+                {
+                    if (string.IsNullOrEmpty(tipComponenta))
+                        return true;
+                    return x.TipComponenta.ToLower().Equals(tipComponenta.ToLower());
+                })
+                .Where(x =>
+                {
+                    if (string.IsNullOrEmpty(stare))
+                        return true;
+                    return x.Stare.ToLower().Equals(stare.ToLower());
+                })
+                .ToList();
         }
     }
 }

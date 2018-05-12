@@ -67,7 +67,7 @@ namespace BleedifyMedic.ViewModels
 
             _isDataLoaded = true;
 
-            var cereri = AppService.Instance.CerereService.GetAll(null);
+            var cereri = AppService.Instance.CerereService.GetAll();
 
             foreach (var c in cereri)
             {
@@ -136,7 +136,7 @@ namespace BleedifyMedic.ViewModels
                 SelectedStare = null;
             }
 
-            var cereri = AppService.Instance.CerereService.GetAll(SelectedStare);
+            var cereri = AppService.Instance.CerereService.Filter(null, null, SelectedStare);
 
             Cereri.Clear();
             foreach (var c in cereri)
