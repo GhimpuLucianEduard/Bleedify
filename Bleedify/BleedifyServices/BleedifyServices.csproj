@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppService.cs" />
+    <Compile Include="ComponentaService.cs" />
     <Compile Include="DonatieService.cs" />
     <Compile Include="DonatorService.cs" />
     <Compile Include="InstitutieAsociataService.cs" />

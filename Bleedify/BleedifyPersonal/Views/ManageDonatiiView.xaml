@@ -8,7 +8,7 @@
 
 Title="Donations" Height="750" Width="1100">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" x:Name="DonationDataGrid" SelectedItem="{Binding SelectedDonatie, Mode=TwoWay}" ItemsSource="{Binding Donatii}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="961">
+        <DataGrid AutoGenerateColumns="False" x:Name="DonationDataGrid" SelectedItem="{Binding SelectedDonatie, Mode=TwoWay}" ItemsSource="{Binding Donatii}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="671">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Data" Binding="{Binding DataDonare}"/>
                 <DataGridTextColumn Header="Nume" Binding="{Binding Donator.Nume}"/>
@@ -18,8 +18,9 @@ Title="Donations" Height="750" Width="1100">
                 <DataGridTextColumn Header="Motivul Refuzului" Binding="{Binding MotivRefuz}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding AddDonatieCommand}" Content="Add" HorizontalAlignment="Left" Margin="65,516,0,0" VerticalAlignment="Top" Width="188" RenderTransformOrigin="-0.074,-0.68" Height="64"/>
-        <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" HorizontalAlignment="Left" Margin="452,516,0,0" VerticalAlignment="Top" Width="188" Height="64"/>
-        <Button Command="{Binding UpdateDonatieCommand}" Content="Update" HorizontalAlignment="Left" Margin="838,516,0,0" VerticalAlignment="Top" Width="188" Height="64"/>
+        <Button Command="{Binding AddDonatieCommand}" Content="Add" HorizontalAlignment="Left" Margin="65,499,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.074,-0.68" Height="24"/>
+        <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" HorizontalAlignment="Left" Margin="238,499,0,0" VerticalAlignment="Top" Width="150" Height="24"/>
+        <Button Command="{Binding UpdateDonatieCommand}" Content="Update" HorizontalAlignment="Left" Margin="411,499,0,0" VerticalAlignment="Top" Width="150" Height="24"/>
+        <Button Command="{Binding PrelucreazaDonatieCommand}" Content="Prelucreaza" HorizontalAlignment="Left" Margin="586,499,0,0" VerticalAlignment="Top" Width="150" Height="24"/>
     </Grid>
 </Window>

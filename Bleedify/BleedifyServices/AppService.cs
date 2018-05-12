@@ -13,13 +13,21 @@ namespace BleedifyServices
         private DonatorService _donatorService;
         private InstitutieAsociataService _institutieService;
         private CerereMedicPacientService _cerereService;
+        private ComponentaService _componentaService;
 
         private AppService ()
         {
             _donatieService = new DonatieService();
             _institutieService = new InstitutieAsociataService();
             _donatorService = new DonatorService();
+            _componentaService = new ComponentaService();
+
             _cerereService = new CerereMedicPacientService();
+        }
+
+        public ComponentaService ComponentaService
+        {
+            get { return _componentaService; }
         }
 
         public DonatieService DonatieService

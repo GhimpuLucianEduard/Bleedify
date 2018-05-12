@@ -32,6 +32,7 @@ namespace BleedifyPersonal.ViewModels
 		        IsAddState = true;
 	        }
             DonatieViewModel = donatieViewModel;
+            Etapa = DonatieViewModel.EtapaDonare;
             NumeDonator = DonatieViewModel.Donator.Nume;
             PrenumeDonator = DonatieViewModel.Donator.Prenume;
             SelectedInstitutie = DonatieViewModel.InstitutieAsociataObj;
@@ -40,13 +41,7 @@ namespace BleedifyPersonal.ViewModels
             CloseWindowCommand = new BasicCommandWithParameter(CloseWindow);
         }
 
-        public IList<InstitutieAsociata> Institutii
-        {
-            get
-            {
-                return AppService.Instance.InstitutieAsociataService.GetAll().ToList();
-            }
-        }
+        public IList<InstitutieAsociata> Institutii { get { return AppService.Instance.InstitutieAsociataService.GetAll().ToList(); } }
 
         private InstitutieAsociata _selectedInstitutie;
         public InstitutieAsociata SelectedInstitutie
@@ -60,14 +55,31 @@ namespace BleedifyPersonal.ViewModels
                 SetValue(ref _selectedInstitutie, value);
             }
         }
+
+        public List<string> EtapaValues
+        {
+            get
+            {
+                return new List<string>()
+                {
+                    "De Analizat",
+                    "Analizata",
+                    "Invalida",
+                    "Prelucrata",
+                    "Donata"
+                };
+            }
+        }
         public string NumeDonator { get; set; }
         public string PrenumeDonator { get; set; }
+        public string Etapa { get; set; }
 		public bool IsUpdate { get; set; }
 
         public void Save()
         {
             var test3 = SelectedInstitutie;
             if (String.IsNullOrEmpty(NumeDonator) ||
+                String.IsNullOrEmpty(Etapa) || 
                 String.IsNullOrEmpty(PrenumeDonator) ||
                 DonatieViewModel.DataDonare == null ||
                 String.IsNullOrEmpty(DonatieViewModel.EtapaDonare) ||
@@ -80,6 +92,7 @@ namespace BleedifyPersonal.ViewModels
             {
                 Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator, PrenumeDonator);
                 DonatieViewModel.DonatorId = Donator.Id;
+                DonatieViewModel.EtapaDonare = Etapa;
                 DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
                 DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
                 DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
