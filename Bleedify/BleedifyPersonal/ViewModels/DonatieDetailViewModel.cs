@@ -33,6 +33,8 @@ namespace BleedifyPersonal.ViewModels
 	        }
             DonatieViewModel = donatieViewModel;
             Etapa = DonatieViewModel.EtapaDonare;
+            MotivRefuz = DonatieViewModel.MotivRefuz;
+
             NumeDonator = DonatieViewModel.Donator.Nume;
             PrenumeDonator = DonatieViewModel.Donator.Prenume;
             SelectedInstitutie = DonatieViewModel.InstitutieAsociataObj;
@@ -74,6 +76,7 @@ namespace BleedifyPersonal.ViewModels
         public string PrenumeDonator { get; set; }
         public string Etapa { get; set; }
 		public bool IsUpdate { get; set; }
+        public string MotivRefuz { get; set; }
 
 
 	    public void Save()
@@ -93,8 +96,8 @@ namespace BleedifyPersonal.ViewModels
 				    Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator, PrenumeDonator);
 				    DonatieViewModel.DonatorId = Donator.Id;
                     DonatieViewModel.EtapaDonare = Etapa;
+                    DonatieViewModel.MotivRefuz = MotivRefuz;
 				    DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
-				    DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
 				    DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
 
 				    var donatie = new Donatie()
@@ -105,8 +108,8 @@ namespace BleedifyPersonal.ViewModels
 					    EtapaDonare = DonatieViewModel.EtapaDonare,
 					    InstitutieAsociata = DonatieViewModel.InstitutieAsociataId,
 					    GrupaDeSange = DonatieViewModel.GrupaDeSangeId,
-					    MotivRefuz = DonatieViewModel.MotivRefuz
-				    };
+					    MotivRefuz = MotivRefuz
+                    };
 
 				    if (DonatieViewModel.Id == 0)
 				    {
