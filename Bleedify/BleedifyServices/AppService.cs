@@ -17,6 +17,7 @@ namespace BleedifyServices
         private GrupaDeSangeService _grupaDeSangeService;
         private PacientService _pacientService;
         private MedicService _medicService;
+        private AnuntDonatorService _anuntDonatorService;
 
 
         private AppService ()
@@ -30,6 +31,7 @@ namespace BleedifyServices
             _grupaDeSangeService = new GrupaDeSangeService();
             _pacientService = new PacientService();
             _medicService = new MedicService();
+            _anuntDonatorService = new AnuntDonatorService();
         }
 
         public MedicService MedicService
@@ -70,6 +72,11 @@ namespace BleedifyServices
         public GrupaDeSangeService GrupaDeSangeService
         {
             get { return _grupaDeSangeService; }
+        }
+
+        public AnuntDonatorService AnuntDonatorService
+        {
+            get { return _anuntDonatorService; }
         }
 
         public static AppService Instance
