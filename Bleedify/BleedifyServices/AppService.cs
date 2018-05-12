@@ -32,6 +32,11 @@ namespace BleedifyServices
             get { return _institutieService; }
         }
 
+        public DonatorService DonatorService
+        {
+            get { return _donatorService; }
+        }
+
 	    public DonatorService DonatorService
 	    {
 		    get { return _donatorService; }

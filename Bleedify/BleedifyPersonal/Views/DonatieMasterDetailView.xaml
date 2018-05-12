@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="DonatieMasterDetailView" Height="450" Width="400">
     <Grid>
-        <Button Command="{Binding AddCommand}" Content="Add" RenderTransformOrigin="0.79,17.108" Margin="27,321,227,30"/>
-        <Button Content="Cancel" RenderTransformOrigin="0.79,17.108" Margin="228,321,26,30"/>
-        <Label Content="Nume Donator" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
+        <Button Command="{Binding AddCommand}" Content="Save" RenderTransformOrigin="0.79,17.108" Margin="27,321,227,30"/>
+        <Button Command="{Binding CloseWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Content="Cancel" RenderTransformOrigin="0.79,17.108" Margin="228,321,26,30"/>
+        <Label Content="Nume Donator" HorizontalAlignment="Left" Margin="27,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
         <Label Content="Data" HorizontalAlignment="Left" Margin="27,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.971"/>
         <Label Content="Etapa" HorizontalAlignment="Left" Margin="27,135,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.781,2.659"/>
         <Label Content="Institutie Asociata" HorizontalAlignment="Left" Margin="27,166,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.648,4.166"/>
         <Label Content="Motiv Refuz" HorizontalAlignment="Left" Margin="27,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
 
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="156,56,0,0" TextWrapping="Wrap" Text="{Binding NumeDonator}" VerticalAlignment="Top" Width="171"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="156,29,0,0" TextWrapping="Wrap" Text="{Binding NumeDonator}" VerticalAlignment="Top" Width="171"/>
         <DatePicker  HorizontalAlignment="Left" Margin="156,95,0,0" VerticalAlignment="Top" SelectedDate="{Binding DonatieViewModel.DataDonare}" Width="171"/>
         <TextBox  HorizontalAlignment="Left" Height="23" Margin="156,135,0,0" TextWrapping="Wrap" Text="{Binding DonatieViewModel.EtapaDonare}" VerticalAlignment="Top" Width="171"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="156,211,0,0" TextWrapping="Wrap" Text="{Binding DonatieViewModel.MotivRefuz}" VerticalAlignment="Top" Width="171"/>
@@ -25,6 +25,8 @@
                   SelectedValuePath="Nume"
                   SelectedItem="{Binding SelectedInstitutie}"
                   HorizontalAlignment="Left" Margin="156,170,0,0" VerticalAlignment="Top" Width="171"/>
+        <Label Content="Prenume Donator" HorizontalAlignment="Left" Margin="27,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.269"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="156,62,0,0" TextWrapping="Wrap" Text="{Binding PrenumeDonator}" VerticalAlignment="Top" Width="171"/>
 
     </Grid>
 </Window>
