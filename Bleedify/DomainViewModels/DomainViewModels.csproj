@@ -44,6 +44,7 @@
     <Compile Include="CerereViewModel.cs" />
     <Compile Include="Commands\BasicCommand.cs" />
     <Compile Include="Commands\BasicCommandWithParameter.cs" />
+    <Compile Include="ComponentaViewModel.cs" />
     <Compile Include="DonatieViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
