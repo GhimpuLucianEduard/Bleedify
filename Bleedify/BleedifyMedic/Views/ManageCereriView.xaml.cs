@@ -29,11 +29,5 @@ namespace BleedifyMedic.Views
             get { return DataContext as ManageCereriViewModel; }
             set { DataContext = value; }
         }
-
-        private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            var sel = e.AddedItems;
-            ViewModel.StareSelectionChanged.Execute(sel[0]);
-        }
     }
 }

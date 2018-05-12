@@ -65,11 +65,15 @@
     <Compile Include="Utils\Settings.cs" />
     <Compile Include="ViewModels\CerereDetailViewModel.cs" />
     <Compile Include="ViewModels\ManageCereriViewModel.cs" />
+    <Compile Include="ViewModels\ManageStocViewModel.cs" />
     <Compile Include="Views\CerereMasterDetailView.xaml.cs">
       <DependentUpon>CerereMasterDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ManageCereriView.xaml.cs">
       <DependentUpon>ManageCereriView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManageStocView.xaml.cs">
+      <DependentUpon>ManageStocView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManageCereriView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManageStocView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
