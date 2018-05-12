@@ -33,6 +33,25 @@ namespace BleedifyServices
             _repository.Add(entity);
         }
 
+        public void BatchAdd(int grupaDeSange, string mesaj, Pacient pacient)
+        {
+            foreach (Donator donator in AppService.Instance.DonatorService.Filter(grupaDeSange, true))
+            {
+                AnuntDonator entity = new AnuntDonator();
+                entity.IdDonator = donator.Id;
+                entity.DataAnunt = DateTime.Now;
+                entity.TipAnuntDonator = "Cerere";
+                entity.Mesaj = "Salut, " + donator.Prenume + "\n\t";
+                entity.Mesaj += "Avem nevoie de donatori grupa " + AppService.Instance.GrupaDeSangeService.Find(grupaDeSange).Nume;
+                if (null != pacient) entity.Mesaj += " pentru " + pacient.Nume + " " + pacient.Prenume;
+                entity.Mesaj += ".\n\n";
+                if (null != mesaj)
+                    entity.Mesaj += mesaj;
+
+                AppService.Instance.AnuntDonatorService.Add(entity);
+            }
+        }
+
         public IEnumerable<AnuntDonator> Filter(string tipAnunt)
         {
             return _repository.GetAll()
