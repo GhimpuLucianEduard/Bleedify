@@ -17,6 +17,7 @@ namespace BleedifyPersonal.ViewModels
     {
         public  DonatieViewModel DonatieViewModel { get; set; }
         public DonatieMasterDetailView view { get; set; }
+		public bool IsAddState { get; set; }
 
         public ICommand AddCommand { get; private set; }
         public ICommand CloseWindowCommand { get; private set; }
@@ -26,6 +27,10 @@ namespace BleedifyPersonal.ViewModels
 
         public DonatieDetailViewModel(DonatieViewModel donatieViewModel)
         {
+	        if (donatieViewModel.Id == 0)
+	        {
+		        IsAddState = true;
+	        }
             DonatieViewModel = donatieViewModel;
             NumeDonator = DonatieViewModel.Donator.Nume;
             PrenumeDonator = DonatieViewModel.Donator.Prenume;
@@ -57,7 +62,7 @@ namespace BleedifyPersonal.ViewModels
         }
         public string NumeDonator { get; set; }
         public string PrenumeDonator { get; set; }
-
+		public bool IsUpdate { get; set; }
 
         public void Save()
         {

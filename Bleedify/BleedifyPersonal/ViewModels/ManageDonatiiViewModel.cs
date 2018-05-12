@@ -28,7 +28,7 @@ namespace BleedifyPersonal.ViewModels
         public ICommand UpdateDonatieCommand { get; private set; }
 
         public ManageDonatiiViewModel()
-        {
+        {	
             LoadDonationsCommand = new BasicCommand(LoadData);
             DeleteDonatieCommand = new BasicCommand(DeleteDonatie);
             AddDonatieCommand = new BasicCommand(AddDonatie);

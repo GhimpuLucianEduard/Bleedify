@@ -16,7 +16,7 @@
         <Label Content="Motiv Refuz" HorizontalAlignment="Left" Margin="27,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
 
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="156,29,0,0" TextWrapping="Wrap" Text="{Binding NumeDonator}" VerticalAlignment="Top" Width="171"/>
+        <TextBox IsEnabled="{Binding IsAddState}" HorizontalAlignment="Left" Height="23" Margin="156,29,0,0" TextWrapping="Wrap" Text="{Binding NumeDonator}" VerticalAlignment="Top" Width="171"/>
         <DatePicker  HorizontalAlignment="Left" Margin="156,95,0,0" VerticalAlignment="Top" SelectedDate="{Binding DonatieViewModel.DataDonare}" Width="171"/>
         <TextBox  HorizontalAlignment="Left" Height="23" Margin="156,135,0,0" TextWrapping="Wrap" Text="{Binding DonatieViewModel.EtapaDonare}" VerticalAlignment="Top" Width="171"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="156,211,0,0" TextWrapping="Wrap" Text="{Binding DonatieViewModel.MotivRefuz}" VerticalAlignment="Top" Width="171"/>
@@ -26,7 +26,7 @@
                   SelectedItem="{Binding SelectedInstitutie}"
                   HorizontalAlignment="Left" Margin="156,170,0,0" VerticalAlignment="Top" Width="171"/>
         <Label Content="Prenume Donator" HorizontalAlignment="Left" Margin="27,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.269"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="156,62,0,0" TextWrapping="Wrap" Text="{Binding PrenumeDonator}" VerticalAlignment="Top" Width="171"/>
+        <TextBox IsEnabled="{Binding IsAddState}" HorizontalAlignment="Left" Height="23" Margin="156,62,0,0" TextWrapping="Wrap" Text="{Binding PrenumeDonator}" VerticalAlignment="Top" Width="171"/>
 
     </Grid>
 </Window>
