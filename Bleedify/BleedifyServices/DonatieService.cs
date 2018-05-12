@@ -32,5 +32,10 @@ namespace BleedifyServices
         {
             _repository.Delete(id);
         }
+
+        public void Update(Donatie donatie)
+        {
+            _repository.Update(donatie);
+        }
     }
 }

@@ -17,14 +17,21 @@ namespace BleedifyPersonal.ViewModels
     {
         public  DonatieViewModel DonatieViewModel { get; set; }
         public DonatieMasterDetailView view { get; set; }
+
         public ICommand AddCommand { get; private set; }
+        public ICommand CloseWindowCommand { get; private set; }
+
         public event EventHandler<Donatie> DonatieAdded;
+        public event EventHandler<Donatie> DonatieUpdated;
 
         public DonatieDetailViewModel(DonatieViewModel donatieViewModel)
         {
-        
             DonatieViewModel = donatieViewModel;
+            NumeDonator = DonatieViewModel.Donator.Nume;
+            SelectedInstitutie = DonatieViewModel.InstitutieAsociataObj;
+
             AddCommand = new BasicCommand(Save);
+            CloseWindowCommand = new BasicCommandWithParameter(CloseWindow);
         }
 
         public IList<InstitutieAsociata> Institutii
@@ -69,25 +76,38 @@ namespace BleedifyPersonal.ViewModels
                 DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
                 DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
 
-                if(DonatieViewModel.Id == 0)
+                var donatie = new Donatie()
                 {
-                    var donatie = new Donatie()
-                    {
-                        IdDonator = DonatieViewModel.DonatorId,
-                        DataDonare = DonatieViewModel.DataDonare,
-                        EtapaDonare = DonatieViewModel.EtapaDonare,
-                        InstitutieAsociata = DonatieViewModel.InstitutieAsociataId,
-                        GrupaDeSange = DonatieViewModel.GrupaDeSangeId,
-                        MotivRefuz = DonatieViewModel.MotivRefuz
-                    };
+                    Id = DonatieViewModel.Id,
+                    IdDonator = DonatieViewModel.DonatorId,
+                    DataDonare = DonatieViewModel.DataDonare,
+                    EtapaDonare = DonatieViewModel.EtapaDonare,
+                    InstitutieAsociata = DonatieViewModel.InstitutieAsociataId,
+                    GrupaDeSange = DonatieViewModel.GrupaDeSangeId,
+                    MotivRefuz = DonatieViewModel.MotivRefuz
+                };
+
+                if (DonatieViewModel.Id == 0)
+                {
                     AppService.Instance.DonatieService.Add(donatie);
                     DonatieAdded?.Invoke(this, donatie);
+                }
+                else
+                {
+                    AppService.Instance.DonatieService.Update(donatie);
+                    DonatieUpdated?.Invoke(this, donatie);
                 }
             }
             catch (ServiceException e)
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
             }
+        }
+
+        private void CloseWindow(object thisWindow)
+        {
+            var window = (Window)thisWindow;
+            window.Close();
         }
     }
 }

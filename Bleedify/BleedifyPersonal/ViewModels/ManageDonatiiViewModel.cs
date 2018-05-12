@@ -4,6 +4,7 @@ using DomainViewModels;
 using DomainViewModels.Commands;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Linq;
 using System.Windows.Input;
 
 namespace BleedifyPersonal.ViewModels
@@ -24,12 +25,14 @@ namespace BleedifyPersonal.ViewModels
         public ICommand LoadDonationsCommand { get; private set; }
         public ICommand DeleteDonatieCommand { get; private set; }
         public ICommand AddDonatieCommand { get; private set; }
+        public ICommand UpdateDonatieCommand { get; private set; }
 
         public ManageDonatiiViewModel()
         {
             LoadDonationsCommand = new BasicCommand(LoadData);
             DeleteDonatieCommand = new BasicCommand(DeleteDonatie);
             AddDonatieCommand = new BasicCommand(AddDonatie);
+            UpdateDonatieCommand = new BasicCommand(UpdateDonatie);
         }
 
         private void LoadData()
@@ -67,6 +70,34 @@ namespace BleedifyPersonal.ViewModels
             {
                 Donatii.Add(new DonatieViewModel(donatie));
             };
+        }
+
+        private void UpdateDonatie()
+        {
+            if (SelectedDonatie == null)
+            {
+                MessageBox.Show("You have to select a donation first...");
+            }
+            else
+            {
+                var viewModel = new DonatieDetailViewModel(SelectedDonatie);
+                DonatieMasterDetailView DetailPage = new DonatieMasterDetailView(viewModel);
+                DetailPage.Show();
+
+                viewModel.DonatieUpdated += (source, donatie) =>
+                {
+                    var donatievm = new DonatieViewModel(donatie);
+                    int index = 0;
+                    foreach(var d in Donatii)
+                    {
+                        if(d.Id != donatie.Id)
+                        {
+                            index++;
+                        }
+                    }
+                    Donatii[index] = donatievm;
+                };
+            }
         }
     }
 }

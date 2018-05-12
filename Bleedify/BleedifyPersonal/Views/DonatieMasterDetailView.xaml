@@ -8,7 +8,7 @@
         Title="DonatieMasterDetailView" Height="450" Width="400">
     <Grid>
         <Button Command="{Binding AddCommand}" Content="Add" RenderTransformOrigin="0.79,17.108" Margin="27,321,227,30"/>
-        <Button Content="Cancel" RenderTransformOrigin="0.79,17.108" Margin="228,321,26,30"/>
+        <Button Command="{Binding CloseWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Content="Cancel" RenderTransformOrigin="0.79,17.108" Margin="228,321,26,30"/>
         <Label Content="Nume Donator" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
         <Label Content="Data" HorizontalAlignment="Left" Margin="27,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.971"/>
         <Label Content="Etapa" HorizontalAlignment="Left" Margin="27,135,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.781,2.659"/>
