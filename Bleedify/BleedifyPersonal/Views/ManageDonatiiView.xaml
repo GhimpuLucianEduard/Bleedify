@@ -22,5 +22,16 @@ Title="Donations" Height="750" Width="1100">
         <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" HorizontalAlignment="Left" Margin="238,499,0,0" VerticalAlignment="Top" Width="150" Height="24"/>
         <Button Command="{Binding UpdateDonatieCommand}" Content="Update" HorizontalAlignment="Left" Margin="411,499,0,0" VerticalAlignment="Top" Width="150" Height="24"/>
         <Button Command="{Binding PrelucreazaDonatieCommand}" Content="Prelucreaza" HorizontalAlignment="Left" Margin="586,499,0,0" VerticalAlignment="Top" Width="150" Height="24"/>
+        <ComboBox
+            ItemsSource="{Binding EtapaValues}"
+            SelectedItem="{Binding Etapa}"
+            HorizontalAlignment="Left" Margin="804,118,0,0" VerticalAlignment="Top" Width="229"/>
+        <Button Command="{Binding FilterCommand}" Content="Filter" HorizontalAlignment="Left" Margin="804,215,0,0" VerticalAlignment="Top" Width="229" RenderTransformOrigin="0.187,0.1"/>
+        <Button Command="{Binding ClearFiltersCommand}" Content="Clear Filters" HorizontalAlignment="Left" Margin="804,250,0,0" VerticalAlignment="Top" Width="229"/>
+        <ComboBox 
+                  ItemsSource="{Binding GrupeValues}" 
+                  DisplayMemberPath="Nume"
+                  SelectedItem="{Binding Grupa, Mode=TwoWay}"
+            HorizontalAlignment="Left" Margin="804,154,0,0" VerticalAlignment="Top" Width="229"/>
     </Grid>
 </Window>

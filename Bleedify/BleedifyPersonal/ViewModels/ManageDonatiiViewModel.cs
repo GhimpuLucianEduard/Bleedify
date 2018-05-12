@@ -8,6 +8,8 @@ using System.Linq;
 using System.Windows.Input;
 using System;
 using DomainViewModels.Converters;
+using System.Collections.Generic;
+using BleedifyModels.ModelsEF;
 
 namespace BleedifyPersonal.ViewModels
 {
@@ -29,6 +31,8 @@ namespace BleedifyPersonal.ViewModels
         public ICommand AddDonatieCommand { get; private set; }
         public ICommand UpdateDonatieCommand { get; private set; }
         public ICommand PrelucreazaDonatieCommand { get; private set; }
+        public ICommand FilterCommand { get; private set; }
+        public ICommand ClearFiltersCommand { get; private set; }
 
         public ManageDonatiiViewModel()
         {	
@@ -37,6 +41,8 @@ namespace BleedifyPersonal.ViewModels
             AddDonatieCommand = new BasicCommand(AddDonatie);
             UpdateDonatieCommand = new BasicCommand(UpdateDonatie);
             PrelucreazaDonatieCommand = new BasicCommand(HandlePrelucreazaDonatie);
+            FilterCommand = new BasicCommand(HandleFilter);
+            ClearFiltersCommand = new BasicCommand(ClearFilters);
         }
 
         private void LoadData()
@@ -46,7 +52,7 @@ namespace BleedifyPersonal.ViewModels
 
             _isDataLoaded = true;
 
-            var donations = AppService.Instance.DonatieService.GetAll();
+            var donations = AppService.Instance.DonatieService.Filter(null, null);
 
             foreach (var d in donations)
                 Donatii.Add(new DonatieViewModel(d));
@@ -160,6 +166,58 @@ namespace BleedifyPersonal.ViewModels
             var donatie = VmToDmConverter.Convert(SelectedDonatie);
             AppService.Instance.ComponentaService.PrelucreazaDonatie(donatie);
             AppService.Instance.DonatieService.Update(donatie);
+        }
+
+        public List<string> EtapaValues
+        {
+            get
+            {
+                return new List<string>()
+                {
+                    "De Analizat", "Analizata", "Invalida", "Prelucrata", "Donata"
+                };
+            }
+        }
+        public string Etapa { get; set; }
+
+        public List<GrupaDeSange> GrupeValues
+        {
+            get
+            {
+                //return new List<string>()
+                //{
+                //    "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"
+                //};
+                return AppService.Instance.GrupaDeSangeService.GetAll().ToList();
+            }
+        }
+        public GrupaDeSange Grupa { get; set; }
+
+        private void HandleFilter()
+        {
+            Donatii.Clear();
+
+            IEnumerable<Donatie> donations;
+
+            if(Grupa == null)
+            {
+                donations = AppService.Instance.DonatieService.Filter(Etapa, null);
+            }
+            else
+            {
+                donations = AppService.Instance.DonatieService.Filter(Etapa, Grupa.Id);
+            }
+            
+            foreach (var d in donations)
+                Donatii.Add(new DonatieViewModel(d));
+        }
+
+        private void ClearFilters()
+        {
+            var donations = AppService.Instance.DonatieService.Filter(null, null);
+
+            foreach (var d in donations)
+                Donatii.Add(new DonatieViewModel(d));
         }
     }
 }
