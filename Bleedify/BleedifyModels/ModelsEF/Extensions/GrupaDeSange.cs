@@ -8,5 +8,9 @@ namespace BleedifyModels.ModelsEF
 {
     partial class GrupaDeSange : IHasID<int>
     {
+        public override string ToString()
+        {
+            return Nume;
+        }
     }
 }

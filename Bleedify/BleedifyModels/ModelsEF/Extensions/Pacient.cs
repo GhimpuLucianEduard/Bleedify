@@ -13,5 +13,10 @@
 			get { return InstitutieAsociata1; }
 			set { InstitutieAsociata1 = value; }
 		}
-	}
+
+        public override string ToString()
+        {
+            return Nume + " " + Prenume;
+        }
+    }
 }
