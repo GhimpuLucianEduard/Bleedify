@@ -27,5 +27,10 @@ namespace BleedifyServices.Services
 
 			return loginOk;
 		}
+
+		public void Register(Utilizator utilizator)
+		{
+			_repository.Add(utilizator);
+		}
 	}
 }

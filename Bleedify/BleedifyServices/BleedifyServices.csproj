@@ -50,12 +50,16 @@
     <Compile Include="PacientService.cs" />
     <Compile Include="MedicService.cs" />
     <Compile Include="ServiceException.cs" />
+    <Compile Include="UtilizatorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BleedifyModels\BleedifyModels.csproj">
       <Project>{775861A0-8BD8-4CAE-B217-201DE90FDA85}</Project>
       <Name>BleedifyModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

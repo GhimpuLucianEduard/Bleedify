@@ -32,6 +32,7 @@ namespace BleedifyServices
         {
             _repository.Add(entity);
         }
+
         public Donator getDonatorByName(string nume, string prenume)
         {
             foreach(var donator in _repository.GetAll())
@@ -43,5 +44,5 @@ namespace BleedifyServices
             }
             throw new ServiceException("A donator with that name doesn't exist");
         }
-    }
+	}
 }

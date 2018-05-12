@@ -80,6 +80,5 @@ namespace DomainViewModels
                 SetValue(ref _motivRefuz, value);
             }
         }
-    
     }
 }
