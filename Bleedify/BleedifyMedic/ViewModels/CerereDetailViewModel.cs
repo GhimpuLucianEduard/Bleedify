@@ -23,14 +23,36 @@ namespace BleedifyMedic.ViewModels
         public ICommand AddCommand { get; private set; }
         public ICommand CancelCommand { get; private set; }
         public event EventHandler<CerereMedicPacient> CerereAdded;
+        public event EventHandler<CerereMedicPacient> CerereUpdated;
 
         public CerereDetailViewModel(CerereViewModel ViewModel)
-        {
+        {   
+            if (ViewModel.Id == 0)
+            {
+                FieldsEnabled = true;
+                SelectedGrupa = GrupeDeSange.First();
+                SelectedTip = TipuriComponenta.First();
+                SelectedStare = StariPosibile.First();
+            }
+            else
+            {
+                FieldsEnabled = false;
+                NumePacient = ViewModel.Pacient.Nume;
+                PrenumePacient = ViewModel.Pacient.Prenume;
+                SelectedTip = ViewModel.TipComponenta;
+                SelectedGrupa = ViewModel.GrupaDeSange;
+                SelectedStare = ViewModel.Stare;
+            }
             CerereViewModel = ViewModel;
             AddCommand = new BasicCommand(Save);
             CancelCommand = new BasicCommandWithParameter(Cancel);
-            SelectedGrupa = GrupeDeSange.First();
-            CerereViewModel.TipComponenta = TipuriComponenta.First();
+        }
+
+        private bool _fieldsEnabled;
+        public bool FieldsEnabled
+        {
+            get { return _fieldsEnabled; }
+            set { SetValue(ref _fieldsEnabled, value); }
         }
 
         public IEnumerable<GrupaDeSange> GrupeDeSange
@@ -48,6 +70,20 @@ namespace BleedifyMedic.ViewModels
             set { SetValue(ref _selectedGrupa, value); }
         }
 
+        private string _selectedStare;
+        public string SelectedStare
+        {
+            get { return _selectedStare; }
+            set { SetValue(ref _selectedStare, value); }
+        }
+
+        private string _selectedTip;
+        public string SelectedTip
+        {
+            get { return _selectedTip; }
+            set { SetValue(ref _selectedTip, value); }
+        }
+
         public ObservableCollection<string> TipuriComponenta
         {
             get
@@ -59,6 +95,20 @@ namespace BleedifyMedic.ViewModels
                     Types.Add(t.ToString());
                 }
                 return Types;
+            }
+        }
+
+        public ObservableCollection<string> StariPosibile
+        {
+            get
+            {
+                ObservableCollection<string> Stari = new ObservableCollection<string>();
+                var ArrayStari = Enum.GetValues(typeof(StareCerere));
+                foreach (var s in ArrayStari)
+                {
+                    Stari.Add(s.ToString());
+                }
+                return Stari;
             }
         }
 
@@ -89,33 +139,55 @@ namespace BleedifyMedic.ViewModels
                     CerereViewModel.IdGrupaDeSange = SelectedGrupa.Id;
                     CerereViewModel.Medic = Settings.LoggedMedic;
                     CerereViewModel.Pacient = Pacient;
+                    CerereViewModel.TipComponenta = SelectedTip;
                     CerereViewModel.GrupaDeSange = SelectedGrupa;
-                    CerereViewModel.Stare = StareCerere.InAsteptare.ToString();
+                    CerereViewModel.Stare = SelectedStare;
                     CerereViewModel.DataDepunere = DateTime.Now;
-                    CerereViewModel.DataServire = DateTime.Parse("1970-01-01 00:00:00");
+
+                    if (SelectedStare.CompareTo(StariPosibile.First()) != 0)
+                    {
+                        CerereViewModel.DataServire = DateTime.Now;
+                    }
+                    else
+                    {
+                        CerereViewModel.DataServire = DateTime.Parse("1970-01-01 00:00:00");
+                    }
+
+                    var Cerere = new CerereMedicPacient()
+                    {
+                        Id = CerereViewModel.Id,
+                        IdPacient = CerereViewModel.IdPacient,
+                        IdMedic = CerereViewModel.IdMedic,
+                        GrupaDeSange = CerereViewModel.IdGrupaDeSange,
+                        TipComponenta = CerereViewModel.TipComponenta,
+                        Stare = CerereViewModel.Stare,
+                        DataDepunere = CerereViewModel.DataDepunere,
+                        DataServire = CerereViewModel.DataServire,
+                        GrupaDeSange1 = CerereViewModel.GrupaDeSange,
+                        Medic = CerereViewModel.Medic,
+                        Pacient = CerereViewModel.Pacient
+                    };
 
                     if (CerereViewModel.Id == 0)
-                    {
-                        var Cerere = new CerereMedicPacient()
-                        {
-                            IdPacient = CerereViewModel.IdPacient,
-                            IdMedic = CerereViewModel.IdMedic,
-                            GrupaDeSange = CerereViewModel.IdGrupaDeSange,
-                            TipComponenta = CerereViewModel.TipComponenta,
-                            Stare = CerereViewModel.Stare,
-                            DataDepunere = CerereViewModel.DataDepunere,
-                            DataServire = CerereViewModel.DataServire,
-                            GrupaDeSange1 = CerereViewModel.GrupaDeSange,
-                            Medic = CerereViewModel.Medic,
-                            Pacient = CerereViewModel.Pacient
-                        };
+                    { 
                         AppService.Instance.CerereService.Add(Cerere);
                         CerereAdded?.Invoke(this, Cerere);
+                        MessageBox.Show("Cerere added successfully!", "Success", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        AppService.Instance.CerereService.Update(Cerere);
+                        CerereUpdated?.Invoke(this, Cerere);
+                        MessageBox.Show("Cerere updated successfully!", "Success", MessageBoxButton.OK);
                     }
                 }
                 catch (ServiceException e)
                 {
                     MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show("Pacient not found or there is a problem with the database", "Error", MessageBoxButton.OK);
                 }
             }
         }

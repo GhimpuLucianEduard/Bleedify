@@ -4,24 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BleedifyMedic.Views"
+        xmlns:Converters="clr-namespace:DomainViewModels;assembly=DomainViewModels"
         mc:Ignorable="d"
         Title="CerereMasterDetailView" Height="425" Width="400">
+
+    <Window.Resources>
+        <Converters:InverseBooleanConverter x:Key="BoolConverter" />
+    </Window.Resources>
     <Grid Margin="0,0,0.333,0">
-        <Button Command="{Binding AddCommand}" Content="Add" Margin="38,163,216,188"/>
-        <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Content="Cancel" Margin="199,163,55,188"/>
+        <Button Command="{Binding AddCommand}" Content="Add" Margin="38,207,216,144"/>
+        <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Content="Cancel" Margin="199,207,55,144"/>
         <Label Content="Nume Pacient" HorizontalAlignment="Left" Margin="38,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
         <Label Content="Prenume Pacient" HorizontalAlignment="Left" Margin="38,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.971"/>
         <Label Content="Grupa de sange" HorizontalAlignment="Left" Margin="38,85,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.781,2.659"/>
         <Label Content="Tip Componenta" HorizontalAlignment="Left" Margin="38,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.648,4.166"/>
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="167,33,0,0" TextWrapping="Wrap" Text="{Binding NumePacient}" VerticalAlignment="Top" Width="171"/>
+        <TextBox IsEnabled="{Binding FieldsEnabled}" HorizontalAlignment="Left" Height="23" Margin="167,33,0,0" TextWrapping="Wrap" Text="{Binding NumePacient}" VerticalAlignment="Top" Width="171"/>
         <ComboBox ItemsSource="{Binding TipuriComponenta}" 
-                  SelectedItem="{Binding CerereViewModel.TipComponenta}"
+                  SelectedItem="{Binding SelectedTip}"
                   HorizontalAlignment="Left" Margin="167,117,0,0" VerticalAlignment="Top" Width="171" SelectedIndex="0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="167,61,0,0" TextWrapping="Wrap" Text="{Binding PrenumePacient}" VerticalAlignment="Top" Width="171"/>
+        <TextBox IsEnabled="{Binding FieldsEnabled}" HorizontalAlignment="Left" Height="23" Margin="167,61,0,0" TextWrapping="Wrap" Text="{Binding PrenumePacient}" VerticalAlignment="Top" Width="171"/>
         <ComboBox ItemsSource="{Binding GrupeDeSange}" 
             SelectedItem="{Binding SelectedGrupa}"
             HorizontalAlignment="Left" Margin="167,89,0,0" VerticalAlignment="Top" Width="171" SelectedIndex="0"/>
+        <ComboBox IsEnabled="{Binding FieldsEnabled, Converter={StaticResource BoolConverter}}" ItemsSource="{Binding StariPosibile}" 
+            SelectedItem="{Binding SelectedStare}"
+            HorizontalAlignment="Left" Margin="167,143,0,0" VerticalAlignment="Top" Width="171" SelectedIndex="0"/>
+        <Label Content="Stare" HorizontalAlignment="Left" Margin="64,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.648,4.166"/>
 
     </Grid>
 </Window>
