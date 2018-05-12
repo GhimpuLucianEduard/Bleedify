@@ -18,14 +18,21 @@ namespace BleedifyMedic.ViewModels
         private CerereViewModel _selectedCerere;
         private bool _isDataLoaded;
         private string _selectedStare;
+        private GrupaDeSange _selectedGrupa;
+        private string _selectedTip;
 
         public ObservableCollection<CerereViewModel> Cereri { get; private set; } = new ObservableCollection<CerereViewModel>();
         public ObservableCollection<string> Stari { get; private set; }
+        public ObservableCollection<GrupaDeSange> Grupe { get; private set; }
+        public ObservableCollection<string> Tipuri { get; private set; }
 
         public ICommand StareSelectionChanged { get; private set; }
         public ICommand UpdateCerereCommand { get; private set; }
         public ICommand DeleteCerereCommand { get; private set; }
         public ICommand AddCerereCommand { get; private set; }
+        public ICommand FilterCereriCommand { get; private set; }
+        public ICommand ClearFilterCereriCommand { get; private set; }
+        public ICommand LoadCereriCommand { get; private set; }
 
         public string SelectedStare
         {
@@ -33,13 +40,23 @@ namespace BleedifyMedic.ViewModels
             set { SetValue(ref _selectedStare, value); }
         }
 
+        public GrupaDeSange SelectedGrupa
+        {
+            get { return _selectedGrupa; }
+            set { SetValue(ref _selectedGrupa, value); }
+        }
+
+        public string SelectedTip
+        {
+            get { return _selectedTip; }
+            set { SetValue(ref _selectedTip, value); }
+        }
+
         public CerereViewModel SelectedCerere
         {
             get { return _selectedCerere; }
             set { SetValue(ref _selectedCerere, value); }
         }
-
-        public ICommand LoadCereriCommand { get; private set; }
 
         public ManageCereriViewModel()
         {
@@ -49,13 +66,34 @@ namespace BleedifyMedic.ViewModels
             {
                 Stari.Add(stare.ToString());
             }
-
             SelectedStare = Stari[0];
 
-            StareSelectionChanged = new BasicCommandWithParameter(GetCereriByStare);
+            Grupe = new ObservableCollection<GrupaDeSange>();
+            Grupe.Add(new GrupaDeSange()
+            {
+                Id = 0,
+                Nume = "Toate"
+            });
+            foreach (var g in AppService.Instance.GrupaDeSangeService.GetAll())
+            {
+                Grupe.Add(g);
+            }
+            SelectedGrupa = Grupe[0];
+
+            Tipuri = new ObservableCollection<string>();
+            Tipuri.Add("Toate");
+            foreach (var tip in Enum.GetValues(typeof(TipComponenta)))
+            {
+                Tipuri.Add(tip.ToString());
+            }
+            SelectedTip = Tipuri[0];
+
+            FilterCereriCommand = new BasicCommand(FilterCereri);
+            ClearFilterCereriCommand = new BasicCommand(ClearFilterCereri);
             UpdateCerereCommand = new BasicCommand(UpdateCerere);
             DeleteCerereCommand = new BasicCommand(DeleteCerere);
             AddCerereCommand = new BasicCommand(AddCerere);
+            LoadCereriCommand = new BasicCommand(LoadData);
         }
 
         private void LoadData()
@@ -69,6 +107,59 @@ namespace BleedifyMedic.ViewModels
 
             var cereri = AppService.Instance.CerereService.GetAll();
 
+            foreach (var c in cereri)
+            {
+                Cereri.Add(new CerereViewModel(c));
+            }
+        }
+
+        public void FilterCereri()
+        {
+            int? ParamGrupa;
+            string ParamStare;
+            string ParamTip;
+
+            if (SelectedStare.CompareTo(Stari[0]) == 0)
+            {
+                ParamStare = null;
+            }
+            else
+            {
+                ParamStare = SelectedStare;
+            }
+
+            if (SelectedTip.CompareTo(Tipuri[0]) == 0)
+            {
+                ParamTip = null;
+            }
+            else
+            {
+                ParamTip = SelectedTip;
+            }
+
+            if (SelectedGrupa == Grupe[0])
+            {
+                ParamGrupa = null;
+            }
+            else
+            {
+                ParamGrupa = SelectedGrupa.Id;
+            }
+
+            var cereri = AppService.Instance.CerereService.Filter(ParamGrupa, ParamTip, ParamStare);
+
+            Cereri.Clear();
+            foreach (var c in cereri)
+            {
+                Cereri.Add(new CerereViewModel(c));
+            }
+        }
+
+        public void ClearFilterCereri()
+        {
+            var cereri = AppService.Instance.CerereService.GetAll();
+
+            Cereri.Clear();
             foreach (var c in cereri)
             {
                 Cereri.Add(new CerereViewModel(c));
@@ -124,24 +215,6 @@ namespace BleedifyMedic.ViewModels
             {
                 AppService.Instance.CerereService.Delete(SelectedCerere.Id);
                 Cereri.Remove(SelectedCerere);
-            }
-        }
-
-        void GetCereriByStare(object param)
-        {
-            var SelectedStare = (string)param;
-
-            if (SelectedStare.CompareTo(Stari[0]) == 0)
-            {
-                SelectedStare = null;
-            }
-
-            var cereri = AppService.Instance.CerereService.Filter(null, null, SelectedStare);
-
-            Cereri.Clear();
-            foreach (var c in cereri)
-            {
-                Cereri.Add(new CerereViewModel(c));
             }
         }
     }
