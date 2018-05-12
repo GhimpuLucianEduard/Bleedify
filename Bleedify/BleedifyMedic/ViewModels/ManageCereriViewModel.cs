@@ -9,6 +9,7 @@ using System.Windows.Input;
 using BleedifyModels.ModelsEF;
 using System.Collections.Generic;
 using System.Windows;
+using BleedifyMedic.Views;
 
 namespace BleedifyMedic.ViewModels
 {
@@ -72,6 +73,22 @@ namespace BleedifyMedic.ViewModels
             {
                 Cereri.Add(new CerereViewModel(c));
             }
+        }
+
+        public void UpdateCerere()
+        {
+
+        }
+
+        public void AddCerere()
+        {
+            var DetailViewModel = new CerereDetailViewModel(new CerereViewModel());
+            CerereMasterDetailView DetailPage = new CerereMasterDetailView(DetailViewModel);
+            DetailPage.Show();
+            DetailViewModel.CerereAdded += (source, cerere) =>
+            {
+                Cereri.Add(new CerereViewModel(cerere));
+            };
         }
 
         public void DeleteCerere()

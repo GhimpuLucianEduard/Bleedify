@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using BleedifyMedic.Utils;
 using BleedifyMedic.ViewModels;
+using BleedifyServices;
 
 namespace BleedifyMedic.Views
 {
@@ -15,9 +17,9 @@ namespace BleedifyMedic.Views
     {
         public ManageCereriView()
         {
-            ViewModel = new ManageCereriViewModel();
-
             InitializeComponent();
+            ViewModel = new ManageCereriViewModel();
+            Settings.LoggedMedic = AppService.Instance.MedicService.Find(159);
         }
 
         public ManageCereriViewModel ViewModel
