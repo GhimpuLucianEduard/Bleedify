@@ -9,10 +9,27 @@ namespace DomainViewModels
 		private string _tipComponenta;
 		private int _idDonatie;
 		private DateTime _dataDepunere;
-		private int _idPrimitor;
+		private Nullable<int> _idPrimitor;
 		private string _stare;
 		private Donatie _donatie;
 		private Pacient _pacient;
+
+        public ComponentaViewModel(Componenta componenta)
+        {
+            Id = componenta.Id;
+            TipComponenta = componenta.TipComponenta;
+            IdDonatie = componenta.IdDonatie;
+            IdPrimitor = componenta.IdPrimitor;
+            Stare = componenta.Stare;
+            Donatie = componenta.Donatie;
+            Pacient = componenta.Pacient;
+        }
+
+        public Nullable<int> IdPrimitor
+        {
+            get { return _idPrimitor; }
+            set { SetValue(ref _idPrimitor, value); }
+        }
 
 		public int Id
 		{
@@ -25,5 +42,35 @@ namespace DomainViewModels
 			get { return _tipComponenta; }
 			set { SetValue(ref _tipComponenta, value); }
 		}
+
+        public int IdDonatie
+        {
+            get { return _idDonatie; }
+            set { SetValue(ref _idDonatie, value); }
+        }
+
+        public DateTime DataDepunere
+        {
+            get { return _dataDepunere; }
+            set { SetValue(ref _dataDepunere, value); }
+        }
+
+        public string Stare
+        {
+            get { return _stare; }
+            set { SetValue(ref _stare, value); }
+        }
+
+        public Donatie Donatie
+        {
+            get { return _donatie; }
+            set { SetValue(ref _donatie, value);  }
+        }
+
+        public Pacient Pacient
+        {
+            get { return _pacient; }
+            set { SetValue(ref _pacient, value); }
+        }
 	}
 }
