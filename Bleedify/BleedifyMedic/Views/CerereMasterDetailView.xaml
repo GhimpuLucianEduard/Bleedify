@@ -12,7 +12,7 @@
         <Converters:InverseBooleanConverter x:Key="BoolConverter" />
     </Window.Resources>
     <Grid Margin="0,0,0.333,0">
-        <Button Command="{Binding AddCommand}" Content="Add" Margin="38,207,216,144"/>
+        <Button Command="{Binding AddCommand}" Content="{Binding DetailButtonText}" Margin="38,207,216,144"/>
         <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Content="Cancel" Margin="199,207,55,144"/>
         <Label Content="Nume Pacient" HorizontalAlignment="Left" Margin="38,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
         <Label Content="Prenume Pacient" HorizontalAlignment="Left" Margin="38,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.971"/>

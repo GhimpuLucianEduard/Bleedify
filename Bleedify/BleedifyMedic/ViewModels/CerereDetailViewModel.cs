@@ -30,6 +30,7 @@ namespace BleedifyMedic.ViewModels
             if (ViewModel.Id == 0)
             {
                 FieldsEnabled = true;
+                DetailButtonText = "Add";
                 SelectedGrupa = GrupeDeSange.First();
                 SelectedTip = TipuriComponenta.First();
                 SelectedStare = StariPosibile.First();
@@ -37,6 +38,7 @@ namespace BleedifyMedic.ViewModels
             else
             {
                 FieldsEnabled = false;
+                DetailButtonText = "Update";
                 NumePacient = ViewModel.Pacient.Nume;
                 PrenumePacient = ViewModel.Pacient.Prenume;
                 SelectedTip = ViewModel.TipComponenta;
@@ -47,6 +49,8 @@ namespace BleedifyMedic.ViewModels
             AddCommand = new BasicCommand(Save);
             CancelCommand = new BasicCommandWithParameter(Cancel);
         }
+
+        public string DetailButtonText { get; set; }
 
         private bool _fieldsEnabled;
         public bool FieldsEnabled

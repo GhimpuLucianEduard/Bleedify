@@ -7,7 +7,6 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using BleedifyModels.ModelsEF;
-using System.Collections.Generic;
 using System.Windows;
 using BleedifyMedic.Views;
 
@@ -164,6 +163,10 @@ namespace BleedifyMedic.ViewModels
             {
                 Cereri.Add(new CerereViewModel(c));
             }
+
+            SelectedStare = Stari[0];
+            SelectedGrupa = Grupe[0];
+            SelectedTip = Tipuri[0];
         }
 
         public void UpdateCerere()
