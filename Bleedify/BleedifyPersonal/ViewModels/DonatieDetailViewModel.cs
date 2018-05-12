@@ -15,7 +15,7 @@ namespace BleedifyPersonal.ViewModels
 {
     public class DonatieDetailViewModel : BaseViewModel
     {
-        public  DonatieViewModel DonatieViewModel { get; set; }
+        public DonatieViewModel DonatieViewModel { get; set; }
         public DonatieMasterDetailView view { get; set; }
         public ICommand AddCommand { get; private set; }
         public event EventHandler<Donatie> DonatieAdded;
@@ -52,7 +52,6 @@ namespace BleedifyPersonal.ViewModels
 
         public void Save()
         {
-            var test3 = SelectedInstitutie;
             if (String.IsNullOrEmpty(NumeDonator) ||
                DonatieViewModel.DataDonare == null ||
                String.IsNullOrEmpty(DonatieViewModel.EtapaDonare) ||
@@ -60,33 +59,35 @@ namespace BleedifyPersonal.ViewModels
             {
                 MessageBox.Show("Plase make sure you completed all the fields correctly..", "Error", MessageBoxButton.OK);
             }
-
-            try
+            else
             {
-                Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator);
-                DonatieViewModel.DonatorId = Donator.Id;
-                DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
-                DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
-                DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
-
-                if(DonatieViewModel.Id == 0)
+                try
                 {
-                    var donatie = new Donatie()
+                    Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator);
+                    DonatieViewModel.DonatorId = Donator.Id;
+                    DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
+                    DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
+                    DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
+
+                    if (DonatieViewModel.Id == 0)
                     {
-                        IdDonator = DonatieViewModel.DonatorId,
-                        DataDonare = DonatieViewModel.DataDonare,
-                        EtapaDonare = DonatieViewModel.EtapaDonare,
-                        InstitutieAsociata = DonatieViewModel.InstitutieAsociataId,
-                        GrupaDeSange = DonatieViewModel.GrupaDeSangeId,
-                        MotivRefuz = DonatieViewModel.MotivRefuz
-                    };
-                    AppService.Instance.DonatieService.Add(donatie);
-                    DonatieAdded?.Invoke(this, donatie);
+                        var donatie = new Donatie()
+                        {
+                            IdDonator = DonatieViewModel.DonatorId,
+                            DataDonare = DonatieViewModel.DataDonare,
+                            EtapaDonare = DonatieViewModel.EtapaDonare,
+                            InstitutieAsociata = DonatieViewModel.InstitutieAsociataId,
+                            GrupaDeSange = DonatieViewModel.GrupaDeSangeId,
+                            MotivRefuz = DonatieViewModel.MotivRefuz
+                        };
+                        AppService.Instance.DonatieService.Add(donatie);
+                        DonatieAdded?.Invoke(this, donatie);
+                    }
                 }
-            }
-            catch (ServiceException e)
-            {
-                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
+                catch (ServiceException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
+                }
             }
         }
     }
