@@ -77,7 +77,29 @@ namespace BleedifyMedic.ViewModels
 
         public void UpdateCerere()
         {
+            if (SelectedCerere == null)
+            {
+                MessageBox.Show("You must select a cerere!", "Error", MessageBoxButton.OK);
+            }
+            else
+            {
+                var DetailViewModel = new CerereDetailViewModel(SelectedCerere);
+                CerereMasterDetailView DetailPage = new CerereMasterDetailView(DetailViewModel);
+                DetailPage.Show();
+                DetailViewModel.CerereUpdated += (source, cerere) =>
+                {
+                    var cererevm = new CerereViewModel(cerere);
 
+                    Cereri.ToList().ForEach(x =>
+                    {
+                        if (x.Id == cererevm.Id)
+                        {
+                            x = cererevm;
+                        }
+                    });
+                    DetailPage.Close();
+                };
+            }
         }
 
         public void AddCerere()
@@ -88,6 +110,7 @@ namespace BleedifyMedic.ViewModels
             DetailViewModel.CerereAdded += (source, cerere) =>
             {
                 Cereri.Add(new CerereViewModel(cerere));
+                DetailPage.Close();
             };
         }
 
