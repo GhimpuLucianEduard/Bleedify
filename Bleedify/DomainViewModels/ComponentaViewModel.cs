@@ -23,6 +23,7 @@ namespace DomainViewModels
             Stare = componenta.Stare;
             Donatie = componenta.Donatie;
             Pacient = componenta.Pacient;
+            DataDepunere = componenta.DataDepunere;
         }
 
         public Nullable<int> IdPrimitor
