@@ -94,7 +94,6 @@ namespace BleedifyPersonal.ViewModels
 				    DonatieViewModel.DonatorId = Donator.Id;
                     DonatieViewModel.EtapaDonare = Etapa;
 				    DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
-				    DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
 				    DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
 
 				    var donatie = new Donatie()
