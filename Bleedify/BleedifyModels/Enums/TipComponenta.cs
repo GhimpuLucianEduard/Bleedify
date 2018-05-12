@@ -3,7 +3,7 @@
 	public enum TipComponenta
 	{
 		Trombocite,
-		GlobuleR,
+		GlobuleRosii,
 		Plasma
 	}
 }

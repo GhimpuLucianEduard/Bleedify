@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:BleedifyPersonal.Views"
         mc:Ignorable="d"
         Title="ManageComponenteView" Height="750" Width="1100">
-    <Grid>
-        <DataGrid x:Name="DonationDataGrid" SelectedItem="{Binding SelectedDonatie, Mode=TwoWay}" ItemsSource="{Binding Componente}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="671">
+    <Grid HorizontalAlignment="Left" Width="1092">
+        <DataGrid AutoGenerateColumns="False" x:Name="DonationDataGrid" ItemsSource="{Binding Componente}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="671">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nume Donator" Binding="{Binding Donatie.Donator.Nume}"/>
+                <DataGridTextColumn Header="Prenume Donator" Binding="{Binding Donatie.Donator.Prenume}"/>
+                <DataGridTextColumn Header="TipComponenta" Binding="{Binding TipComponenta}"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding DataDepunere}"/>
+                <DataGridTextColumn Header="Nume Pacient" Binding="{Binding Pacient.Nume}"/>
+                <DataGridTextColumn Header="Prenume Pacient" Binding="{Binding Pacient.Prenume}"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>
