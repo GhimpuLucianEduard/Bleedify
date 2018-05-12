@@ -1,6 +1,6 @@
 ﻿namespace BleedifyModels.ModelsEF
 {
-	partial class Pacient : Utilizator
+	partial class Pacient : IHasID<int>
 	{
 		public GrupaDeSange GrupaDeSangeObj
 		{

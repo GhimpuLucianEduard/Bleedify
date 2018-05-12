@@ -2,6 +2,7 @@
 using BleedifyModels.Repositories;
 using BleedifyModels.Validators;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BleedifyServices
 {
@@ -37,6 +38,11 @@ namespace BleedifyServices
         public void Delete(int id)
         {
             _repository.Delete(id);
+        }
+
+        public IEnumerable<Pacient> GetPacientByFullName(string Nume, string Prenume)
+        {
+            return _repository.GetAll().Where(x => x.Nume.CompareTo(Nume) == 0 && x.Prenume.CompareTo(Prenume) == 0).ToList(); ;
         }
     }
 }
