@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Linq;
 using System.Windows.Input;
+using System;
+using DomainViewModels.Converters;
 
 namespace BleedifyPersonal.ViewModels
 {
@@ -26,6 +28,7 @@ namespace BleedifyPersonal.ViewModels
         public ICommand DeleteDonatieCommand { get; private set; }
         public ICommand AddDonatieCommand { get; private set; }
         public ICommand UpdateDonatieCommand { get; private set; }
+        public ICommand PrelucreazaDonatieCommand { get; private set; }
 
         public ManageDonatiiViewModel()
         {	
@@ -33,6 +36,7 @@ namespace BleedifyPersonal.ViewModels
             DeleteDonatieCommand = new BasicCommand(DeleteDonatie);
             AddDonatieCommand = new BasicCommand(AddDonatie);
             UpdateDonatieCommand = new BasicCommand(UpdateDonatie);
+            PrelucreazaDonatieCommand = new BasicCommand(HandlePrelucreazaDonatie);
         }
 
         private void LoadData()
@@ -91,7 +95,6 @@ namespace BleedifyPersonal.ViewModels
                 viewModel.DonatieUpdated += (source, donatie) =>
                 {
                     var donatievm = new DonatieViewModel(donatie);
-                    int index = 0;
 
                     Donatii.ToList().ForEach(d =>
                     {
@@ -104,6 +107,59 @@ namespace BleedifyPersonal.ViewModels
                     DetailPage.Close();
                 };
             }
+        }
+
+        private void HandlePrelucreazaDonatie()
+        {
+            if (SelectedDonatie == null)
+            {
+                MessageBox.Show("You have to select a donation first...");
+            }
+            else
+            {
+                if (SelectedDonatie.EtapaDonare == "Prelucrata")
+                {
+                    MessageBox.Show("This donation was already prelucrata");
+                }
+                else
+                {
+                    if (SelectedDonatie.EtapaDonare != "Analizata")
+                    {
+                        MessageBox.Show("This donation cannot be prelucrata");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            PrelucreazaDonatie();
+                            MessageBox.Show("You have successfully PRELUCRATED the Donation!", "Success", MessageBoxButton.OK);
+                        }
+                        catch(ServiceException e)
+                        {
+                            MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
+                        }
+                        
+                    }
+                }
+            }
+
+        }
+
+        private void PrelucreazaDonatie()
+        {
+            SelectedDonatie.EtapaDonare = "Prelucrata";
+
+            Donatii.ToList().ForEach(d =>
+            {
+                if (d.Id == SelectedDonatie.Id)
+                {
+                    d = SelectedDonatie;
+                }
+            });
+
+            var donatie = VmToDmConverter.Convert(SelectedDonatie);
+            AppService.Instance.ComponentaService.PrelucreazaDonatie(donatie);
+            AppService.Instance.DonatieService.Update(donatie);
         }
     }
 }

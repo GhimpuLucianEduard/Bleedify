@@ -15,7 +15,7 @@ namespace BleedifyPersonal.ViewModels
 {
     public class DonatieDetailViewModel : BaseViewModel
     {
-        public  DonatieViewModel DonatieViewModel { get; set; }
+        public DonatieViewModel DonatieViewModel { get; set; }
         public DonatieMasterDetailView view { get; set; }
 		public bool IsAddState { get; set; }
 
@@ -32,6 +32,7 @@ namespace BleedifyPersonal.ViewModels
 		        IsAddState = true;
 	        }
             DonatieViewModel = donatieViewModel;
+            Etapa = DonatieViewModel.EtapaDonare;
             NumeDonator = DonatieViewModel.Donator.Nume;
             PrenumeDonator = DonatieViewModel.Donator.Prenume;
             SelectedInstitutie = DonatieViewModel.InstitutieAsociataObj;
@@ -40,13 +41,7 @@ namespace BleedifyPersonal.ViewModels
             CloseWindowCommand = new BasicCommandWithParameter(CloseWindow);
         }
 
-        public IList<InstitutieAsociata> Institutii
-        {
-            get
-            {
-                return AppService.Instance.InstitutieAsociataService.GetAll().ToList();
-            }
-        }
+        public IList<InstitutieAsociata> Institutii { get { return AppService.Instance.InstitutieAsociataService.GetAll().ToList(); } }
 
         private InstitutieAsociata _selectedInstitutie;
         public InstitutieAsociata SelectedInstitutie
@@ -60,61 +55,81 @@ namespace BleedifyPersonal.ViewModels
                 SetValue(ref _selectedInstitutie, value);
             }
         }
-        public string NumeDonator { get; set; }
-        public string PrenumeDonator { get; set; }
-		public bool IsUpdate { get; set; }
 
-        public void Save()
+        public List<string> EtapaValues
         {
-            var test3 = SelectedInstitutie;
-            if (String.IsNullOrEmpty(NumeDonator) ||
-                String.IsNullOrEmpty(PrenumeDonator) ||
-                DonatieViewModel.DataDonare == null ||
-                String.IsNullOrEmpty(DonatieViewModel.EtapaDonare) ||
-                SelectedInstitutie == null)
+            get
             {
-                MessageBox.Show("Plase make sure you completed all the fields correctly..", "Error", MessageBoxButton.OK);
-            }
-
-            try
-            {
-                Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator, PrenumeDonator);
-                DonatieViewModel.DonatorId = Donator.Id;
-                DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
-                DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
-                DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
-
-                var donatie = new Donatie()
+                return new List<string>()
                 {
-                    Id = DonatieViewModel.Id,
-                    IdDonator = DonatieViewModel.DonatorId,
-                    DataDonare = DonatieViewModel.DataDonare,
-                    EtapaDonare = DonatieViewModel.EtapaDonare,
-                    InstitutieAsociata = DonatieViewModel.InstitutieAsociataId,
-                    GrupaDeSange = DonatieViewModel.GrupaDeSangeId,
-                    MotivRefuz = DonatieViewModel.MotivRefuz
+                    "De Analizat",
+                    "Analizata",
+                    "Invalida",
+                    "Prelucrata",
+                    "Donata"
                 };
-
-                if (DonatieViewModel.Id == 0)
-                {
-                    AppService.Instance.DonatieService.Add(donatie);
-                    MessageBox.Show("Donation added successfully!", "Success", MessageBoxButton.OK);
-                    DonatieAdded?.Invoke(this, donatie);
-                }
-                else
-                {
-                    AppService.Instance.DonatieService.Update(donatie);
-                    MessageBox.Show("You have successfully updated the Donation!", "Success", MessageBoxButton.OK);
-                    DonatieUpdated?.Invoke(this, donatie);
-                }
-            }
-            catch (ServiceException e)
-            {
-                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
             }
         }
+        public string NumeDonator { get; set; }
+        public string PrenumeDonator { get; set; }
+        public string Etapa { get; set; }
+		public bool IsUpdate { get; set; }
 
-        private void CloseWindow(object thisWindow)
+
+	    public void Save()
+	    {
+		    if (String.IsNullOrEmpty(NumeDonator) ||
+		        String.IsNullOrEmpty(PrenumeDonator) ||
+		        DonatieViewModel.DataDonare == null ||
+		        String.IsNullOrEmpty(DonatieViewModel.EtapaDonare) ||
+		        SelectedInstitutie == null)
+		    {
+			    MessageBox.Show("Plase make sure you completed all the fields correctly..", "Error", MessageBoxButton.OK);
+		    }
+		    else
+		    {
+			    try
+			    {
+				    Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator, PrenumeDonator);
+				    DonatieViewModel.DonatorId = Donator.Id;
+                    DonatieViewModel.EtapaDonare = Etapa;
+				    DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
+				    DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
+				    DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
+
+				    var donatie = new Donatie()
+				    {
+					    Id = DonatieViewModel.Id,
+					    IdDonator = DonatieViewModel.DonatorId,
+					    DataDonare = DonatieViewModel.DataDonare,
+					    EtapaDonare = DonatieViewModel.EtapaDonare,
+					    InstitutieAsociata = DonatieViewModel.InstitutieAsociataId,
+					    GrupaDeSange = DonatieViewModel.GrupaDeSangeId,
+					    MotivRefuz = DonatieViewModel.MotivRefuz
+				    };
+
+				    if (DonatieViewModel.Id == 0)
+				    {
+					    AppService.Instance.DonatieService.Add(donatie);
+					    MessageBox.Show("Donation added successfully!", "Success", MessageBoxButton.OK);
+					    DonatieAdded?.Invoke(this, donatie);
+				    }
+				    else
+				    {
+					    AppService.Instance.DonatieService.Update(donatie);
+					    MessageBox.Show("You have successfully updated the Donation!", "Success", MessageBoxButton.OK);
+					    DonatieUpdated?.Invoke(this, donatie);
+				    }
+			    }
+			    catch (ServiceException e)
+			    {
+				    MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
+
+			    }
+		    }
+	    }
+
+	    private void CloseWindow(object thisWindow)
         {
             var window = (Window)thisWindow;
             window.Close();

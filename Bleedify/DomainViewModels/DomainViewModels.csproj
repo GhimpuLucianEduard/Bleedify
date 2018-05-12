@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,7 +46,9 @@
     <Compile Include="Commands\BasicCommand.cs" />
     <Compile Include="Commands\BasicCommandWithParameter.cs" />
     <Compile Include="ComponentaViewModel.cs" />
+    <Compile Include="Converters\VmToDmConverter.cs" />
     <Compile Include="DonatieViewModel.cs" />
+    <Compile Include="InverseBooleanConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
