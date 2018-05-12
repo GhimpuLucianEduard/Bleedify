@@ -48,7 +48,7 @@ namespace BleedifyServices
         {          
             return _repository.GetAll()
                 .Where(x => {
-                    if (null == grupaDeSange || grupaDeSange.HasValue)
+                    if (null == grupaDeSange || !grupaDeSange.HasValue)
                         return true;
                     return x.GrupaDeSange.HasValue && x.GrupaDeSange.Value == grupaDeSange;
                     })
