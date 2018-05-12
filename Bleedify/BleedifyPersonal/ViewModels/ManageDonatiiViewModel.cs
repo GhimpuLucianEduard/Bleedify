@@ -178,7 +178,6 @@ namespace BleedifyPersonal.ViewModels
                 };
             }
         }
-        public string Etapa { get; set; }
 
         public List<GrupaDeSange> GrupeValues
         {
@@ -191,7 +190,19 @@ namespace BleedifyPersonal.ViewModels
                 return AppService.Instance.GrupaDeSangeService.GetAll().ToList();
             }
         }
-        public GrupaDeSange Grupa { get; set; }
+        private GrupaDeSange _grupa;
+        public GrupaDeSange Grupa
+        {
+            get { return _grupa; }
+            set { SetValue(ref _grupa, value); }
+        }
+
+        private string _etapa;
+        public string Etapa
+        {
+            get { return _etapa; }
+            set { SetValue(ref _etapa, value); }
+        }
 
         private void HandleFilter()
         {
@@ -214,7 +225,12 @@ namespace BleedifyPersonal.ViewModels
 
         private void ClearFilters()
         {
+            Grupa = null;
+            Etapa = null;
+
             var donations = AppService.Instance.DonatieService.Filter(null, null);
+
+            Donatii.Clear();
 
             foreach (var d in donations)
                 Donatii.Add(new DonatieViewModel(d));
