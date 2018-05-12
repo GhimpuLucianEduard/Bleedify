@@ -21,17 +21,19 @@ namespace BleedifyMedic.ViewModels
         private string _selectedTip;
 
         public ObservableCollection<CerereViewModel> Cereri { get; private set; } = new ObservableCollection<CerereViewModel>();
+        public ObservableCollection<ComponentaViewModel> Componente { get; private set; } = new ObservableCollection<ComponentaViewModel>();
         public ObservableCollection<string> Stari { get; private set; }
         public ObservableCollection<GrupaDeSange> Grupe { get; private set; }
         public ObservableCollection<string> Tipuri { get; private set; }
 
-        public ICommand StareSelectionChanged { get; private set; }
         public ICommand UpdateCerereCommand { get; private set; }
         public ICommand DeleteCerereCommand { get; private set; }
         public ICommand AddCerereCommand { get; private set; }
         public ICommand FilterCereriCommand { get; private set; }
         public ICommand ClearFilterCereriCommand { get; private set; }
         public ICommand LoadCereriCommand { get; private set; }
+        public ICommand FilterComponenteCommand { get; private set; }
+        public ICommand ClearFilterComponenteCommand { get; private set; }
 
         public string SelectedStare
         {
@@ -105,10 +107,16 @@ namespace BleedifyMedic.ViewModels
             _isDataLoaded = true;
 
             var cereri = AppService.Instance.CerereService.GetAll();
+            var componente = AppService.Instance.ComponentaService.GetAll();
 
             foreach (var c in cereri)
             {
                 Cereri.Add(new CerereViewModel(c));
+            }
+
+            foreach(var c in componente)
+            {
+                Componente.Add(new ComponentaViewModel(c));
             }
         }
 

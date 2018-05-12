@@ -1,0 +1,29 @@
+﻿<Window x:Class="BleedifyMedic.Views.ManageStocView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BleedifyMedic.Views"
+        mc:Ignorable="d"
+        Title="Stoc" Height="750" Width="850">
+    <Grid Margin="0,0,3,-0.333">
+        <DataGrid ItemsSource="{Binding Componente}" HorizontalAlignment="Left" Height="420" Margin="158,64,0,0" AutoGenerateColumns="False" VerticalAlignment="Top" Width="481">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tip" Binding="{Binding TipComponenta}" />
+                <DataGridTextColumn Header="Nume Donator" Binding="{Binding Donatie.Donator.Nume}"/>
+                <DataGridTextColumn Header="Prenume Donator" Binding="{Binding Donatie.Donator.Prenume}"/>
+                <DataGridTextColumn Header="Nume Pacient" Binding="{Binding Pacient.Nume}"/>
+                <DataGridTextColumn Header="Prenume Pacient" Binding="{Binding Pacient.Prenume}"/>
+                <DataGridTextColumn Header="Stare" Binding="{Binding Stare}"/>
+                <DataGridTextColumn Header="Data Depunere" Binding="{Binding DataDepunere}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox SelectedItem="{Binding SelectedTipComponenta}" ItemsSource="{Binding Tipuri}" HorizontalAlignment="Left" Margin="418,511,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox SelectedItem="{Binding SelectedStareComponenta}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" Margin="418,540,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Filter dupa tip" HorizontalAlignment="Left" Margin="294,507,0,0" VerticalAlignment="Top"/>
+        <Label Content="Filter dupa stare" HorizontalAlignment="Left" Margin="294,534,0,0" VerticalAlignment="Top"/>
+        <Button Command="{Binding FilterComponenteCommand}" Content="Filter Componente" HorizontalAlignment="Left" Margin="380,609,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ClearFilterComponenteCommand}" Content="Clear Filter Componente" HorizontalAlignment="Left" Margin="380,638,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>
