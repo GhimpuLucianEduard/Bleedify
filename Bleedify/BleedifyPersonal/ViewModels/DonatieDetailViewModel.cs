@@ -90,11 +90,13 @@ namespace BleedifyPersonal.ViewModels
                 if (DonatieViewModel.Id == 0)
                 {
                     AppService.Instance.DonatieService.Add(donatie);
+                    MessageBox.Show("Donation added successfully!", "Success", MessageBoxButton.OK);
                     DonatieAdded?.Invoke(this, donatie);
                 }
                 else
                 {
                     AppService.Instance.DonatieService.Update(donatie);
+                    MessageBox.Show("You have successfully updated the Donation!", "Success", MessageBoxButton.OK);
                     DonatieUpdated?.Invoke(this, donatie);
                 }
             }

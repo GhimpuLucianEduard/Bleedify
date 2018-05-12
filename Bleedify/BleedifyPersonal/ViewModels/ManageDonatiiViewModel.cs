@@ -56,8 +56,11 @@ namespace BleedifyPersonal.ViewModels
             }
             else
             {
-                AppService.Instance.DonatieService.Delete(SelectedDonatie.Id);
-                Donatii.Remove(SelectedDonatie);
+                if(MessageBox.Show("Are you sure you want to delete this donation?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    AppService.Instance.DonatieService.Delete(SelectedDonatie.Id);
+                    Donatii.Remove(SelectedDonatie);
+                }
             }
         }
 
@@ -69,6 +72,7 @@ namespace BleedifyPersonal.ViewModels
             viewModel.DonatieAdded += (source, donatie) =>
             {
                 Donatii.Add(new DonatieViewModel(donatie));
+                DetailPage.Close();
             };
         }
 
@@ -95,7 +99,9 @@ namespace BleedifyPersonal.ViewModels
                             index++;
                         }
                     }
+
                     Donatii[index] = donatievm;
+                    DetailPage.Close();
                 };
             }
         }
