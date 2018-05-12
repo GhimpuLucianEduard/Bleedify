@@ -92,6 +92,7 @@ namespace BleedifyPersonal.ViewModels
 			    {
 				    Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator, PrenumeDonator);
 				    DonatieViewModel.DonatorId = Donator.Id;
+                    DonatieViewModel.EtapaDonare = Etapa;
 				    DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
 				    DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
 				    DonatieViewModel.InstitutieAsociataId = SelectedInstitutie.Id;
@@ -101,7 +102,7 @@ namespace BleedifyPersonal.ViewModels
 					    Id = DonatieViewModel.Id,
 					    IdDonator = DonatieViewModel.DonatorId,
 					    DataDonare = DonatieViewModel.DataDonare,
-					    EtapaDonare = Etapa,
+					    EtapaDonare = DonatieViewModel.EtapaDonare,
 					    InstitutieAsociata = DonatieViewModel.InstitutieAsociataId,
 					    GrupaDeSange = DonatieViewModel.GrupaDeSangeId,
 					    MotivRefuz = DonatieViewModel.MotivRefuz
