@@ -92,15 +92,15 @@ namespace BleedifyPersonal.ViewModels
                 {
                     var donatievm = new DonatieViewModel(donatie);
                     int index = 0;
-                    foreach(var d in Donatii)
-                    {
-                        if(d.Id != donatie.Id)
-                        {
-                            index++;
-                        }
-                    }
 
-                    Donatii[index] = donatievm;
+                    Donatii.ToList().ForEach(d =>
+                    {
+                        if(d.Id == donatievm.Id)
+                        {
+                            d = donatievm;
+                        }
+                    });
+
                     DetailPage.Close();
                 };
             }
