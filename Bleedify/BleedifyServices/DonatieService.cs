@@ -38,5 +38,10 @@ namespace BleedifyServices
 	    {
 		    return _repository.GetAll().Where(x => x.IdDonator == idDonator).ToList();
 	    }
-	}
+
+        public void Update(Donatie donatie)
+        {
+            _repository.Update(donatie);
+        }
+    }
 }
