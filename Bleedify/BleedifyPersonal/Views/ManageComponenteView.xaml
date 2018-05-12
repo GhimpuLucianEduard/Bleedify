@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ManageComponenteView" Height="750" Width="1100">
     <Grid HorizontalAlignment="Left" Width="1092">
-        <DataGrid AutoGenerateColumns="False" x:Name="DonationDataGrid" ItemsSource="{Binding Componente}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="671">
+        <DataGrid AutoGenerateColumns="False" x:Name="DonationDataGrid" SelectedItem="{Binding SelectedComponenta, Mode=TwoWay}" ItemsSource="{Binding Componente}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="671">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nume Donator" Binding="{Binding Donatie.Donator.Nume}"/>
                 <DataGridTextColumn Header="Prenume Donator" Binding="{Binding Donatie.Donator.Prenume}"/>
@@ -17,5 +17,6 @@
                 <DataGridTextColumn Header="Prenume Pacient" Binding="{Binding Pacient.Prenume}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" HorizontalAlignment="Left" Margin="65,500,0,0" VerticalAlignment="Top" Width="76"/>
     </Grid>
 </Window>
