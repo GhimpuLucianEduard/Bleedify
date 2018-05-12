@@ -25,12 +25,23 @@ namespace BleedifyServices
 
         public IEnumerable<Donatie> GetAll()
         {
+	
             return _repository.GetAll();
         }
 
-        public void Delete(int id)
+	    public void Delete(int id)
+	    {
+		    _repository.Delete(id);
+	    }
+
+	    public IEnumerable<Donatie> GetAllByDonator(int idDonator)
+	    {
+		    return _repository.GetAll().Where(x => x.IdDonator == idDonator).ToList();
+	    }
+
+        public void Update(Donatie donatie)
         {
-            _repository.Delete(id);
+            _repository.Update(donatie);
         }
     }
 }

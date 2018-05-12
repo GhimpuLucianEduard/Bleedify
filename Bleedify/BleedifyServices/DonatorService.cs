@@ -32,16 +32,17 @@ namespace BleedifyServices
         {
             _repository.Add(entity);
         }
-        public Donator getDonatorByName(string nume)
+
+        public Donator getDonatorByName(string nume, string prenume)
         {
             foreach(var donator in _repository.GetAll())
             {
-                if (donator.Nume.Equals(nume))
+                if (donator.Nume.Equals(nume) && donator.Prenume.Equals(prenume))
                 {
                     return donator;
                 }
             }
             throw new ServiceException("A donator with that name doesn't exist");
         }
-    }
+	}
 }
