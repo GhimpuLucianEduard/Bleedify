@@ -74,5 +74,10 @@ namespace BleedifyServices
                 })
                 .ToList();
         }
+
+        public void Delete(int componentaId)
+        {
+            _repository.Delete(componentaId);
+        }
     }
 }
