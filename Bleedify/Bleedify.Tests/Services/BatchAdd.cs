@@ -25,9 +25,9 @@ namespace Bleedify.Tests.Services
         public void BatchAddTest()
         {
             int countAnunturi = _anuntDonatorService.GetAll().Count();
-            int countDonatori = _donatorService.Filter(1, true).Count();
+            int countDonatori = _donatorService.Filter(4, null, true).Count();
 
-            _anuntDonatorService.BatchAdd(1, null, null);
+            _anuntDonatorService.BatchAdd(4, null, null);
 
             Assert.IsTrue(countAnunturi + countDonatori == _anuntDonatorService.GetAll().Count());
         }

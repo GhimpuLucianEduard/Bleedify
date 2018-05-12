@@ -35,7 +35,7 @@ namespace BleedifyServices
 
         public void BatchAdd(int grupaDeSange, string mesaj, Pacient pacient)
         {
-            foreach (Donator donator in AppService.Instance.DonatorService.Filter(grupaDeSange, true))
+            foreach (Donator donator in AppService.Instance.DonatorService.Filter(grupaDeSange, null, true))
             {
                 AnuntDonator entity = new AnuntDonator();
                 entity.IdDonator = donator.Id;
