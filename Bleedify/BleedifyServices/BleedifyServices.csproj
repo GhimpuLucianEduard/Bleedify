@@ -42,11 +42,14 @@
   <ItemGroup>
     <Compile Include="AppService.cs" />
     <Compile Include="DonatieService.cs" />
+    <Compile Include="DonatorService.cs" />
+    <Compile Include="InstitutieAsociataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CerereMedicPacientService.cs" />
-	<Compile Include="GrupaDeSangeService.cs" />
-	<Compile Include="PacientService.cs" />
-	<Compile Include="MedicService.cs" />
+    <Compile Include="GrupaDeSangeService.cs" />
+    <Compile Include="PacientService.cs" />
+    <Compile Include="MedicService.cs" />
+    <Compile Include="ServiceException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BleedifyModels\BleedifyModels.csproj">

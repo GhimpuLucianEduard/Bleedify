@@ -1,4 +1,5 @@
-﻿using BleedifyServices;
+﻿using BleedifyPersonal.Views;
+using BleedifyServices;
 using DomainViewModels;
 using DomainViewModels.Commands;
 using System.Collections.ObjectModel;
@@ -22,11 +23,13 @@ namespace BleedifyPersonal.ViewModels
 
         public ICommand LoadDonationsCommand { get; private set; }
         public ICommand DeleteDonatieCommand { get; private set; }
+        public ICommand AddDonatieCommand { get; private set; }
 
         public ManageDonatiiViewModel()
         {
             LoadDonationsCommand = new BasicCommand(LoadData);
             DeleteDonatieCommand = new BasicCommand(DeleteDonatie);
+            AddDonatieCommand = new BasicCommand(AddDonatie);
         }
 
         private void LoadData()
@@ -53,6 +56,17 @@ namespace BleedifyPersonal.ViewModels
                 AppService.Instance.DonatieService.Delete(SelectedDonatie.Id);
                 Donatii.Remove(SelectedDonatie);
             }
+        }
+
+        private void AddDonatie()
+        {
+            var viewModel = new DonatieDetailViewModel(new DonatieViewModel());
+            DonatieMasterDetailView DetailPage = new DonatieMasterDetailView(viewModel);
+            DetailPage.Show();
+            viewModel.DonatieAdded += (source, donatie) =>
+            {
+                Donatii.Add(new DonatieViewModel(donatie));
+            };
         }
     }
 }

@@ -1,0 +1,30 @@
+﻿<Window x:Class="BleedifyPersonal.Views.DonatieMasterDetailView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BleedifyPersonal.Views"
+        mc:Ignorable="d"
+        Title="DonatieMasterDetailView" Height="450" Width="400">
+    <Grid>
+        <Button Command="{Binding AddCommand}" Content="Add" RenderTransformOrigin="0.79,17.108" Margin="27,321,227,30"/>
+        <Button Content="Cancel" RenderTransformOrigin="0.79,17.108" Margin="228,321,26,30"/>
+        <Label Content="Nume Donator" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
+        <Label Content="Data" HorizontalAlignment="Left" Margin="27,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.971"/>
+        <Label Content="Etapa" HorizontalAlignment="Left" Margin="27,135,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.781,2.659"/>
+        <Label Content="Institutie Asociata" HorizontalAlignment="Left" Margin="27,166,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.648,4.166"/>
+        <Label Content="Motiv Refuz" HorizontalAlignment="Left" Margin="27,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073"/>
+
+
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="156,56,0,0" TextWrapping="Wrap" Text="{Binding NumeDonator}" VerticalAlignment="Top" Width="171"/>
+        <DatePicker  HorizontalAlignment="Left" Margin="156,95,0,0" VerticalAlignment="Top" SelectedDate="{Binding DonatieViewModel.DataDonare}" Width="171"/>
+        <TextBox  HorizontalAlignment="Left" Height="23" Margin="156,135,0,0" TextWrapping="Wrap" Text="{Binding DonatieViewModel.EtapaDonare}" VerticalAlignment="Top" Width="171"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="156,211,0,0" TextWrapping="Wrap" Text="{Binding DonatieViewModel.MotivRefuz}" VerticalAlignment="Top" Width="171"/>
+        <ComboBox ItemsSource="{Binding Institutii}" 
+                  DisplayMemberPath="Nume"
+                  SelectedValuePath="Nume"
+                  SelectedItem="{Binding SelectedInstitutie}"
+                  HorizontalAlignment="Left" Margin="156,170,0,0" VerticalAlignment="Top" Width="171"/>
+
+    </Grid>
+</Window>
