@@ -41,6 +41,28 @@ namespace BleedifyServices
 
         public void Update(Donatie donatie)
         {
+            Donatie oldDonatie = _repository.Find(donatie.Id);
+            if (!oldDonatie.EtapaDonare.Equals(donatie))
+            {
+                // s-a schimbat etapa de donare, anuntam donatorul
+                AnuntDonator anunt = new AnuntDonator();
+                anunt.IdDonator = donatie.IdDonator;                
+
+                anunt.Mesaj = "Etapa donarii tale s-a schimbat din " + oldDonatie.EtapaDonare +
+                    " in " + donatie.EtapaDonare + ". ";
+                if (null == donatie.MotivRefuz)
+                {
+                    anunt.TipAnuntDonator = "Informare";
+                }
+                else
+                {
+                    anunt.TipAnuntDonator = "Refuz";
+                    anunt.Mesaj += "Motivul refuzului: " + donatie.MotivRefuz + ".";
+                }
+                anunt.DataAnunt = DateTime.Now;
+
+                AppService.Instance.AnuntDonatorService.Add(anunt);
+            }
             _repository.Update(donatie);
         }
 

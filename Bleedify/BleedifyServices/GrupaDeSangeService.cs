@@ -14,6 +14,11 @@ namespace BleedifyServices
             _repository = new GrupaDeSangeRepository(new GrupaDeSangeValidator());
         }
 
+        public GrupaDeSange Find(int id)
+        {
+            return _repository.Find(id);
+        }
+
         public IEnumerable<GrupaDeSange> GetAll()
         {
             return _repository.GetAll();

@@ -44,5 +44,23 @@ namespace BleedifyServices
         {
             return _repository.GetAll().Where(x => x.Nume.CompareTo(Nume) == 0 && x.Prenume.CompareTo(Prenume) == 0).ToList(); ;
         }
+
+        public IEnumerable<Pacient> Filter(int? institutie, int? grupaDeSange)
+        {
+            return _repository.GetAll()
+                .Where(x =>
+                {
+                    if (null == institutie || !institutie.HasValue)
+                        return true;
+                    return x.InstitutieAsociata.HasValue && x.InstitutieAsociata.Value == institutie;
+                })
+                .Where(x =>
+                {
+                    if (null == grupaDeSange || !grupaDeSange.HasValue)
+                        return true;
+                    return x.GrupaDeSange.HasValue && x.GrupaDeSange.Value == grupaDeSange;
+                })
+                .ToList();
+        }
     }
 }

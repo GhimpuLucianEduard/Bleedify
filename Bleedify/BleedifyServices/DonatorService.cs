@@ -44,5 +44,29 @@ namespace BleedifyServices
             }
             throw new ServiceException("A donator with that name doesn't exist");
         }
+    
+        public IEnumerable<Donator> Filter(int? grupaDeSange, int? institutie, bool canDonate = false)
+        {
+            return _repository.GetAll()
+                .Where(x =>
+                {
+                    if (null == grupaDeSange || !grupaDeSange.HasValue)
+                        return true;
+                    return x.GrupaDeSange.HasValue && x.GrupaDeSange == grupaDeSange;
+                })                
+                .Where(x =>
+                {
+                    if (null == institutie || !institutie.HasValue)
+                        return true;
+                    return x.InstitutieAsociata.HasValue && x.InstitutieAsociata.Value == institutie;
+                })
+                //.Where(x =>
+                //{
+                //    if (!canDonate)
+                //        return true;
+                //    return null != x.DataDonarePosibila && x.DataDonarePosibila <= DateTime.Now;
+                //})
+                .ToList();
+        }
 	}
 }
