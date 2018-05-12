@@ -28,6 +28,7 @@ namespace BleedifyPersonal.ViewModels
         {
             DonatieViewModel = donatieViewModel;
             NumeDonator = DonatieViewModel.Donator.Nume;
+            PrenumeDonator = DonatieViewModel.Donator.Prenume;
             SelectedInstitutie = DonatieViewModel.InstitutieAsociataObj;
 
             AddCommand = new BasicCommand(Save);
@@ -55,22 +56,24 @@ namespace BleedifyPersonal.ViewModels
             }
         }
         public string NumeDonator { get; set; }
+        public string PrenumeDonator { get; set; }
 
 
         public void Save()
         {
             var test3 = SelectedInstitutie;
             if (String.IsNullOrEmpty(NumeDonator) ||
-               DonatieViewModel.DataDonare == null ||
-               String.IsNullOrEmpty(DonatieViewModel.EtapaDonare) ||
-               SelectedInstitutie == null)
+                String.IsNullOrEmpty(PrenumeDonator) ||
+                DonatieViewModel.DataDonare == null ||
+                String.IsNullOrEmpty(DonatieViewModel.EtapaDonare) ||
+                SelectedInstitutie == null)
             {
                 MessageBox.Show("Plase make sure you completed all the fields correctly..", "Error", MessageBoxButton.OK);
             }
 
             try
             {
-                Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator);
+                Donator Donator = AppService.Instance.DonatorService.getDonatorByName(NumeDonator, PrenumeDonator);
                 DonatieViewModel.DonatorId = Donator.Id;
                 DonatieViewModel.GrupaDeSangeId = Donator.GrupaDeSange;
                 DonatieViewModel.GrupaDeSange = Donator.GrupaDeSangeObj;
