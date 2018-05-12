@@ -214,9 +214,6 @@ namespace BleedifyPersonal.ViewModels
 
         private void ClearFilters()
         {
-            Etapa = null;
-            Grupa = null;
-
             var donations = AppService.Instance.DonatieService.Filter(null, null);
 
             foreach (var d in donations)
