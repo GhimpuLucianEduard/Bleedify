@@ -28,6 +28,10 @@ namespace BleedifyServices
             _repository.Delete(id);
         }
 
+        public void Add(Donator entity)
+        {
+            _repository.Add(entity);
+        }
         public Donator getDonatorByName(string nume)
         {
             foreach(var donator in _repository.GetAll())

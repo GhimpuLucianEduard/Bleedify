@@ -60,8 +60,13 @@ namespace BleedifyPersonal.ViewModels
 
         private void AddDonatie()
         {
-            DonatieMasterDetailView DetailPage = new DonatieMasterDetailView(new DonatieDetailViewModel(new DonatieViewModel()));
+            var viewModel = new DonatieDetailViewModel(new DonatieViewModel());
+            DonatieMasterDetailView DetailPage = new DonatieMasterDetailView(viewModel);
             DetailPage.Show();
+            viewModel.DonatieAdded += (source, donatie) =>
+            {
+                Donatii.Add(new DonatieViewModel(donatie));
+            };
         }
     }
 }
