@@ -53,13 +53,13 @@ namespace BleedifyServices
                     if (null != grupaDeSange || !grupaDeSange.HasValue)
                         return true;
                     return x.GrupaDeSange.HasValue && x.GrupaDeSange == grupaDeSange;
-                })
-                .Where(x =>
-                {
-                    if (!canDonate)
-                        return true;
-                    return null != x.DataDonarePosibila && x.DataDonarePosibila <= DateTime.Now;
-                })
+                })                
+                //.Where(x =>
+                //{
+                //    if (!canDonate)
+                //        return true;
+                //    return null != x.DataDonarePosibila && x.DataDonarePosibila <= DateTime.Now;
+                //})
                 .ToList();
         }
 	}
