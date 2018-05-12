@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using BleedifyModels.ModelsEF;
 using System.Collections.Generic;
+using System.Windows;
+using BleedifyMedic.Views;
 
 namespace BleedifyMedic.ViewModels
 {
@@ -20,11 +22,10 @@ namespace BleedifyMedic.ViewModels
         public ObservableCollection<CerereViewModel> Cereri { get; private set; } = new ObservableCollection<CerereViewModel>();
         public ObservableCollection<string> Stari { get; private set; }
 
-        public ICommand StareSelectionChanged
-        {
-            get;
-            set;
-        }
+        public ICommand StareSelectionChanged { get; private set; }
+        public ICommand UpdateCerereCommand { get; private set; }
+        public ICommand DeleteCerereCommand { get; private set; }
+        public ICommand AddCerereCommand { get; private set; }
 
         public string SelectedStare
         {
@@ -52,6 +53,9 @@ namespace BleedifyMedic.ViewModels
             SelectedStare = Stari[0];
 
             StareSelectionChanged = new BasicCommandWithParameter(GetCereriByStare);
+            UpdateCerereCommand = new BasicCommand(UpdateCerere);
+            DeleteCerereCommand = new BasicCommand(DeleteCerere);
+            AddCerereCommand = new BasicCommand(AddCerere);
         }
 
         private void LoadData()
@@ -68,6 +72,35 @@ namespace BleedifyMedic.ViewModels
             foreach (var c in cereri)
             {
                 Cereri.Add(new CerereViewModel(c));
+            }
+        }
+
+        public void UpdateCerere()
+        {
+
+        }
+
+        public void AddCerere()
+        {
+            var DetailViewModel = new CerereDetailViewModel(new CerereViewModel());
+            CerereMasterDetailView DetailPage = new CerereMasterDetailView(DetailViewModel);
+            DetailPage.Show();
+            DetailViewModel.CerereAdded += (source, cerere) =>
+            {
+                Cereri.Add(new CerereViewModel(cerere));
+            };
+        }
+
+        public void DeleteCerere()
+        {
+            if (SelectedCerere == null)
+            {
+                MessageBox.Show("Trebuie sa selectezi o cerere!");
+            }
+            else
+            {
+                AppService.Instance.CerereService.Delete(SelectedCerere.Id);
+                Cereri.Remove(SelectedCerere);
             }
         }
 
