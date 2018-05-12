@@ -8,7 +8,7 @@
 
 Title="Donations" Height="750" Width="1100">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" x:Name="DonationDataGrid" SelectedItem="{Binding SelectedDonatie, Mode=TwoWay}" ItemsSource="{Binding Donatii}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="671">
+        <DataGrid AutoGenerateColumns="False" x:Name="DonationDataGrid" SelectedItem="{Binding SelectedDonatie, Mode=TwoWay}" ItemsSource="{Binding Donatii}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="649">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Data" Binding="{Binding DataDonare}"/>
                 <DataGridTextColumn Header="Nume" Binding="{Binding Donator.Nume}"/>
@@ -25,15 +25,15 @@ Title="Donations" Height="750" Width="1100">
         <ComboBox
             ItemsSource="{Binding EtapaValues}"
             SelectedItem="{Binding Etapa}"
-            HorizontalAlignment="Left" Margin="904,118,0,0" VerticalAlignment="Top" Width="129"/>
+            HorizontalAlignment="Left" Margin="948,118,0,0" VerticalAlignment="Top" Width="85"/>
         <Button Command="{Binding FilterCommand}" Content="Filter" HorizontalAlignment="Left" Margin="804,215,0,0" VerticalAlignment="Top" Width="229" RenderTransformOrigin="0.187,0.1"/>
         <Button Command="{Binding ClearFiltersCommand}" Content="Clear Filters" HorizontalAlignment="Left" Margin="804,250,0,0" VerticalAlignment="Top" Width="229"/>
         <ComboBox 
                   ItemsSource="{Binding GrupeValues}" 
                   DisplayMemberPath="Nume"
                   SelectedItem="{Binding Grupa, Mode=TwoWay}"
-            HorizontalAlignment="Left" Margin="904,154,0,0" VerticalAlignment="Top" Width="129"/>
-        <Label Content="Etapa Donare" HorizontalAlignment="Left" Margin="804,118,0,0" VerticalAlignment="Top" Width="84" RenderTransformOrigin="0.75,0.769"/>
-        <Label Content="Grupa de Sange" HorizontalAlignment="Left" Margin="804,154,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.368,0.577"/>
+            HorizontalAlignment="Left" Margin="948,154,0,0" VerticalAlignment="Top" Width="85"/>
+        <Label Content="Etapa Donare" HorizontalAlignment="Left" Margin="804,118,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Grupa de Sange" HorizontalAlignment="Left" Margin="815,154,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

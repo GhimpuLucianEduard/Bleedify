@@ -29,14 +29,14 @@ namespace BleedifyServices
             };
             var compGlobuleR = new Componenta()
             {
-                TipComponenta = "Trombocite",
+                TipComponenta = "Globule Rosii",
                 IdDonatie = donatie.Id,
                 DataDepunere = DateTime.Now,
                 Stare = "In Asteptare"
             };
             var compPlasma = new Componenta()
             {
-                TipComponenta = "Trombocite",
+                TipComponenta = "Plasma",
                 IdDonatie = donatie.Id,
                 DataDepunere = DateTime.Now,
                 Stare = "In Asteptare"
