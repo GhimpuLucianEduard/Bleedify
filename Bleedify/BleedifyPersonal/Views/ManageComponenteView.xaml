@@ -17,6 +17,7 @@
                 <DataGridTextColumn Header="Prenume Pacient" Binding="{Binding Pacient.Prenume}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" HorizontalAlignment="Left" Margin="65,500,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" HorizontalAlignment="Left" Margin="65,500,0,0" VerticalAlignment="Top" Width="185" Height="62"/>
+        <Button Command="{Binding UpdateCommand}" Content="Modifica" HorizontalAlignment="Left" Margin="551,500,0,0" VerticalAlignment="Top" Width="185" Height="62"/>
     </Grid>
 </Window>

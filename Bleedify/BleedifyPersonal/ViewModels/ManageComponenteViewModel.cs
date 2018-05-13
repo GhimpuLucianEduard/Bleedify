@@ -1,4 +1,5 @@
-﻿using BleedifyServices;
+﻿using BleedifyPersonal.Views;
+using BleedifyServices;
 using DomainViewModels;
 using DomainViewModels.Commands;
 using System;
@@ -27,11 +28,13 @@ namespace BleedifyPersonal.ViewModels
 
         public ICommand LoadComponenteCommand { get; private set; }
         public ICommand DeleteDonatieCommand { get; private set; }
+        public ICommand UpdateCommand { get; private set; }
 
         public ManageComponenteViewModel()
         {
             LoadComponenteCommand = new BasicCommand(LoadData);
             DeleteDonatieCommand = new BasicCommand(DeleteComponenta);
+            UpdateCommand = new BasicCommand(UpdateComponenta);
         }
 
         private void LoadData()
@@ -60,6 +63,37 @@ namespace BleedifyPersonal.ViewModels
                     AppService.Instance.ComponentaService.Delete(SelectedComponenta.Id);
                     Componente.Remove(SelectedComponenta);
                 }
+            }
+        }
+
+        private void UpdateComponenta()
+        {
+            if (SelectedComponenta == null)
+            {
+                MessageBox.Show("You have to select a donation first...");
+            }
+            else
+            {
+                var viewModel = new ComponentaDetailViewModel(SelectedComponenta);
+                ComponentaMasterDetailView DetailPage = new ComponentaMasterDetailView(viewModel);
+                DetailPage.Show();
+
+                viewModel.ComponentaUpdated += (source, componenta) =>
+                {
+                    var componentavm = new ComponentaViewModel(componenta);
+
+                    Componente.ToList().ForEach(d =>
+                    {
+                        if (d.Id == componentavm.Id)
+                        {
+                            d = componentavm;
+                            d.Pacient.Nume = componentavm.Pacient.Nume;
+                            d.Pacient.Prenume = componentavm.Pacient.Prenume;
+                        }
+                    });
+
+                    DetailPage.Close();
+                };
             }
         }
     }
