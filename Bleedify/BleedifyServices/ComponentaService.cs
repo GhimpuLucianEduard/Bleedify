@@ -79,5 +79,10 @@ namespace BleedifyServices
         {
             _repository.Delete(componentaId);
         }
+
+        public void Update(Componenta componenta)
+        {
+            _repository.Update(componenta);
+        }
     }
 }

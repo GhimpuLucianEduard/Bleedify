@@ -65,6 +65,7 @@
     <Compile Include="ViewModels\DonatieDetailViewModel.cs" />
     <Compile Include="ViewModels\ManageComponenteViewModel.cs" />
     <Compile Include="ViewModels\ManageDonatiiViewModel.cs" />
+    <Compile Include="ViewModels\ComponentaDetailViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -77,6 +78,9 @@
     </Compile>
     <Compile Include="Views\ManageDonatiiView.xaml.cs">
       <DependentUpon>ManageDonatiiView.xaml</DependentUpon>
+    </Compile>
+	    <Compile Include="Views\ComponentaMasterDetailView.xaml.cs">
+      <DependentUpon>ComponentaMasterDetailView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManageDonatiiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+	<Page Include="Views\ComponentaMasterDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
