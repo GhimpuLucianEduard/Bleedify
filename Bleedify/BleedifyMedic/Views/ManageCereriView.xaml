@@ -8,7 +8,7 @@
 
 Title="Cereri" Height="750" Width="850">
     <Grid Margin="0,0,3,-0.333">
-        <DataGrid ItemsSource="{Binding Cereri}" SelectedItem="{Binding SelectedCerere, Mode=TwoWay}" HorizontalAlignment="Left" Height="420" Margin="65,48,0,0" VerticalAlignment="Top" Width="703" AutoGenerateColumns="False">
+        <DataGrid ItemsSource="{Binding Cereri}" SelectedItem="{Binding SelectedCerere, Mode=TwoWay}" HorizontalAlignment="Left" Height="428" Margin="10,10,0,0" VerticalAlignment="Top" Width="820" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Medic" Binding="{Binding Medic}" />
                 <DataGridTextColumn Header="Pacient" Binding="{Binding Pacient}"/>
@@ -20,8 +20,8 @@ Title="Cereri" Height="750" Width="850">
             </DataGrid.Columns>
         </DataGrid>
         <Button Command="{Binding AddCerereCommand}" Content="Add" HorizontalAlignment="Left" Margin="154,495,0,0" VerticalAlignment="Top" Width="213" RenderTransformOrigin="-0.074,-0.68" Height="49"/>
-        <Button Command="{Binding DeleteCerereCommand}" Content="Delete" HorizontalAlignment="Left" Margin="154,549,0,0" VerticalAlignment="Top" Width="213" Height="49"/>
-        <Button Command="{Binding UpdateCerereCommand}" Content="Update" HorizontalAlignment="Left" Margin="154,603,0,0" VerticalAlignment="Top" Width="214" Height="49"/>
+        <Button Command="{Binding DeleteCerereCommand}" Content="Delete" HorizontalAlignment="Left" Margin="24,578,0,0" VerticalAlignment="Top" Width="142" Height="39"/>
+        <Button Command="{Binding UpdateCerereCommand}" Content="Update" HorizontalAlignment="Left" Margin="23,649,0,0" VerticalAlignment="Top" Width="214" Height="49"/>
         <ComboBox SelectedItem="{Binding SelectedStare}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" Margin="504,554,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Filtrare dupa stare" HorizontalAlignment="Left" Margin="393,550,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.93,-0.769"/>
         <ComboBox SelectedItem="{Binding SelectedGrupa}" ItemsSource="{Binding Grupe}" HorizontalAlignment="Left" Margin="504,492,0,0" VerticalAlignment="Top" Width="120"/>

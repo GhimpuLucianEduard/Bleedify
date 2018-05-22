@@ -32,5 +32,5 @@ namespace BleedifyMedic.Views
             get { return DataContext as ManageStocViewModel; }
             set { DataContext = value; }
         }
-    }
+	}
 }
