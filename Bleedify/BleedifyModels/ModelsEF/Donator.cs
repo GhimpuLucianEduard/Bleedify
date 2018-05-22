@@ -20,8 +20,8 @@ namespace BleedifyModels.ModelsEF
             this.AnuntDonators = new HashSet<AnuntDonator>();
             this.Donaties = new HashSet<Donatie>();
         }
-    
-        public int Id { get; set; }
+
+        public new int Id { get; set; }
         public Nullable<int> IdUtilizator { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
