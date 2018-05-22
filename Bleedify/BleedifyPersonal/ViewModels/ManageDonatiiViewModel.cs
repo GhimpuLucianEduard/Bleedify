@@ -32,7 +32,6 @@ namespace BleedifyPersonal.ViewModels
         public ICommand UpdateDonatieCommand { get; private set; }
         public ICommand PrelucreazaDonatieCommand { get; private set; }
         public ICommand FilterCommand { get; private set; }
-        public ICommand ClearFiltersCommand { get; private set; }
 
         public ManageDonatiiViewModel()
         {	
@@ -42,7 +41,8 @@ namespace BleedifyPersonal.ViewModels
             UpdateDonatieCommand = new BasicCommand(UpdateDonatie);
             PrelucreazaDonatieCommand = new BasicCommand(HandlePrelucreazaDonatie);
             FilterCommand = new BasicCommand(HandleFilter);
-            ClearFiltersCommand = new BasicCommand(ClearFilters);
+            Grupa = GrupeValues[0];
+            Etapa = EtapaValues[0];
         }
 
         private void LoadData()
@@ -174,24 +174,23 @@ namespace BleedifyPersonal.ViewModels
             {
                 return new List<string>()
                 {
-                    "De Analizat", "Analizata", "Invalida", "Prelucrata", "Donata"
+                    "Toate", "De Analizat", "Analizata", "Invalida", "Prelucrata", "Donata"
                 };
             }
         }
 
-        public List<GrupaDeSange> GrupeValues
+        public List<string> GrupeValues
         {
             get
             {
-                //return new List<string>()
-                //{
-                //    "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"
-                //};
-                return AppService.Instance.GrupaDeSangeService.GetAll().ToList();
+                return new List<string>()
+                {
+                    "Toate", "O+", "O-","A+","A-","B+","B-","AB+","AB-"
+                };
             }
         }
-        private GrupaDeSange _grupa;
-        public GrupaDeSange Grupa
+        private string _grupa;
+        public string Grupa
         {
             get { return _grupa; }
             set { SetValue(ref _grupa, value); }
@@ -210,28 +209,24 @@ namespace BleedifyPersonal.ViewModels
 
             IEnumerable<Donatie> donations;
 
-            if(Grupa == null)
+            var paramEtapa = Etapa;
+            int? paramGrupa;
+
+            if (Etapa.Equals("Toate"))
             {
-                donations = AppService.Instance.DonatieService.Filter(Etapa, null);
+                paramEtapa = null;
             }
-            else
+
+            if (Grupa.Equals("Toate"))
             {
-                donations = AppService.Instance.DonatieService.Filter(Etapa, Grupa.Id);
+                paramGrupa = null;
+            }else
+            {
+                paramGrupa = AppService.Instance.GrupaDeSangeService.GetAll().First(d => d.Nume == Grupa).Id;
             }
+
+            donations = AppService.Instance.DonatieService.Filter(paramEtapa, paramGrupa);
             
-            foreach (var d in donations)
-                Donatii.Add(new DonatieViewModel(d));
-        }
-
-        private void ClearFilters()
-        {
-            Grupa = null;
-            Etapa = null;
-
-            var donations = AppService.Instance.DonatieService.Filter(null, null);
-
-            Donatii.Clear();
-
             foreach (var d in donations)
                 Donatii.Add(new DonatieViewModel(d));
         }
