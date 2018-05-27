@@ -3,44 +3,46 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         xmlns:local="clr-namespace:BleedifyMedic.Views"
         mc:Ignorable="d">
-    <Grid Margin="0,0,3,-0.333">
-        <DataGrid ItemsSource="{Binding Componente}" HorizontalAlignment="Left" Height="361" Margin="10,10,0,0" AutoGenerateColumns="False" VerticalAlignment="Top" Width="820">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Tip" Binding="{Binding TipComponenta}" />
-                <DataGridTextColumn Header="Nume Donator" Binding="{Binding Donatie.Donator.Nume}"/>
-                <DataGridTextColumn Header="Prenume Donator" Binding="{Binding Donatie.Donator.Prenume}"/>
-                <DataGridTextColumn Header="Nume Pacient" Binding="{Binding Pacient.Nume}"/>
-                <DataGridTextColumn Header="Prenume Pacient" Binding="{Binding Pacient.Prenume}"/>
-                <DataGridTextColumn Header="Stare" Binding="{Binding Stare}"/>
-                <DataGridTextColumn Header="Data Depunere" Binding="{Binding DataDepunere}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <ComboBox SelectedItem="{Binding SelectedTipComponenta}" ItemsSource="{Binding Tipuri}" HorizontalAlignment="Left" Margin="134,389,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox SelectedItem="{Binding SelectedStareComponenta}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" Margin="134,424,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Filter dupa tip" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top"/>
-        <Label Content="Filter dupa stare" HorizontalAlignment="Left" Margin="10,427,0,0" VerticalAlignment="Top"/>
-        <Button Command="{Binding FilterComponenteCommand}" Content="Filter Componente" HorizontalAlignment="Left" Margin="40,472,0,0" VerticalAlignment="Top" Width="164" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.669"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <Button Command="{Binding ClearFilterComponenteCommand}" Content="Clear Filter Componente" HorizontalAlignment="Left" Margin="27,517,0,0" VerticalAlignment="Top" Width="189" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.22"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
 
-    </Grid>
+    <Canvas Margin="0,0,3,-0.333">
+
+        <materialDesign:Card>
+
+            <DataGrid ItemsSource="{Binding Componente}" HorizontalAlignment="Left" Height="361" Margin="10,10,0,0" AutoGenerateColumns="False" VerticalAlignment="Top" Width="831">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Tip" Binding="{Binding TipComponenta}" />
+                    <DataGridTextColumn Header="Nume Donator" Binding="{Binding Donatie.Donator.Nume}"/>
+                    <DataGridTextColumn Header="Prenume Donator" Binding="{Binding Donatie.Donator.Prenume}"/>
+                    <DataGridTextColumn Header="Nume Pacient" Binding="{Binding Pacient.Nume}"/>
+                    <DataGridTextColumn Header="Prenume Pacient" Binding="{Binding Pacient.Prenume}"/>
+                    <DataGridTextColumn Header="Stare" Binding="{Binding Stare}"/>
+                    <DataGridTextColumn Header="Data Depunere" Binding="{Binding DataDepunere}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+        </materialDesign:Card>
+
+        <materialDesign:Card Canvas.Top="395" Height="160" Width="270" Canvas.Left="179">
+
+            <Canvas>
+
+                <ComboBox SelectedItem="{Binding SelectedTipComponenta}" ItemsSource="{Binding Tipuri}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="123" Canvas.Top="7"/>
+                <ComboBox SelectedItem="{Binding SelectedStareComponenta}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="123" Canvas.Top="50"/>
+                <Label Content="Filter dupa tip" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="17"/>
+                <Label Content="Filter dupa stare" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="52" Canvas.Left="10"/>
+                <Button Command="{Binding FilterComponenteCommand}" Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.5,0.5" Canvas.Left="14" Canvas.Top="99"/>
+                <Button Command="{Binding ClearFilterComponenteCommand}" Content="Clear Filter " HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Canvas.Left="116" Canvas.Top="99" Height="33"/>
+
+            </Canvas>
+
+        </materialDesign:Card>
+
+
+
+    </Canvas>
 </UserControl>

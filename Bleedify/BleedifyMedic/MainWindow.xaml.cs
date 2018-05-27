@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BleedifyMedic.ViewModels;
 using BleedifyMedic.Views;
 
 namespace BleedifyMedic
@@ -24,6 +25,7 @@ namespace BleedifyMedic
 		public MainWindow()
 		{
 			InitializeComponent();
+			DataContext = new MainWindowViewModel();
 			MainGrid.Children.Add(new ManageCereriView());
 		}
 

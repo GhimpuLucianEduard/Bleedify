@@ -21,8 +21,6 @@ namespace BleedifyMedic.Views
             InitializeComponent();
             ViewModel = new ManageCereriViewModel();
             ViewModel.LoadCereriCommand.Execute(null);
-
-            Settings.LoggedMedic = AppService.Instance.MedicService.Find(159);
         }
 
         public ManageCereriViewModel ViewModel

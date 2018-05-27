@@ -34,23 +34,23 @@
 
         <Button Command="{Binding AddCommand}" Content="Save" Canvas.Left="77" Canvas.Top="195" Width="99"/>
         <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Content="Cancel" Canvas.Left="225" Canvas.Top="195" Width="92"/>
-        <Label Content="Nume Pacient" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073" Canvas.Left="38" Canvas.Top="39"/>
-        <Label Content="Prenume Pacient" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.971" Canvas.Left="38" Canvas.Top="67"/>
-        <Label Content="Grupa de sange" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.781,2.659" Canvas.Left="38" Canvas.Top="92"/>
-        <Label Content="Tip Componenta" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.648,4.166" Canvas.Left="38" Canvas.Top="119"/>
+        <Label Content="Nume Pacient" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.073" Canvas.Left="42" Canvas.Top="24"/>
+        <Label Content="Prenume Pacient" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.971" Canvas.Left="42" Canvas.Top="51"/>
+        <Label Content="Grupa de sange" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.781,2.659" Canvas.Left="42" Canvas.Top="77"/>
+        <Label Content="Tip Componenta" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.648,4.166" Canvas.Left="42" Canvas.Top="104"/>
 
-        <TextBox IsEnabled="{Binding FieldsEnabled}" HorizontalAlignment="Left" Height="23" Margin="167,33,0,0" TextWrapping="Wrap" Text="{Binding NumePacient}" VerticalAlignment="Top" Width="171"/>
+        <TextBox IsEnabled="{Binding FieldsEnabled}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding NumePacient}" VerticalAlignment="Top" Width="171" Canvas.Left="171" Canvas.Top="18"/>
         <ComboBox ItemsSource="{Binding TipuriComponenta}" 
                   SelectedItem="{Binding SelectedTip}"
-                  HorizontalAlignment="Left" Margin="167,117,0,0" VerticalAlignment="Top" Width="171" SelectedIndex="0"/>
-        <TextBox IsEnabled="{Binding FieldsEnabled}" HorizontalAlignment="Left" Height="23" Margin="167,61,0,0" TextWrapping="Wrap" Text="{Binding PrenumePacient}" VerticalAlignment="Top" Width="171"/>
+                  HorizontalAlignment="Left" VerticalAlignment="Top" Width="171" SelectedIndex="0" Canvas.Left="170" Canvas.Top="102"/>
+        <TextBox IsEnabled="{Binding FieldsEnabled}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding PrenumePacient}" VerticalAlignment="Top" Width="171" Canvas.Left="171" Canvas.Top="46"/>
         <ComboBox ItemsSource="{Binding GrupeDeSange}" 
             SelectedItem="{Binding SelectedGrupa}"
-            HorizontalAlignment="Left" Margin="167,89,0,0" VerticalAlignment="Top" Width="171" SelectedIndex="0"/>
+            HorizontalAlignment="Left" VerticalAlignment="Top" Width="171" SelectedIndex="0" Canvas.Left="170" Canvas.Top="74"/>
         <ComboBox IsEnabled="{Binding FieldsEnabled, Converter={StaticResource BoolConverter}}" ItemsSource="{Binding StariPosibile}" 
             SelectedItem="{Binding SelectedStare}"
-            HorizontalAlignment="Left" Margin="167,143,0,0" VerticalAlignment="Top" Width="171" SelectedIndex="0"/>
-        <Label Content="Stare" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.648,4.166" Canvas.Left="65" Canvas.Top="154"/>
+            HorizontalAlignment="Left" VerticalAlignment="Top" Width="171" SelectedIndex="0" Canvas.Left="170" Canvas.Top="128"/>
+        <Label Content="Stare" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.648,4.166" Canvas.Left="68" Canvas.Top="138"/>
 
     </Canvas>
 </metro:MetroWindow>

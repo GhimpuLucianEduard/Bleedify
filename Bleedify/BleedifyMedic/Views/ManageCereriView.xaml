@@ -39,9 +39,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Grid.RowSpan="1" Command="{Binding AddCerereCommand}" Content="Add" Width="140" Height="33"/>
-                <Button Grid.Row="1" Grid.RowSpan="1" Command="{Binding DeleteCerereCommand}" Content="Delete"  Width="140" Height="33"/>
-                <Button Grid.Row="2" Grid.RowSpan="1" Command="{Binding UpdateCerereCommand}" Content="Update"  Width="140" Height="33"/>
+                <Button Grid.Row="0" Grid.RowSpan="1" Command="{Binding AddCerereCommand}" Content="Adauga" Width="140" Height="33"/>
+                <Button Grid.Row="1" Grid.RowSpan="1" Command="{Binding DeleteCerereCommand}" Content="Sterge"  Width="140" Height="33"/>
+                <Button Grid.Row="2" Grid.RowSpan="1" Command="{Binding UpdateCerereCommand}" Content="Modifica"  Width="140" Height="33"/>
             </Grid>
 
         </materialDesign:Card>
@@ -57,10 +57,10 @@
                 <Label Content="Filter dupa grupa" Canvas.Left="12" Canvas.Top="52"  />
                 <ComboBox SelectedItem="{Binding SelectedTip}" ItemsSource="{Binding Tipuri}" Canvas.Left="138" Canvas.Top="18" Width="124"/>
                 <Label Content="Filter dupa tip" Canvas.Left="20" Canvas.Top="90" />
-                <Button Command="{Binding FilterCereriCommand}" Canvas.Left="7" Canvas.Top="140"  Width="122" Content="Filter" >
+                <Button Command="{Binding FilterCereriCommand}" Canvas.Left="7" Canvas.Top="140"  Width="122" Content="Filtreaza" >
 
                 </Button>
-                <Button Command="{Binding ClearFilterCereriCommand}" Content="Clear Filter Cereri" Canvas.Left="138" Canvas.Top="142" />
+                <Button Command="{Binding ClearFilterCereriCommand}" Content="Sterge Filtrele" Canvas.Left="138" Canvas.Top="140" Width="124" />
 
             </Canvas>
 

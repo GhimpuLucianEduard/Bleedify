@@ -7,5 +7,10 @@
 			get { return Adresa1; }
 			set { Adresa1 = value; }
 		}
+
+		public override string ToString()
+		{
+			return Nume;
+		}
 	}
 }

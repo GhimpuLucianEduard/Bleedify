@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using BleedifyModels.Enums;
 using BleedifyModels.ModelsEF;
 using BleedifyModels.Repositories;
 using BleedifyModels.Validators;
@@ -14,18 +15,41 @@ namespace BleedifyServices.Services
 			_repository = new UtilizatorRepository(new UtilizatorValidator());
 		}
 
-		public bool Login(string username, string password)
+		public void Add(Utilizator utilizator)
 		{
-			var loginOk = false;
+			_repository.Add(utilizator);
+		}
+
+		public Utilizator Login(string username, string password, TipUtilizator tipUtilizator)
+		{
+			Utilizator toFind = null;
 			_repository.GetAll().ToList().ForEach(utilizator =>
 			{
 				if (utilizator.Password.CompareTo(password) == 0 && utilizator.UserName.CompareTo(username) == 0)
 				{
-					loginOk = true;
+					toFind = utilizator;
 				}
 			});
 
-			return loginOk;
+			if (toFind == null)
+			{
+				return null;
+			}
+
+			if (tipUtilizator.Equals(TipUtilizator.Medic))
+			{
+				return AppService.Instance.MedicService.FindByIdUtilizator(toFind.Id);
+			}
+			else if (tipUtilizator.Equals(TipUtilizator.Donator))
+			{
+				return AppService.Instance.DonatorService.FindByIdUtilizator(toFind.Id);
+			}
+			else
+			{
+				return AppService.Instance.PersonalService.FindByIdUtilizator(toFind.Id);
+			}
+
+			return null;
 		}
 
 		public void Register(Utilizator utilizator)

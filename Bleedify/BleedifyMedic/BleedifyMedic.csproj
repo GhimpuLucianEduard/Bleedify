@@ -80,19 +80,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Utils\Settings.cs" />
+    <Compile Include="Utils\AppSettings.cs" />
     <Compile Include="ViewModels\CerereDetailViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ManageCereriViewModel.cs" />
     <Compile Include="ViewModels\ManageStocViewModel.cs" />
+    <Compile Include="ViewModels\RegisterMedicViewModel.cs" />
     <Compile Include="Views\CerereMasterDetailView.xaml.cs">
       <DependentUpon>CerereMasterDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ManageCereriView.xaml.cs">
       <DependentUpon>ManageCereriView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ManageStocView.xaml.cs">
       <DependentUpon>ManageStocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterMedic.xaml.cs">
+      <DependentUpon>RegisterMedic.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -110,11 +118,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ManageCereriView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManageStocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterMedic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

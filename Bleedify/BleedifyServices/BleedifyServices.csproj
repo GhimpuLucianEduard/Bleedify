@@ -46,6 +46,7 @@
     <Compile Include="DonatieService.cs" />
     <Compile Include="DonatorService.cs" />
     <Compile Include="InstitutieAsociataService.cs" />
+    <Compile Include="PersonalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CerereMedicPacientService.cs" />
     <Compile Include="GrupaDeSangeService.cs" />

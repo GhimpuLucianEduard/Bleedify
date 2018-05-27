@@ -18,24 +18,22 @@
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
-        
+
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Bleedify" Height="700" Width="1200">
+        Title="Bleedify - Medic" Height="700" Width="1200">
 
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
             <materialDesign:PopupBox >
                 <StackPanel>
                     <Button Content="Help"/>
-                    <Button Content="Logout"/>
+                    <Button Content="Logout" Command="{Binding HandleLogoutCommand}"/>
                 </StackPanel>
             </materialDesign:PopupBox>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>
 
     <Grid>
-
-
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -47,9 +45,8 @@
 
 
         <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="1"
-                                 Height="600"
-                                 Width="200"
-                                 materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="12">
+                                 Height="622"
+                                 materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="16,12,19.4,0">
 
             <Canvas>
 
@@ -92,6 +89,11 @@
                     </Label.Style>
                 </Label>
 
+                <materialDesign:PackIcon Kind="Account" RenderTransformOrigin="2.9,4.206" Canvas.Left="3" Canvas.Top="525" Height="21" Width="21"></materialDesign:PackIcon>
+                <Label FontSize="12" Content="{Binding NumeUtilizator}" Height="35" Width="129" Canvas.Top="525" Canvas.Left="28"/>
+                <materialDesign:PackIcon Kind="HospitalBuilding" Canvas.Top="565" Height="29" Width="21" Canvas.Left="3"/>
+                <Label FontSize="12" Content="{Binding InstitutieUtilizator}" Height="34" Width="130" Canvas.Top="566" Canvas.Left="28"></Label>
+
             </Canvas>
 
 
@@ -103,11 +105,7 @@
                              Width="900"
                              materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="12">
 
-
-
         </Grid>
-
-
 
     </Grid>
 </metro:MetroWindow>

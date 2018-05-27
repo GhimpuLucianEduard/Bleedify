@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BleedifyModels.Enums;
+using BleedifyModels.ModelsEF;
+using BleedifyServices.Services;
 
 namespace BleedifyServices
 {
@@ -18,15 +21,17 @@ namespace BleedifyServices
         private PacientService _pacientService;
         private MedicService _medicService;
         private AnuntDonatorService _anuntDonatorService;
-
+	    private PersonalService _personalService;
+	    private UtilizatorService _utilizatorService;
 
         private AppService ()
-        {
+        {	
+			_utilizatorService = new UtilizatorService();
             _donatieService = new DonatieService();
             _institutieService = new InstitutieAsociataService();
             _donatorService = new DonatorService();
             _componentaService = new ComponentaService();
-
+	        _personalService = new PersonalService();
             _cerereService = new CerereMedicPacientService();
             _grupaDeSangeService = new GrupaDeSangeService();
             _pacientService = new PacientService();
@@ -90,5 +95,15 @@ namespace BleedifyServices
                 return _instance;
             }
         }
+
+	    public PersonalService PersonalService
+	    {
+		    get { return _personalService; }
+	    }
+
+	    public UtilizatorService UtilizatorService
+	    {
+		    get { return _utilizatorService; }
+	    }
     }
 }

@@ -68,5 +68,10 @@ namespace BleedifyServices
                 //})
                 .ToList();
         }
-	}
+
+	    public Utilizator FindByIdUtilizator(int idUtilizator)
+	    {
+		    return _repository.GetAll().First(x => x.IdUtilizator == idUtilizator);
+		}
+    }
 }

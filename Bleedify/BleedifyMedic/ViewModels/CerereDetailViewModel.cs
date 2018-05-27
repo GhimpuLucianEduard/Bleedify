@@ -138,10 +138,10 @@ namespace BleedifyMedic.ViewModels
                 try
                 {
                     Pacient Pacient = AppService.Instance.PacientService.GetPacientByFullName(NumePacient, PrenumePacient).First();
-                    CerereViewModel.IdMedic = Settings.LoggedMedic.Id;
+                    CerereViewModel.IdMedic = AppSettings.LoggedMedic.Id;
                     CerereViewModel.IdPacient = Pacient.Id;
                     CerereViewModel.IdGrupaDeSange = SelectedGrupa.Id;
-                    CerereViewModel.Medic = Settings.LoggedMedic;
+                    CerereViewModel.Medic = AppSettings.LoggedMedic;
                     CerereViewModel.Pacient = Pacient;
                     CerereViewModel.TipComponenta = SelectedTip;
                     CerereViewModel.GrupaDeSange = SelectedGrupa;

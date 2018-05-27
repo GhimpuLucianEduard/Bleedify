@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BleedifyModels.ModelsEF;
 using BleedifyModels.Repositories;
 using BleedifyModels.Validators;
@@ -16,7 +17,14 @@ namespace BleedifyServices
 
         public void Add(Medic entity)
         {
-            _repository.Add(entity);
+			var utilizator = new Utilizator();
+	        utilizator.TipUtilizator = entity.TipUtilizator;
+	        utilizator.InstitutieAsociata = entity.InstitutieAsociata;
+	        utilizator.UserName = entity.UserName;
+	        utilizator.Password = entity.Password;
+			AppService.Instance.UtilizatorService.Add(utilizator);
+	        entity.IdUtilizator = utilizator.Id;
+			_repository.Add(entity);
         }
 
         public Medic Find(int id)
@@ -38,5 +46,10 @@ namespace BleedifyServices
         {
             _repository.Delete(id);
         }
+
+	    public Medic FindByIdUtilizator(int idUtilizator)
+	    {
+		    return _repository.GetAll().First(x => x.IdUtilizator == idUtilizator);
+	    }
     }
 }

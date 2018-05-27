@@ -34,5 +34,5 @@ namespace BleedifyMedic.Views
             get { return DataContext as CerereDetailViewModel; }
             set { DataContext = value; }
         }
-    }
+	}
 }
