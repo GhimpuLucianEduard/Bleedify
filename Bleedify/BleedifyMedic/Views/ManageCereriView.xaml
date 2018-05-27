@@ -1,34 +1,70 @@
-﻿<Window x:Class="BleedifyMedic.Views.ManageCereriView"
+﻿<UserControl x:Class="BleedifyMedic.Views.ManageCereriView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BleedifyMedic.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
+             Width="900"
+             Height="600"
+>
+    <Canvas>
 
-Title="Cereri" Height="750" Width="850">
-    <Grid Margin="0,0,3,-0.333">
-        <DataGrid ItemsSource="{Binding Cereri}" SelectedItem="{Binding SelectedCerere, Mode=TwoWay}" HorizontalAlignment="Left" Height="428" Margin="10,10,0,0" VerticalAlignment="Top" Width="820" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Medic" Binding="{Binding Medic}" />
-                <DataGridTextColumn Header="Pacient" Binding="{Binding Pacient}"/>
-                <DataGridTextColumn Header="Grupa" Binding="{Binding GrupaDeSange}"/>
-                <DataGridTextColumn Header="Tip" Binding="{Binding TipComponenta}"/>
-                <DataGridTextColumn Header="Stare" Binding="{Binding Stare}"/>
-                <DataGridTextColumn Header="Data Depunere" Binding="{Binding DataDepunere}"/>
-                <DataGridTextColumn Header="Data Servire" Binding="{Binding DataServire}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Command="{Binding AddCerereCommand}" Content="Add" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="-0.074,-0.68" Height="33"/>
-        <Button Command="{Binding DeleteCerereCommand}" Content="Delete" HorizontalAlignment="Left" Margin="10,543,0,0" VerticalAlignment="Top" Width="123" Height="33"/>
-        <Button Command="{Binding UpdateCerereCommand}" Content="Update" HorizontalAlignment="Left" Margin="10,501,0,0" VerticalAlignment="Top" Width="140" Height="30"/>
-        <ComboBox SelectedItem="{Binding SelectedStare}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" Margin="686,567,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Filtrare dupa stare" HorizontalAlignment="Left" Margin="520,567,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.93,-0.769"/>
-        <ComboBox SelectedItem="{Binding SelectedGrupa}" ItemsSource="{Binding Grupe}" HorizontalAlignment="Left" Margin="686,463,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Filter dupa grupa" HorizontalAlignment="Left" Margin="542,473,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.93,-0.769"/>
-        <ComboBox SelectedItem="{Binding SelectedTip}" ItemsSource="{Binding Tipuri}" HorizontalAlignment="Left" Margin="686,517,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Filter dupa tip" HorizontalAlignment="Left" Margin="542,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.93,-0.769"/>
-        <Button Command="{Binding FilterCereriCommand}" Content="Filter Cereri" HorizontalAlignment="Left" Margin="510,624,0,0" VerticalAlignment="Top" Width="283" Height="29"/>
-        <Button Command="{Binding ClearFilterCereriCommand}" Content="Clear Filter Cereri" HorizontalAlignment="Left" Margin="510,668,0,0" VerticalAlignment="Top" Width="283" Height="30"/>
-    </Grid>
-</Window>
+
+
+        <materialDesign:Card 
+            >
+
+            <DataGrid ItemsSource="{Binding Cereri}" IsReadOnly="True" SelectedItem="{Binding SelectedCerere, Mode=TwoWay}"  AutoGenerateColumns="False" Width="901" Height="389">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Medic" Binding="{Binding Medic}" />
+                    <DataGridTextColumn Header="Pacient" Binding="{Binding Pacient}"/>
+                    <DataGridTextColumn Header="Grupa" Binding="{Binding GrupaDeSange}"/>
+                    <DataGridTextColumn Header="Tip" Binding="{Binding TipComponenta}"/>
+                    <DataGridTextColumn Header="Stare" Binding="{Binding Stare}"/>
+                    <DataGridTextColumn Header="Data Depunere" Binding="{Binding DataDepunere}"/>
+                    <DataGridTextColumn Header="Data Servire" Binding="{Binding DataServire}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </materialDesign:Card>
+
+        <materialDesign:Card Canvas.Top="416" Width="210" Canvas.Left="45">
+
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Height="154" Margin="0,10,0,0" Width="360">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Grid.RowSpan="1" Command="{Binding AddCerereCommand}" Content="Add" Width="140" Height="33"/>
+                <Button Grid.Row="1" Grid.RowSpan="1" Command="{Binding DeleteCerereCommand}" Content="Delete"  Width="140" Height="33"/>
+                <Button Grid.Row="2" Grid.RowSpan="1" Command="{Binding UpdateCerereCommand}" Content="Update"  Width="140" Height="33"/>
+            </Grid>
+
+        </materialDesign:Card>
+
+        <materialDesign:Card Width="300" Height="180" Canvas.Left="556" Canvas.Top="410">
+
+            <Canvas>
+                <ComboBox SelectedItem="{Binding SelectedStare}" ItemsSource="{Binding Stari}" Canvas.Left="138" Canvas.Top="90" Width="124" />
+                <Label Content="Filtrare dupa stare" Canvas.Left="7" Canvas.Top="20" />
+                <ComboBox SelectedItem="{Binding SelectedGrupa}" ItemsSource="{Binding Grupe}" Canvas.Left="138" Canvas.Top="52" RenderTransformOrigin="0.5,0.5" Height="29" Width="124" >
+
+                </ComboBox>
+                <Label Content="Filter dupa grupa" Canvas.Left="12" Canvas.Top="52"  />
+                <ComboBox SelectedItem="{Binding SelectedTip}" ItemsSource="{Binding Tipuri}" Canvas.Left="138" Canvas.Top="18" Width="124"/>
+                <Label Content="Filter dupa tip" Canvas.Left="20" Canvas.Top="90" />
+                <Button Command="{Binding FilterCereriCommand}" Canvas.Left="7" Canvas.Top="140"  Width="122" Content="Filter" >
+
+                </Button>
+                <Button Command="{Binding ClearFilterCereriCommand}" Content="Clear Filter Cereri" Canvas.Left="138" Canvas.Top="142" />
+
+            </Canvas>
+
+        </materialDesign:Card>
+
+    </Canvas>
+</UserControl>

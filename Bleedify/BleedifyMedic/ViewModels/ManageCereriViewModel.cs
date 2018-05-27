@@ -9,6 +9,7 @@ using System.Windows.Input;
 using BleedifyModels.ModelsEF;
 using System.Windows;
 using BleedifyMedic.Views;
+using MaterialDesignThemes.Wpf;
 
 namespace BleedifyMedic.ViewModels
 {
@@ -187,7 +188,7 @@ namespace BleedifyMedic.ViewModels
             {
                 var DetailViewModel = new CerereDetailViewModel(SelectedCerere);
                 CerereMasterDetailView DetailPage = new CerereMasterDetailView(DetailViewModel);
-                DetailPage.Show();
+	            DetailPage.Show();
                 DetailViewModel.CerereUpdated += (source, cerere) =>
                 {
                     var cererevm = new CerereViewModel(cerere);
@@ -199,7 +200,7 @@ namespace BleedifyMedic.ViewModels
                             x = cererevm;
                         }
                     });
-                    DetailPage.Close();
+	                DetailPage.Close();
                 };
             }
         }
@@ -208,7 +209,7 @@ namespace BleedifyMedic.ViewModels
         {
             var DetailViewModel = new CerereDetailViewModel(new CerereViewModel());
             CerereMasterDetailView DetailPage = new CerereMasterDetailView(DetailViewModel);
-            DetailPage.Show();
+	        DetailPage.Show();
             DetailViewModel.CerereAdded += (source, cerere) =>
             {
                 Cereri.Add(new CerereViewModel(cerere));

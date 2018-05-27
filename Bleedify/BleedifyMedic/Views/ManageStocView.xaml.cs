@@ -18,7 +18,7 @@ namespace BleedifyMedic.Views
     /// <summary>
     /// Interaction logic for ManageStocView.xaml
     /// </summary>
-    public partial class ManageStocView : Window
+    public partial class ManageStocView : UserControl
     {
         public ManageStocView()
         {

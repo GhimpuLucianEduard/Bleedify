@@ -12,17 +12,31 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BleedifyMedic.Views;
 
 namespace BleedifyMedic
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class MainWindow
 	{
 		public MainWindow()
 		{
 			InitializeComponent();
+			MainGrid.Children.Add(new ManageCereriView());
+		}
+
+		private void ViewStoc(object sender, MouseButtonEventArgs e)
+		{
+			MainGrid.Children.Clear();
+			MainGrid.Children.Add(new ManageStocView());
+		}
+
+		private void ViewCereri(object sender, MouseButtonEventArgs e)
+		{
+			MainGrid.Children.Clear();
+			MainGrid.Children.Add(new ManageCereriView());
 		}
 	}
 }
