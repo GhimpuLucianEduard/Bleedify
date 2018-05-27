@@ -27,11 +27,9 @@ Title="Donations" Height="750" Width="1100">
             SelectedItem="{Binding Etapa}"
             HorizontalAlignment="Left" Margin="948,118,0,0" VerticalAlignment="Top" Width="85"/>
         <Button Command="{Binding FilterCommand}" Content="Filter" HorizontalAlignment="Left" Margin="804,215,0,0" VerticalAlignment="Top" Width="229" RenderTransformOrigin="0.187,0.1"/>
-        <Button Command="{Binding ClearFiltersCommand}" Content="Clear Filters" HorizontalAlignment="Left" Margin="804,250,0,0" VerticalAlignment="Top" Width="229"/>
         <ComboBox 
                   ItemsSource="{Binding GrupeValues}" 
-                  DisplayMemberPath="Nume"
-                  SelectedItem="{Binding Grupa, Mode=TwoWay}"
+                  SelectedItem="{Binding Grupa}"
             HorizontalAlignment="Left" Margin="948,154,0,0" VerticalAlignment="Top" Width="85"/>
         <Label Content="Etapa Donare" HorizontalAlignment="Left" Margin="804,118,0,0" VerticalAlignment="Top" Width="84"/>
         <Label Content="Grupa de Sange" HorizontalAlignment="Left" Margin="815,154,0,0" VerticalAlignment="Top"/>
