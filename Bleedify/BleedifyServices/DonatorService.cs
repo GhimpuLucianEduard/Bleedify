@@ -30,8 +30,15 @@ namespace BleedifyServices
 
         public void Add(Donator entity)
         {
-            _repository.Add(entity);
-        }
+			var utilizator = new Utilizator();
+	        utilizator.TipUtilizator = entity.TipUtilizator;
+	        utilizator.InstitutieAsociata = entity.InstitutieAsociata;
+	        utilizator.UserName = entity.UserName;
+	        utilizator.Password = entity.Password;
+	        AppService.Instance.UtilizatorService.Add(utilizator);
+	        entity.IdUtilizator = utilizator.Id;
+	        _repository.Add(entity);
+		}
 
         public Donator getDonatorByName(string nume, string prenume)
         {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using BleedifyDonator.Utilities;
+using BleedifyDonator.Utils;
 using BleedifyServices;
 using DomainViewModels;
 using DomainViewModels.Commands;
@@ -31,7 +31,7 @@ namespace BleedifyDonator.ViewModels
 
 			_isDataLoaded = true;
 			//TODO de modificat in id donator logat
-			var donations = AppService.Instance.DonatieService.GetAllByDonator(227);
+			var donations = AppService.Instance.DonatieService.GetAllByDonator(AppSettings.LoggedDonator.Id);
 			foreach (var d in donations)
 				Donatii.Add(new DonatieViewModel(d));
 		}

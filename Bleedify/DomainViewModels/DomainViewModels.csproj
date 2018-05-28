@@ -48,6 +48,7 @@
     <Compile Include="ComponentaViewModel.cs" />
     <Compile Include="Converters\VmToDmConverter.cs" />
     <Compile Include="DonatieViewModel.cs" />
+    <Compile Include="DonatorViewModel.cs" />
     <Compile Include="InverseBooleanConverter.cs" />
     <Compile Include="MedicViewModel.cs" />
     <Compile Include="PersonalViewModel.cs" />

@@ -12,13 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BleedifyDonator.ViewModels;
+using MahApps.Metro.Controls;
 
 namespace BleedifyDonator.Views
 {
 	/// <summary>
 	/// Interaction logic for MainViewDonator.xaml
 	/// </summary>
-	public partial class MainViewDonator : Window
+	public partial class DonatiiView : UserControl
 	{
 		public IstoricViewModel ViewModel
 		{
@@ -26,7 +27,7 @@ namespace BleedifyDonator.Views
 			set { DataContext = value; }
 		}
 
-		public MainViewDonator()
+		public DonatiiView()
 		{
 			InitializeComponent();
 			ViewModel = new IstoricViewModel();
