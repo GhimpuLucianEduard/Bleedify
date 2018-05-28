@@ -1,12 +1,13 @@
 ﻿using BleedifyPersonal.ViewModels;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace BleedifyPersonal.Views
 {
     /// <summary>
     /// Interaction logic for ManageDonatiiView.xaml
     /// </summary>
-    public partial class ManageDonatiiView : Window
+    public partial class ManageDonatiiView : UserControl
     {
         public ManageDonatiiView()
         {

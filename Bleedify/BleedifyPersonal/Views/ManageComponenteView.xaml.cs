@@ -18,7 +18,7 @@ namespace BleedifyPersonal.Views
     /// <summary>
     /// Interaction logic for ManageComponenteView.xaml
     /// </summary>
-    public partial class ManageComponenteView : Window
+    public partial class ManageComponenteView : UserControl
     {
         public ManageComponenteView()
         {

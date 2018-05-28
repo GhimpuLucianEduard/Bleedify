@@ -50,6 +50,7 @@
     <Compile Include="DonatieViewModel.cs" />
     <Compile Include="InverseBooleanConverter.cs" />
     <Compile Include="MedicViewModel.cs" />
+    <Compile Include="PersonalViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilizatorViewModel.cs" />
   </ItemGroup>

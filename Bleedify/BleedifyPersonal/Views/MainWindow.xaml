@@ -1,0 +1,110 @@
+﻿<metro:MetroWindow
+        x:Class="BleedifyPersonal.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BleedifyPersonal.Views"
+    
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Title="Bleedify - Centru Donare" Height="700" Width="1200">
+        <controls:MetroWindow.LeftWindowCommands>
+        <controls:WindowCommands>
+            <materialDesign:PopupBox >
+                <StackPanel>
+                    <Button Content="Help"/>
+                    <Button Content="Logout" Command="{Binding HandleLogoutCommand}"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </controls:WindowCommands>
+    </controls:MetroWindow.LeftWindowCommands>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="1"
+                                 Height="622"
+                                 materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="16,12,19.4,0">
+
+            <Canvas>
+
+                <materialDesign:PackIcon
+                    Foreground="{Binding Source={x:Reference labelCereri}, Path=Foreground}"
+                    Kind="ClipboardPlus"
+                    materialDesign:ColorZoneAssist.Mode="Light"
+                    Width="74" Height="63" Canvas.Left="10" Canvas.Top="42">
+
+                </materialDesign:PackIcon>
+
+
+                <Label MouseLeftButtonUp="ViewDonatii" x:Name="labelCereri" FontSize="18" Content="Donatii" RenderTransformOrigin="0.892,1.007" Canvas.Left="81" Canvas.Top="60" Width="72" Height="27">
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="Black" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
+
+
+                <materialDesign:PackIcon
+                    Foreground="{Binding Source={x:Reference labelStoc}, Path=Foreground}"
+                    Kind="Archive" RenderTransformOrigin="2.15,2.913" Canvas.Top="134" Height="68" Width="87"/>
+                <Label MouseLeftButtonUp="ViewStoc" x:Name="labelStoc" FontSize="18" Content="Stoc" RenderTransformOrigin="0.892,1.007" Canvas.Left="87" Canvas.Top="154" Width="72" Height="27">
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="Black" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
+
+                <materialDesign:PackIcon Kind="Account" RenderTransformOrigin="2.9,4.206" Canvas.Left="3" Canvas.Top="525" Height="21" Width="21"></materialDesign:PackIcon>
+                <Label FontSize="12" Content="{Binding NumeUtilizator}" Height="35" Width="129" Canvas.Top="525" Canvas.Left="28"/>
+                <materialDesign:PackIcon Kind="HospitalBuilding" Canvas.Top="565" Height="29" Width="21" Canvas.Left="3"/>
+                <Label FontSize="12" Content="{Binding InstitutieUtilizator}" Height="34" Width="130" Canvas.Top="566" Canvas.Left="28"></Label>
+
+            </Canvas>
+
+
+        </materialDesign:Card>
+
+
+        <Grid Name="MainGrid" Grid.Column="1" Grid.ColumnSpan="4"
+                             Height="600"
+                             Width="900"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="12">
+
+        </Grid>
+
+    </Grid>
+</metro:MetroWindow>
