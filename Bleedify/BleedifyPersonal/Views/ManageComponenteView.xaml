@@ -26,6 +26,7 @@
                     <DataGridTextColumn Header="Nume Donator" Binding="{Binding Donatie.Donator.Nume}"/>
                     <DataGridTextColumn Header="Prenume Donator" Binding="{Binding Donatie.Donator.Prenume}"/>
                     <DataGridTextColumn Header="TipComponenta" Binding="{Binding TipComponenta}"/>
+                    <DataGridTextColumn Header="Stare" Binding="{Binding Stare}"/>
                     <DataGridTextColumn Header="Data" Binding="{Binding DataDepunere}"/>
                     <DataGridTextColumn Header="Nume Pacient" Binding="{Binding Pacient.Nume}"/>
                     <DataGridTextColumn Header="Prenume Pacient" Binding="{Binding Pacient.Prenume}"/>
@@ -38,6 +39,21 @@
                 <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" Width="175" Height="35" Canvas.Left="10" Canvas.Top="50"/>
                 <Button Command="{Binding UpdateCommand}" Content="Modifica"  Width="175" Height="35" Canvas.Top="10" Canvas.Left="10"/>
             </Canvas>
+        </materialDesign:Card>
+
+        <materialDesign:Card Canvas.Top="382" Height="160" Width="270" Canvas.Left="449">
+
+            <Canvas>
+
+                <ComboBox SelectedItem="{Binding SelectedTipComponenta}" ItemsSource="{Binding Tipuri}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="123" Canvas.Top="7"/>
+                <ComboBox SelectedItem="{Binding SelectedStareComponenta}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="123" Canvas.Top="50"/>
+                <Label Content="Filter dupa tip" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="17"/>
+                <Label Content="Filter dupa stare" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="52" Canvas.Left="10"/>
+                <Button Command="{Binding FilterComponenteCommand}" Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.5,0.5" Canvas.Left="14" Canvas.Top="99"/>
+                <Button Command="{Binding ClearFilterComponenteCommand}" Content="Clear Filter " HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Canvas.Left="116" Canvas.Top="99" Height="33"/>
+
+            </Canvas>
+
         </materialDesign:Card>
 
     </Canvas>
