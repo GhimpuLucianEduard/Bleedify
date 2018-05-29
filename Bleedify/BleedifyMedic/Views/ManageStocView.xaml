@@ -35,8 +35,8 @@
                 <ComboBox SelectedItem="{Binding SelectedStareComponenta}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="123" Canvas.Top="50"/>
                 <Label Content="Filter dupa tip" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="17"/>
                 <Label Content="Filter dupa stare" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="52" Canvas.Left="10"/>
-                <Button Command="{Binding FilterComponenteCommand}" Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.5,0.5" Canvas.Left="14" Canvas.Top="99"/>
-                <Button Command="{Binding ClearFilterComponenteCommand}" Content="Clear Filter " HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Canvas.Left="116" Canvas.Top="99" Height="33"/>
+                <Button Command="{Binding FilterComponenteCommand}" Content="Filtreaza" HorizontalAlignment="Left" VerticalAlignment="Top" Width="92" RenderTransformOrigin="0.5,0.5" Canvas.Left="26" Canvas.Top="99"/>
+                <Button Command="{Binding ClearFilterComponenteCommand}" Content="Sterge Filtrari" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Canvas.Left="123" Canvas.Top="99" Height="33"/>
 
             </Canvas>
 
