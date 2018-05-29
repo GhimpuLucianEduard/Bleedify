@@ -17,15 +17,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BleedifyPersonal.Views"
         mc:Ignorable="d">
-    <Canvas Width="766" Height="552">
+    <Canvas Width="1100" Height="552">
 
 
         <materialDesign:Card>
-            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="DonationDataGrid" SelectedItem="{Binding SelectedComponenta, Mode=TwoWay}" ItemsSource="{Binding Componente}" Width="767" Height="338">
+            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="DonationDataGrid" SelectedItem="{Binding SelectedComponenta, Mode=TwoWay}" ItemsSource="{Binding Componente}" Width="600" Height="338">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nume Donator" Binding="{Binding Donatie.Donator.Nume}"/>
                     <DataGridTextColumn Header="Prenume Donator" Binding="{Binding Donatie.Donator.Prenume}"/>
                     <DataGridTextColumn Header="TipComponenta" Binding="{Binding TipComponenta}"/>
+                    <DataGridTextColumn Header="Stare" Binding="{Binding Stare}"/>
                     <DataGridTextColumn Header="Data" Binding="{Binding DataDepunere}"/>
                     <DataGridTextColumn Header="Nume Pacient" Binding="{Binding Pacient.Nume}"/>
                     <DataGridTextColumn Header="Prenume Pacient" Binding="{Binding Pacient.Prenume}"/>
@@ -33,12 +34,19 @@
             </DataGrid>
         </materialDesign:Card>
 
-        <materialDesign:Card Width="195" Height="95" Canvas.Top="390" Canvas.Left="27">
+
+
+
+
+        <materialDesign:Card Width="195" Height="136" Canvas.Top="390" Canvas.Left="27">
             <Canvas Margin="0,0,0,10.2">
                 <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" Width="175" Height="35" Canvas.Left="10" Canvas.Top="50"/>
                 <Button Command="{Binding UpdateCommand}" Content="Modifica"  Width="175" Height="35" Canvas.Top="10" Canvas.Left="10"/>
+                <Button Command="{Binding DeservireComponentaCommand}" Content="Deservire"  Width="175" Height="35" Canvas.Top="90" Canvas.Left="10"/>
             </Canvas>
         </materialDesign:Card>
+
+        <DataGrid IsReadOnly="True" x:Name="CereriDataGrid" SelectedItem="{Binding SelectedCerere, Mode=TwoWay}" ItemsSource="{Binding Cereri}" Width="481" Height="338" Canvas.Left="619"/>
 
     </Canvas>
 </UserControl>
