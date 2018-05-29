@@ -22,7 +22,7 @@
 
         x:Class="BleedifyMedic.Views.CerereMasterDetailView"
         xmlns:Converters="clr-namespace:DomainViewModels;assembly=DomainViewModels"
-        Title="Adauga Cerere" Width="406.25" Height="275.852">
+        Title="Bleedify - Adauga Cerere" Width="406.25" Height="275.852">
 
     <metro:MetroWindow.Resources>
         <Converters:InverseBooleanConverter x:Key="BoolConverter" />
