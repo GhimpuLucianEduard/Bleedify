@@ -35,7 +35,7 @@
 
         <materialDesign:Card Width="195" Height="95" Canvas.Top="390" Canvas.Left="27">
             <Canvas Margin="0,0,0,10.2">
-                <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" Width="175" Height="35" Canvas.Left="10" Canvas.Top="50"/>
+                <Button Command="{Binding DeleteDonatieCommand}" Content="Sterge" Width="175" Height="35" Canvas.Left="10" Canvas.Top="50"/>
                 <Button Command="{Binding UpdateCommand}" Content="Modifica"  Width="175" Height="35" Canvas.Top="10" Canvas.Left="10"/>
             </Canvas>
         </materialDesign:Card>

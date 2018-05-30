@@ -46,7 +46,7 @@ namespace BleedifyDonator.ViewModels
 				var utilizator = AppService.Instance.UtilizatorService.Login(User.Username, pwBox.Password, TipUtilizator.Donator);
 				if (utilizator != null)
 				{
-					MessageBox.Show("Login efectuat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
+					// MessageBox.Show("Login efectuat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
 					AppSettings.LoggedDonator = utilizator as Donator;
 					var win = new MainWindow();
 					win.Show();

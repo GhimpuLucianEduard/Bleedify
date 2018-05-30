@@ -32,6 +32,7 @@ namespace BleedifyPersonal.ViewModels
         public ICommand UpdateDonatieCommand { get; private set; }
         public ICommand PrelucreazaDonatieCommand { get; private set; }
         public ICommand FilterCommand { get; private set; }
+        public ICommand ClearFilterCommand { get; private set; }
 
         public ManageDonatiiViewModel()
         {	
@@ -41,6 +42,7 @@ namespace BleedifyPersonal.ViewModels
             UpdateDonatieCommand = new BasicCommand(UpdateDonatie);
             PrelucreazaDonatieCommand = new BasicCommand(HandlePrelucreazaDonatie);
             FilterCommand = new BasicCommand(HandleFilter);
+            ClearFilterCommand = new BasicCommand(HandleClearFilter);
             Grupa = GrupeValues[0];
             Etapa = EtapaValues[0];
         }
@@ -56,6 +58,18 @@ namespace BleedifyPersonal.ViewModels
 
             foreach (var d in donations)
                 Donatii.Add(new DonatieViewModel(d));
+        }
+
+        private void HandleClearFilter()
+        {
+            var donations = AppService.Instance.DonatieService.Filter(null, null);
+
+            Donatii.Clear();
+            foreach (var d in donations)
+                Donatii.Add(new DonatieViewModel(d));
+
+            Grupa = GrupeValues[0];
+            Etapa = EtapaValues[0];
         }
 
         private void DeleteDonatie()

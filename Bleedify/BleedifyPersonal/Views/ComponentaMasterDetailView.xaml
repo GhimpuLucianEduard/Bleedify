@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BleedifyPersonal.Views"
         mc:Ignorable="d"
-        Title="ComponentaMasterDetailView" Height="400" Width="555.603">
+        Title="Bleedify - Donatie" Height="400" Width="555.603">
     <Grid Margin="0,0,2,0">
         <ComboBox ItemsSource="{Binding Stari}" SelectedItem="{Binding SelectedStare}" HorizontalAlignment="Left" Margin="191,142,0,0" VerticalAlignment="Top" Width="276" Height="23"/>
         <DatePicker SelectedDate="{Binding DataDepunere}" HorizontalAlignment="Left" Margin="191,232,0,0" VerticalAlignment="Top" Height="28" Width="276"/>
