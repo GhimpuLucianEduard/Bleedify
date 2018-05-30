@@ -59,7 +59,7 @@
                 </materialDesign:PackIcon>
 
 
-                <Label x:Name="labelCereri" FontSize="18" Content="Donatii" RenderTransformOrigin="0.892,1.007" Canvas.Left="81" Canvas.Top="60" Width="72" Height="27">
+                <Label MouseLeftButtonUp="ViewDonatii" x:Name="labelCereri" FontSize="18" Content="Donatii" RenderTransformOrigin="0.892,1.007" Canvas.Left="81" Canvas.Top="60" Width="72" Height="27">
                     <Label.Style>
                         <Style TargetType="Label">
                             <Setter Property="Foreground" Value="Black" />
@@ -76,7 +76,7 @@
                 <materialDesign:PackIcon
                     Foreground="{Binding Source={x:Reference labelStoc}, Path=Foreground}"
                     Kind="Message"  RenderTransformOrigin="2.15,2.913" Canvas.Top="134" Height="68" Width="87"/>
-                <Label x:Name="labelStoc" FontSize="18" Content="Mesaje" RenderTransformOrigin="0.892,1.007" Canvas.Left="87" Canvas.Top="154" Width="72" Height="27">
+                <Label MouseLeftButtonUp="ViewMesaje" x:Name="labelStoc" FontSize="18" Content="Mesaje" RenderTransformOrigin="0.892,1.007" Canvas.Left="87" Canvas.Top="154" Width="72" Height="27">
                     <Label.Style>
                         <Style TargetType="Label">
                             <Setter Property="Foreground" Value="Black" />
