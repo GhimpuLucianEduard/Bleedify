@@ -21,11 +21,13 @@ namespace BleedifyServices.Services
 		}
 
 		public Utilizator Login(string username, string password, TipUtilizator tipUtilizator)
-		{
+		{	
 			Utilizator toFind = null;
 			_repository.GetAll().ToList().ForEach(utilizator =>
 			{
-				if (utilizator.Password.CompareTo(password) == 0 && utilizator.UserName.CompareTo(username) == 0)
+				if (utilizator.Password.CompareTo(password) == 0 
+				    && utilizator.UserName.CompareTo(username) == 0 
+				    && utilizator.TipUtilizator.CompareTo(tipUtilizator.ToString())==0)
 				{
 					toFind = utilizator;
 				}

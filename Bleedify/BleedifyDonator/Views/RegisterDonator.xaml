@@ -40,7 +40,7 @@
             <Label Content="Nume" HorizontalAlignment="Left" Margin="44,15.8,0,0" VerticalAlignment="Top" Width="67" RenderTransformOrigin="0.5,0.5" Grid.Row="3"/>
             <Label Content="Prenume" HorizontalAlignment="Left" Margin="44,0,0,8" VerticalAlignment="Bottom" Width="67" RenderTransformOrigin="0.5,0.5" Grid.Row="4"/>
             <Label Content="Grupa de sange" HorizontalAlignment="Left" Margin="44,5,0,0" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Grid.Row="5"/>
-            <Button Command="{Binding HandleRegisterCommand}" CommandParameter="{Binding ElementName=pass}"  Content="Register" HorizontalAlignment="Left" Margin="123,52,0,-41.6" Grid.Row="5" VerticalAlignment="Top" Width="95" Grid.ColumnSpan="2" Click="Button_Click"/>
+            <Button Command="{Binding HandleRegisterCommand}" CommandParameter="{Binding ElementName=pass}"  Content="Register" HorizontalAlignment="Left" Margin="123,52,0,-41.6" Grid.Row="5" VerticalAlignment="Top" Width="95" Grid.ColumnSpan="2"/>
             <TextBox Text="{Binding DonatorViewModel.Username}" HorizontalAlignment="Left" Height="23" Margin="175,11,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
             <TextBox Text="{Binding DonatorViewModel.Nume}" HorizontalAlignment="Left" Height="23" Margin="175,8.8,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Row="3"/>
             <TextBox Text="{Binding DonatorViewModel.Prenume}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="175,9.4,0,0" Grid.Row="4" Grid.ColumnSpan="2"/>
