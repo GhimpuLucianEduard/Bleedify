@@ -52,16 +52,22 @@ namespace BleedifyServices
             }
         }
 
-        public IEnumerable<AnuntDonator> Filter(string tipAnunt)
+        public IEnumerable<AnuntDonator> Filter(int? idDonator, string tipAnunt = null)
         {
             return _repository.GetAll()
                 .Where(x =>
                 {
-                    if (string.IsNullOrEmpty(tipAnunt))
-                        return true;
-                    return x.TipAnuntDonator.ToLower().Equals(tipAnunt.ToLower());
+					if (null == tipAnunt)
+						return true;
+					return x.TipAnuntDonator.ToLower().Equals(tipAnunt.ToLower());
                 })
-                .ToList();
+	            .Where(x =>
+	            {
+		            if (null == idDonator || !idDonator.HasValue)
+			            return true;
+		            return x.IdDonator.HasValue && x.IdDonator.Value == idDonator;
+	            })
+				.ToList();
         }
-    }
+	}
 }

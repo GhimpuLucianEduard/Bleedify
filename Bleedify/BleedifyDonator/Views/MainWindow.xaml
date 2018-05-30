@@ -105,7 +105,7 @@
         <Grid Name="MainGrid" Grid.Column="1" Grid.ColumnSpan="4"
                              Height="600"
                              Width="900"
-                             materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="12">
+                             materialDesign:ShadowAssist.ShadowDepth="Depth2" >
 
         </Grid>
 

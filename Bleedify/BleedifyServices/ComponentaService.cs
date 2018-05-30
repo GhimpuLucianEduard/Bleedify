@@ -75,6 +75,11 @@ namespace BleedifyServices
                 .ToList();
         }
 
+	    public IEnumerable<Componenta> GetComponenteByIdDonatie(int idDonatie)
+	    {
+		    return _repository.GetAll().ToList().Where(x => x.IdDonatie == idDonatie).ToList();
+	    }
+
         public void Delete(int componentaId)
         {
             _repository.Delete(componentaId);

@@ -17,7 +17,8 @@ namespace BleedifyPersonal.ViewModels
     {
         public DonatieViewModel DonatieViewModel { get; set; }
         public DonatieMasterDetailView view { get; set; }
-		public bool IsAddState { get; set; }
+
+	    public bool IsAddState { get; set; }
 
         public ICommand AddCommand { get; private set; }
         public ICommand CloseWindowCommand { get; private set; }
@@ -84,7 +85,7 @@ namespace BleedifyPersonal.ViewModels
 		    if (String.IsNullOrEmpty(NumeDonator) ||
 		        String.IsNullOrEmpty(PrenumeDonator) ||
 		        DonatieViewModel.DataDonare == null ||
-		        String.IsNullOrEmpty(DonatieViewModel.EtapaDonare) ||
+		        String.IsNullOrEmpty(Etapa) ||
 		        SelectedInstitutie == null)
 		    {
 			    MessageBox.Show("Plase make sure you completed all the fields correctly..", "Error", MessageBoxButton.OK);
