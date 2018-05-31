@@ -39,6 +39,5 @@ namespace BleedifyModels.ModelsEF
             get { return Pacient; }
             set { Pacient = value; }
         }
-
     }
 }

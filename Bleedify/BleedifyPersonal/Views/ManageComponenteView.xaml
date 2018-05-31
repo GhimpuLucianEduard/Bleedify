@@ -40,13 +40,27 @@
 
         <materialDesign:Card Width="195" Height="136" Canvas.Top="390" Canvas.Left="27">
             <Canvas Margin="0,0,0,10.2">
-                <Button Command="{Binding DeleteDonatieCommand}" Content="Delete" Width="175" Height="35" Canvas.Left="10" Canvas.Top="50"/>
+                <Button Command="{Binding DeleteDonatieCommand}" Content="Sterge" Width="175" Height="35" Canvas.Left="10" Canvas.Top="50"/>
                 <Button Command="{Binding UpdateCommand}" Content="Modifica"  Width="175" Height="35" Canvas.Top="10" Canvas.Left="10"/>
                 <Button Command="{Binding DeservireComponentaCommand}" Content="Deservire"  Width="175" Height="35" Canvas.Top="90" Canvas.Left="10"/>
             </Canvas>
         </materialDesign:Card>
 
         <DataGrid IsReadOnly="True" x:Name="CereriDataGrid" SelectedItem="{Binding SelectedCerere, Mode=TwoWay}" ItemsSource="{Binding Cereri}" Width="481" Height="338" Canvas.Left="619"/>
+        <materialDesign:Card Canvas.Top="382" Height="160" Width="270" Canvas.Left="449">
+
+            <Canvas>
+
+                <ComboBox SelectedItem="{Binding SelectedTipComponenta}" ItemsSource="{Binding Tipuri}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="123" Canvas.Top="7"/>
+                <ComboBox SelectedItem="{Binding SelectedStareComponenta}" ItemsSource="{Binding Stari}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="123" Canvas.Top="50"/>
+                <Label Content="Filter dupa tip" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="17"/>
+                <Label Content="Filter dupa stare" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="52" Canvas.Left="10"/>
+                <Button Command="{Binding FilterComponenteCommand}" Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.5,0.5" Canvas.Left="14" Canvas.Top="99"/>
+                <Button Command="{Binding ClearFilterComponenteCommand}" Content="Clear Filter " HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Canvas.Left="116" Canvas.Top="99" Height="33"/>
+
+            </Canvas>
+
+        </materialDesign:Card>
 
     </Canvas>
 </UserControl>

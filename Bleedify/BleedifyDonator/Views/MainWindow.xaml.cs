@@ -14,5 +14,17 @@ namespace BleedifyDonator.Views
 			DataContext = new MainWindowViewModel();
 			MainGrid.Children.Add(new DonatiiView());
 		}
+
+		private void ViewDonatii(object sender, MouseButtonEventArgs e)
+		{
+			MainGrid.Children.Clear();
+			MainGrid.Children.Add(new DonatiiView());
+		}
+
+		private void ViewMesaje(object sender, MouseButtonEventArgs e)
+		{
+			MainGrid.Children.Clear();
+			MainGrid.Children.Add(new MesajeView());
+		}
 	}
 }

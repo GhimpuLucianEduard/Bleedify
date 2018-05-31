@@ -1,4 +1,5 @@
 ﻿using BleedifyModels.ModelsEF;
+﻿using BleedifyModels.Enums;
 using BleedifyPersonal.Views;
 using BleedifyServices;
 using DomainViewModels;
@@ -16,6 +17,8 @@ namespace BleedifyPersonal.ViewModels
 {
     public class ManageComponenteViewModel : BaseViewModel
     {
+        private string _selectedStareComponenta;
+        private string _selectedTipComponenta;
         private bool _isDataLoaded;
 
         private ComponentaViewModel _selectedComponenta;
@@ -41,18 +44,112 @@ namespace BleedifyPersonal.ViewModels
 
         public ObservableCollection<ComponentaViewModel> Componente { get; private set; } = new ObservableCollection<ComponentaViewModel>();
         public ObservableCollection<CerereViewModel> Cereri { get; private set; } = new ObservableCollection<CerereViewModel>();
+        public ObservableCollection<string> Stari { get; private set; }
+        public ObservableCollection<string> Tipuri { get; private set; }
 
         public ICommand LoadComponenteCommand { get; private set; }
         public ICommand DeservireComponentaCommand { get; private set; }
         public ICommand DeleteDonatieCommand { get; private set; }
         public ICommand UpdateCommand { get; private set; }
+        public ICommand FilterComponenteCommand { get; private set; }
+        public ICommand ClearFilterComponenteCommand { get; private set; }
 
         public ManageComponenteViewModel()
         {
+            Stari = new ObservableCollection<string>();
+            Stari.Add("Toate");
+            foreach (var stare in Enum.GetValues(typeof(StareCerere)))
+            {
+                Stari.Add(stare.ToString());
+            }
+            SelectedStareComponenta = Stari[0];
+
+            Tipuri = new ObservableCollection<string>();
+            Tipuri.Add("Toate");
+            foreach (var tip in Enum.GetValues(typeof(TipComponenta)))
+            {
+                Tipuri.Add(tip.ToString());
+            }
+            SelectedTipComponenta = Tipuri[0];
+
             LoadComponenteCommand = new BasicCommand(LoadData);
             DeleteDonatieCommand = new BasicCommand(DeleteComponenta);
             UpdateCommand = new BasicCommand(UpdateComponenta);
             DeservireComponentaCommand = new BasicCommand(DeservireComponenta);
+            FilterComponenteCommand = new BasicCommand(FilterComponente);
+            ClearFilterComponenteCommand = new BasicCommand(ClearFilterComponente);
+        }
+
+        private void FilterComponente()
+        {
+            string ParamStare;
+            string ParamTip;
+
+            if (SelectedStareComponenta.CompareTo(Stari[0]) == 0)
+            {
+                ParamStare = null;
+            }
+            else
+            {
+                if (SelectedStareComponenta.Equals("InAsteptare"))
+                {
+                    ParamStare = "In Asteptare";
+                }
+                else
+                {
+                    ParamStare = SelectedStareComponenta;
+                }
+            }
+
+            if (SelectedTipComponenta.CompareTo(Tipuri[0]) == 0)
+            {
+                ParamTip = null;
+            }
+            else
+            {
+                if(SelectedTipComponenta.Equals("GlobuleRosii"))
+                {
+                    ParamTip = "GlobuleRosii";
+                }
+                else
+                {
+                    ParamTip = SelectedTipComponenta;
+                }
+            }
+
+            var comp = AppService.Instance.ComponentaService.Filter(ParamTip, ParamStare);
+
+            Componente.Clear();
+            foreach (var c in comp)
+            {
+                Componente.Add(new ComponentaViewModel(c));
+            }
+        }
+
+        private void ClearFilterComponente()
+        {
+            var comp = AppService.Instance.ComponentaService.GetAll();
+
+            Componente.Clear();
+            foreach (var c in comp)
+            {
+                Componente.Add(new ComponentaViewModel(c));
+            }
+
+            SelectedStareComponenta = Stari[0];
+            SelectedTipComponenta = Tipuri[0];
+        }
+
+        public string SelectedTipComponenta
+        {
+            get { return _selectedTipComponenta; }
+            set { SetValue(ref _selectedTipComponenta, value); }
+        }
+
+        public string SelectedStareComponenta
+        {
+            get { return _selectedStareComponenta; }
+            set { SetValue(ref _selectedStareComponenta, value); }
         }
 
         private void LoadData()
@@ -116,6 +213,7 @@ namespace BleedifyPersonal.ViewModels
             }
             else
             {
+                // modifica stare componentei in ui si in service
                 SelectedComponenta.Stare = "Donata";
                 var pacient = AppService.Instance.PacientService.Find(SelectedCerere.Pacient.Id);
                 SelectedComponenta.Pacient = new Pacient();
@@ -126,13 +224,26 @@ namespace BleedifyPersonal.ViewModels
                                 SelectedComponenta.Pacient.Nume, SelectedComponenta.Pacient.Prenume);
                 AppService.Instance.ComponentaService.Update(componenta);
 
-
+                // modifica starea cererii in ui si in service
                 SelectedCerere.Stare = "IncheiataPozitiv";
                 var cerere = AppService.Instance.CerereService.Find(SelectedCerere.Id);
                 cerere.Stare = SelectedComponenta.Stare;
                 AppService.Instance.CerereService.Update(cerere);
 
-            
+                // aduna date ptanunt donator si adauga anuntdonator in service
+                Donatie donatie = AppService.Instance.DonatieService.GetAll().First(b => b.Id == componenta.IdDonatie);
+                var idDonator = donatie.IdDonator;
+                var tipAnunt = "Informare";
+                var mesaj = "Donatia ta a fost Donata";
+                var date = DateTime.Now;
+                var anuntDonator = new AnuntDonator()
+                {
+                    IdDonator = idDonator,
+                    TipAnuntDonator = tipAnunt,
+                    Mesaj = mesaj,
+                    DataAnunt = date
+                };
+                AppService.Instance.AnuntDonatorService.Add(anuntDonator)
             }
 
         }

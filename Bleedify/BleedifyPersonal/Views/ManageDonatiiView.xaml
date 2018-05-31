@@ -38,9 +38,9 @@
         <materialDesign:Card Width="173" Height="135" Canvas.Top="381" Canvas.Left="10">
 
             <Canvas Margin="0,0,-13.2,0.2">
-                <Button Command="{Binding AddDonatieCommand}" Content="Add" Width="150" RenderTransformOrigin="-0.074,-0.68" Height="24" Canvas.Left="10" Canvas.Top="10"/>
-                <Button Command="{Binding DeleteDonatieCommand}" Content="Delete"  Width="150" Height="24" Canvas.Left="10" Canvas.Top="68"/>
-                <Button Command="{Binding UpdateDonatieCommand}" Content="Update"  Width="150" Height="24" Canvas.Left="10" Canvas.Top="97"/>
+                <Button Command="{Binding AddDonatieCommand}" Content="Adauga" Width="150" RenderTransformOrigin="-0.074,-0.68" Height="24" Canvas.Left="10" Canvas.Top="10"/>
+                <Button Command="{Binding DeleteDonatieCommand}" Content="Sterge"  Width="150" Height="24" Canvas.Left="10" Canvas.Top="68"/>
+                <Button Command="{Binding UpdateDonatieCommand}" Content="Modifica"  Width="150" Height="24" Canvas.Left="10" Canvas.Top="97"/>
                 <Button Command="{Binding PrelucreazaDonatieCommand}" Content="Prelucreaza" Width="150" Height="24" Canvas.Left="10" Canvas.Top="39"/>
 
             </Canvas>
@@ -54,13 +54,14 @@
                     ItemsSource="{Binding EtapaValues}"
                     SelectedItem="{Binding Etapa}"
                     HorizontalAlignment="Left"  Width="100" Canvas.Left="137" Canvas.Top="53"/>
-                <Button Command="{Binding FilterCommand}" Content="Filter"  Width="139" Canvas.Left="48" Canvas.Top="100"/>
+                <Button Command="{Binding FilterCommand}" Content="Filtreaza"  Width="84" Canvas.Left="10" Canvas.Top="100"/>
                 <ComboBox 
                     ItemsSource="{Binding GrupeValues}" 
                     SelectedItem="{Binding Grupa}"
                     HorizontalAlignment="Left" Width="100" Canvas.Left="137" Canvas.Top="10"/>
                 <Label Content="Etapa Donare" Width="84" Canvas.Left="10" Canvas.Top="54"/>
                 <Label Content="Grupa de Sange" Canvas.Left="10" Canvas.Top="10"/>
+                <Button Command="{Binding ClearFilterCommand}" Content="Sterge Filtrari"  Width="138" Canvas.Left="99" Canvas.Top="100"/>
             </Canvas>
         </materialDesign:Card>
 

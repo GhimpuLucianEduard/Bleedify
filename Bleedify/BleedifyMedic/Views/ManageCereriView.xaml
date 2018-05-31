@@ -57,10 +57,10 @@
                 <Label Content="Filter dupa grupa" Canvas.Left="12" Canvas.Top="52"  />
                 <ComboBox SelectedItem="{Binding SelectedTip}" ItemsSource="{Binding Tipuri}" Canvas.Left="138" Canvas.Top="18" Width="124"/>
                 <Label Content="Filter dupa tip" Canvas.Left="20" Canvas.Top="90" />
-                <Button Command="{Binding FilterCereriCommand}" Canvas.Left="7" Canvas.Top="140"  Width="122" Content="Filtreaza" >
+                <Button Command="{Binding FilterCereriCommand}" Canvas.Left="20" Canvas.Top="140"  Width="122" Content="Filtreaza" >
 
                 </Button>
-                <Button Command="{Binding ClearFilterCereriCommand}" Content="Sterge Filtrele" Canvas.Left="138" Canvas.Top="140" Width="124" />
+                <Button Command="{Binding ClearFilterCereriCommand}" Content="Sterge Filtrele" Canvas.Left="152" Canvas.Top="140" Width="124" />
 
             </Canvas>
 

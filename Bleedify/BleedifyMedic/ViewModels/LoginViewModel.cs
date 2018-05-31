@@ -45,7 +45,7 @@ namespace BleedifyMedic.ViewModels
 				var utilizator = AppService.Instance.UtilizatorService.Login(User.Username, pwBox.Password, TipUtilizator.Medic);
 				if (utilizator != null)
 				{
-					MessageBox.Show("Login efectuat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
+					// MessageBox.Show("Login efectuat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
 					AppSettings.LoggedMedic = utilizator as Medic;
 					var win = new MainWindow();
 					win.Show();

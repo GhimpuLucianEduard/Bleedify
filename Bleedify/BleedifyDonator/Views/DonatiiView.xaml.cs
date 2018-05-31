@@ -33,5 +33,10 @@ namespace BleedifyDonator.Views
 			ViewModel = new IstoricViewModel();
 			ViewModel.LoadDonationsCommand.Execute(null);
 		}
+
+		private void DonationDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			ViewModel.SelectionChanged.Execute(null);
+		}
 	}
 }

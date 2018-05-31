@@ -47,7 +47,7 @@ namespace BleedifyPersonal.ViewModels
 				var utilizator = AppService.Instance.UtilizatorService.Login(User.Username, pwBox.Password, TipUtilizator.Personal);
 				if (utilizator != null)
 				{
-					MessageBox.Show("Login efectuat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
+					// MessageBox.Show("Login efectuat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
 					AppSettings.LoggedPersonal = utilizator as Personal;
 					var win = new MainWindow();
 					win.Show();

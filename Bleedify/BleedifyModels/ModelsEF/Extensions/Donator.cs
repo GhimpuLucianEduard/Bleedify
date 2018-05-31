@@ -19,5 +19,10 @@ namespace BleedifyModels.ModelsEF
             get { return GrupaDeSange1; }
             set { GrupaDeSange1 = value; }
         }
+
+	    public string NumeComplet
+	    {
+		    get { return Nume + " " + Prenume; }
+	    }
     }
 }

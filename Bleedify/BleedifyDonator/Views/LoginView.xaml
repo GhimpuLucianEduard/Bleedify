@@ -11,7 +11,7 @@
              Background="{DynamicResource MaterialDesignPaper}"
              TextElement.FontWeight="Medium"
              TextElement.FontSize="14"
-             Title="Bleedify Login - Donator"
+             Title="Bleedify - Login Donator"
              TitleAlignment="Center"
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Height="375.6" Width="501.131">
 
@@ -33,7 +33,7 @@
         <Button Command="{Binding HandleRegister}" Height="32" Width="148" Canvas.Left="231" Canvas.Top="286">
 
             <Canvas Height="32" RenderTransformOrigin="0.5,0.5" Width="132">
-                <Label Foreground="White" Canvas.Left="36" Content="Creaza Cont"/>
+                <Label Foreground="White" Canvas.Left="28" Content="Creeaza Cont"/>
                 <materialDesign:PackIcon Kind="PlusBox" Height="22" Width="39"/>
             </Canvas>
 

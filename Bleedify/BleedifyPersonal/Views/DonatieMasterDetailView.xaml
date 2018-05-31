@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BleedifyPersonal.Views"
         mc:Ignorable="d"
-        Title="DonatieMasterDetailView" Height="450" Width="400">
+        Title="Bleedify - Donatie" Height="450" Width="400">
     <Grid>
         <Button Command="{Binding AddCommand}" Content="Save" RenderTransformOrigin="0.79,17.108" Margin="27,321,227,30"/>
         <Button Command="{Binding CloseWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Content="Cancel" RenderTransformOrigin="0.79,17.108" Margin="228,321,26,30"/>
