@@ -57,6 +57,11 @@ namespace BleedifyServices
             return _repository.GetAll();
         }
 
+	    public Componenta Find(int id)
+	    {
+		    return _repository.Find(id);
+	    }
+
         public IEnumerable<Componenta> Filter(string tipComponenta, string stare)
         {
             return _repository.GetAll()

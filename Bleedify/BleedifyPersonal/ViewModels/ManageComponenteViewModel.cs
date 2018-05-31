@@ -171,33 +171,30 @@ namespace BleedifyPersonal.ViewModels
 
             var grupa = SelectedComponenta.Donatie.GrupaDeSange;
             var tip = SelectedComponenta.TipComponenta;
-            var stare = SelectedComponenta.Stare;
 
-            if(stare.Equals("In Asteptare"))
-            {
-                stare = "InAsteptare";
-            }
+	        if (SelectedComponenta.Stare.CompareTo("InAsteptare")==0 || SelectedComponenta.Stare.CompareTo("In Asteptare")==0 )
+	        {
+		        if (tip.Equals("Globule Rosii"))
+		        {
+			        tip = "GlobuleRosii";
+		        }
 
-            if(tip.Equals("Globule Rosii"))
-            {
-                tip = "GlobuleRosii";
-            }
+		        var cereri = AppService.Instance.CerereService.Filter(grupa, tip, "InAsteptare");
 
-            var cereri = AppService.Instance.CerereService.Filter(grupa, tip, stare);
-
-            foreach (var c in cereri)
-                Cereri.Add(new CerereViewModel(c));
+		        foreach (var c in cereri)
+			        Cereri.Add(new CerereViewModel(c));
+			}
         }
 
         private void DeleteComponenta()
         {
             if (SelectedComponenta == null)
             {
-                MessageBox.Show("You have to select a Componenta first...");
+                MessageBox.Show("Selectateaza o componenta...");
             }
             else
             {
-                if (MessageBox.Show("Are you sure you want to delete this Componenta?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Confirmati stergerea componentei?", "Confirmare", System.Windows.MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     AppService.Instance.ComponentaService.Delete(SelectedComponenta.Id);
                     Componente.Remove(SelectedComponenta);
@@ -209,50 +206,40 @@ namespace BleedifyPersonal.ViewModels
         {
             if (SelectedCerere == null || SelectedComponenta == null)
             {
-                MessageBox.Show("You have to select a cerere and a componenta first...");
+                MessageBox.Show("Selecteaza o componenta si o cerere.");
             }
             else
-            {
-                // modifica stare componentei in ui si in service
-                SelectedComponenta.Stare = "Donata";
-                var pacient = AppService.Instance.PacientService.Find(SelectedCerere.Pacient.Id);
-                SelectedComponenta.Pacient = new Pacient();
-                SelectedComponenta.Pacient.Nume = pacient.Nume;
-                SelectedComponenta.Pacient.Prenume = pacient.Prenume;
-                var componenta = new Componenta(SelectedComponenta.Id, SelectedComponenta.TipComponenta, SelectedComponenta.IdDonatie,
-                                SelectedComponenta.DataDepunere, SelectedComponenta.IdPrimitor, SelectedComponenta.Stare,
-                                SelectedComponenta.Pacient.Nume, SelectedComponenta.Pacient.Prenume);
-                AppService.Instance.ComponentaService.Update(componenta);
+            {	
+				// update componenta
+                SelectedComponenta.Stare = StareComponenta.Donata.ToString();
+				var updateCompo = AppService.Instance.ComponentaService.Find(SelectedComponenta.Id);
+	            updateCompo.Stare = StareComponenta.Donata.ToString();
+	            updateCompo.IdPrimitor = SelectedCerere.IdPacient;
+				AppService.Instance.ComponentaService.Update(updateCompo);
 
-                // modifica starea cererii in ui si in service
-                SelectedCerere.Stare = "IncheiataPozitiv";
-                var cerere = AppService.Instance.CerereService.Find(SelectedCerere.Id);
-                cerere.Stare = SelectedComponenta.Stare;
-                AppService.Instance.CerereService.Update(cerere);
+				// updatate cerere
+	            var updateCerere = AppService.Instance.CerereService.Find(SelectedCerere.Id);
+	            updateCerere.Stare = StareCerere.IncheiataPozitiv.ToString();
+				AppService.Instance.CerereService.Update(updateCerere);
+				LoadCereri();
 
-                // aduna date ptanunt donator si adauga anuntdonator in service
-                Donatie donatie = AppService.Instance.DonatieService.GetAll().First(b => b.Id == componenta.IdDonatie);
-                var idDonator = donatie.IdDonator;
-                var tipAnunt = "Informare";
-                var mesaj = "Donatia ta a fost Donata";
-                var date = DateTime.Now;
-                var anuntDonator = new AnuntDonator()
-                {
-                    IdDonator = idDonator,
-                    TipAnuntDonator = tipAnunt,
-                    Mesaj = mesaj,
-                    DataAnunt = date
-                };
-                AppService.Instance.AnuntDonatorService.Add(anuntDonator);
-            }
 
-        }
+                // send anunt
+				var anunt = new AnuntDonator();
+				anunt.DataAnunt = DateTime.Now;
+	            anunt.IdDonator = SelectedComponenta.Donatie.IdDonator;
+	            anunt.TipAnuntDonator = TipAnuntDonator.Info.ToString();
+	            anunt.Mesaj = "Componenta de tipul " + SelectedComponenta.TipComponenta + " din donatia ta a fost donata!";
+                AppService.Instance.AnuntDonatorService.Add(anunt);
+	            MessageBox.Show("Componenta a fost donata!.");
+			}
+		}
 
         private void UpdateComponenta()
         {
             if (SelectedComponenta == null)
             {
-                MessageBox.Show("You have to select a donation first...");
+                MessageBox.Show("Selecteaza o donatie...");
             }
             else
             {
@@ -277,6 +264,7 @@ namespace BleedifyPersonal.ViewModels
                     DetailPage.Close();
                 };
             }
+			
         }
     }
 }

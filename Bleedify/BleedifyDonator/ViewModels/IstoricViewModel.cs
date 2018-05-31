@@ -13,7 +13,7 @@ namespace BleedifyDonator.ViewModels
 	public class IstoricViewModel : BaseViewModel
 	{	
 		public ObservableCollection<Componenta> Componente { get; set; }
-		private bool _isDataLoaded;
+
 		public ObservableCollection<DonatieViewModel> Donatii
 		{
 			get;
@@ -45,10 +45,6 @@ namespace BleedifyDonator.ViewModels
 
 		private void LoadData()
 		{
-			if (_isDataLoaded)
-				return;
-
-			_isDataLoaded = true;
 			var donations = AppService.Instance.DonatieService.GetAllByDonator(AppSettings.LoggedDonator.Id);
 			foreach (var d in donations)
 				Donatii.Add(new DonatieViewModel(d));

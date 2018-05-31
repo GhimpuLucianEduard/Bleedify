@@ -19,6 +19,7 @@ namespace BleedifyServices
         public void Add(CerereMedicPacient entity)
         {
             _repository.Add(entity);
+			AppService.Instance.AnuntDonatorService.BatchAdd((int) entity.GrupaDeSange, "Salut, avem nevoie de sange", entity.PacientObj);
         }
 
         public CerereMedicPacient Find(int id)

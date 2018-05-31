@@ -21,7 +21,7 @@
 
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="Bleedify - Centru Donare" Height="700" Width="1200">
-        <controls:MetroWindow.LeftWindowCommands>
+    <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
             <materialDesign:PopupBox >
                 <StackPanel>
@@ -102,7 +102,7 @@
         <Grid Name="MainGrid" Grid.Column="1" Grid.ColumnSpan="4"
                              Height="600"
                              Width="900"
-                             materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="12">
+                             materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="9.6,34,44,34.8">
 
         </Grid>
 
