@@ -12,7 +12,7 @@ namespace DomainViewModels
 		private Nullable<int> _idPrimitor;
 		private string _stare;
 		private Donatie _donatie;
-		private Pacient _pacient;
+		private Pacient _pacient = new Pacient();
 
         public ComponentaViewModel(Componenta componenta)
         {

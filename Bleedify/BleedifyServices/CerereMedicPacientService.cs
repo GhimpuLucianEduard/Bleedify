@@ -42,7 +42,8 @@ namespace BleedifyServices
         }
 
         public IEnumerable<CerereMedicPacient> Filter(int? grupaDeSange, string tipComponenta, string stare)
-        {            
+        {
+            var something = _repository.GetAll();
             return _repository.GetAll()
                 .Where(x =>
                 {

@@ -1,3 +1,4 @@
+﻿using BleedifyModels.ModelsEF;
 ﻿using BleedifyModels.Enums;
 using BleedifyPersonal.Views;
 using BleedifyServices;
@@ -24,14 +25,30 @@ namespace BleedifyPersonal.ViewModels
         public ComponentaViewModel SelectedComponenta
         {
             get { return _selectedComponenta; }
-            set { SetValue(ref _selectedComponenta, value); }
+            set
+            {
+                SetValue(ref _selectedComponenta, value);
+                LoadCereri();
+            }
+        }
+
+        private CerereViewModel _selectedCerere;
+        public CerereViewModel SelectedCerere
+        {
+            get { return _selectedCerere; }
+            set
+            {
+                SetValue(ref _selectedCerere, value);
+            }
         }
 
         public ObservableCollection<ComponentaViewModel> Componente { get; private set; } = new ObservableCollection<ComponentaViewModel>();
+        public ObservableCollection<CerereViewModel> Cereri { get; private set; } = new ObservableCollection<CerereViewModel>();
         public ObservableCollection<string> Stari { get; private set; }
         public ObservableCollection<string> Tipuri { get; private set; }
 
         public ICommand LoadComponenteCommand { get; private set; }
+        public ICommand DeservireComponentaCommand { get; private set; }
         public ICommand DeleteDonatieCommand { get; private set; }
         public ICommand UpdateCommand { get; private set; }
         public ICommand FilterComponenteCommand { get; private set; }
@@ -58,6 +75,7 @@ namespace BleedifyPersonal.ViewModels
             LoadComponenteCommand = new BasicCommand(LoadData);
             DeleteDonatieCommand = new BasicCommand(DeleteComponenta);
             UpdateCommand = new BasicCommand(UpdateComponenta);
+            DeservireComponentaCommand = new BasicCommand(DeservireComponenta);
             FilterComponenteCommand = new BasicCommand(FilterComponente);
             ClearFilterComponenteCommand = new BasicCommand(ClearFilterComponente);
         }
@@ -147,6 +165,30 @@ namespace BleedifyPersonal.ViewModels
                 Componente.Add(new ComponentaViewModel(c));
         }
 
+        private void LoadCereri()
+        {
+            Cereri.Clear();
+
+            var grupa = SelectedComponenta.Donatie.GrupaDeSange;
+            var tip = SelectedComponenta.TipComponenta;
+            var stare = SelectedComponenta.Stare;
+
+            if(stare.Equals("In Asteptare"))
+            {
+                stare = "InAsteptare";
+            }
+
+            if(tip.Equals("Globule Rosii"))
+            {
+                tip = "GlobuleRosii";
+            }
+
+            var cereri = AppService.Instance.CerereService.Filter(grupa, tip, stare);
+
+            foreach (var c in cereri)
+                Cereri.Add(new CerereViewModel(c));
+        }
+
         private void DeleteComponenta()
         {
             if (SelectedComponenta == null)
@@ -161,6 +203,49 @@ namespace BleedifyPersonal.ViewModels
                     Componente.Remove(SelectedComponenta);
                 }
             }
+        }
+
+        private void DeservireComponenta()
+        {
+            if (SelectedCerere == null || SelectedComponenta == null)
+            {
+                MessageBox.Show("You have to select a cerere and a componenta first...");
+            }
+            else
+            {
+                // modifica stare componentei in ui si in service
+                SelectedComponenta.Stare = "Donata";
+                var pacient = AppService.Instance.PacientService.Find(SelectedCerere.Pacient.Id);
+                SelectedComponenta.Pacient = new Pacient();
+                SelectedComponenta.Pacient.Nume = pacient.Nume;
+                SelectedComponenta.Pacient.Prenume = pacient.Prenume;
+                var componenta = new Componenta(SelectedComponenta.Id, SelectedComponenta.TipComponenta, SelectedComponenta.IdDonatie,
+                                SelectedComponenta.DataDepunere, SelectedComponenta.IdPrimitor, SelectedComponenta.Stare,
+                                SelectedComponenta.Pacient.Nume, SelectedComponenta.Pacient.Prenume);
+                AppService.Instance.ComponentaService.Update(componenta);
+
+                // modifica starea cererii in ui si in service
+                SelectedCerere.Stare = "IncheiataPozitiv";
+                var cerere = AppService.Instance.CerereService.Find(SelectedCerere.Id);
+                cerere.Stare = SelectedComponenta.Stare;
+                AppService.Instance.CerereService.Update(cerere);
+
+                // aduna date ptanunt donator si adauga anuntdonator in service
+                Donatie donatie = AppService.Instance.DonatieService.GetAll().First(b => b.Id == componenta.IdDonatie);
+                var idDonator = donatie.IdDonator;
+                var tipAnunt = "Informare";
+                var mesaj = "Donatia ta a fost Donata";
+                var date = DateTime.Now;
+                var anuntDonator = new AnuntDonator()
+                {
+                    IdDonator = idDonator,
+                    TipAnuntDonator = tipAnunt,
+                    Mesaj = mesaj,
+                    DataAnunt = date
+                };
+                AppService.Instance.AnuntDonatorService.Add(anuntDonator);
+            }
+
         }
 
         private void UpdateComponenta()
