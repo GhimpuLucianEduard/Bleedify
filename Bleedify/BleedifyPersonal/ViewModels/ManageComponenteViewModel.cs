@@ -243,7 +243,7 @@ namespace BleedifyPersonal.ViewModels
                     Mesaj = mesaj,
                     DataAnunt = date
                 };
-                AppService.Instance.AnuntDonatorService.Add(anuntDonator)
+                AppService.Instance.AnuntDonatorService.Add(anuntDonator);
             }
 
         }
