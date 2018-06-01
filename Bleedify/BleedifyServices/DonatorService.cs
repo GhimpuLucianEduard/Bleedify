@@ -80,5 +80,10 @@ namespace BleedifyServices
 	    {
 		    return _repository.GetAll().First(x => x.IdUtilizator == idUtilizator);
 		}
+
+	    public void Update(Donator donator)
+	    {
+		    _repository.Update(donator);
+	    }
     }
 }

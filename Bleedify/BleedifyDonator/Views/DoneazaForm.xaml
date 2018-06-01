@@ -1,0 +1,74 @@
+﻿<metro:MetroWindow 
+    x:Class="BleedifyDonator.Views.DoneazaForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BleedifyDonator.Views"
+        mc:Ignorable="d"
+        
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+
+        Title="Formular Donatie" Height="566.815" Width="495.415">
+    <Canvas Margin="0,0,0.4,69.4">
+
+        <Label Canvas.Left="98" Canvas.Top="10">Conditii de admisibilitate la donarea de sange</Label>
+
+        <StackPanel Height="418" Width="466" Canvas.Left="10" Canvas.Top="55">
+            <ScrollViewer  Canvas.Left="10" Canvas.Top="42" Width="466" Height="387">
+
+                <TextBlock > 
+                         1. Domiciuliu in Romania.<LineBreak/> 
+                         2. Vârsta cuprinsă în intervalul 18-60 ani.<LineBreak/> 
+                         3. Greutate peste 50Kg.<LineBreak/> 
+                         4. Puls regulat, 60 -100 bătăi/minut.<LineBreak/> 
+                         5. Tensiune arterială sistolică între 100 şi 180 mmHg.<LineBreak/> 
+                         6. Să nu fi suferit în ultimele 6 luni intervenţii chirurgicale<LineBreak/> 
+                         femeile să nu fie: însărcinate, în perioada de lăuzie, în perioada menstruală.<LineBreak/> 
+                         7. Sa nu fii sub tratament pentru diferite afectiuni: hipertensiune,boli<LineBreak/> 
+                             de inima,boli renale,boli psihice,boli hepatice,boli endocrine.<LineBreak/> 
+                         8. Donatorii nu trebuie să aiba sau sa fi avut urmatoarele boli:<LineBreak/> 
+                         -hepatită (de orice tip) <LineBreak/> 
+                         -TBC <LineBreak/> 
+                         -sifilis <LineBreak/> 
+                         -malarie <LineBreak/> 
+                         -epilepsie si alte boli neurologice<LineBreak/> 
+                         -boli psihice<LineBreak/> 
+                         -bruceloză <LineBreak/> 
+                         -ulcer <LineBreak/> 
+                         -diabet zaharat <LineBreak/> 
+                         -boli de inimă <LineBreak/> 
+                         -boli de piele: psoriazis, vitiligo <LineBreak/> 
+                         -miopie forte peste (-) 6 dioptrii<LineBreak/> 
+                         -cancer<LineBreak/> 
+                 
+                         Inainte de a dona:<LineBreak/> 
+                         Dimineaţa înainte de recoltare puteţi consuma o cană cu ceai sau cafea, <LineBreak/> 
+                         un mic dejun puţin consistent, legume, fructe <LineBreak/> 
+                         Nu fumati înainte şi după donare cu o oră<LineBreak/> 
+                         De asemenea veniti la donare , odihnit si nu dupa o noapte pierduta la serviciu sau in fata calculatorului!<LineBreak/>
+
+                </TextBlock>
+
+            </ScrollViewer>
+        </StackPanel>
+        <CheckBox x:Name="accept"  Content="Am luat la cunostinta" Height="37" Width="162" Canvas.Left="30" Canvas.Top="473">
+
+        </CheckBox>
+
+        <Button Command="{Binding AddDonatieCommand}" IsEnabled="{Binding Source={x:Reference accept}, Path=IsChecked}" Canvas.Left="311" Canvas.Top="489">Doneaza</Button>
+
+    </Canvas>
+</metro:MetroWindow>

@@ -17,16 +17,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BleedifyDonator.Views"
         mc:Ignorable="d">
-    <Canvas Height="704" Width="922">
-        <DataGrid SelectionChanged="DonationDataGrid_OnSelectionChanged" SelectedValue="{Binding SelectedTonatie}" IsReadOnly="True" ItemsSource="{Binding Donatii}" ColumnWidth="*" AutoGenerateColumns="False" x:Name="DonationDataGrid" HorizontalAlignment="Left" Height="670" Margin="10,20,0,0" VerticalAlignment="Top" Width="405">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Data Donare" Binding="{Binding DataDonare}"/>
-                <DataGridTextColumn Header="Etapa donatiei" Binding="{Binding EtapaDonare}"/>
-                <DataGridTextColumn Header="Motivul Refuzului" Binding="{Binding MotivRefuz}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+    <Canvas Height="622" Width="922">
+        
+        
 
-        <materialDesign:Card Width="451" Height="140" Canvas.Left="443" Canvas.Top="20">
+
+        <materialDesign:Card Height="567" VerticalAlignment="Top" Width="405" Canvas.Left="10" Canvas.Top="10">
+
+            <DataGrid SelectionChanged="DonationDataGrid_OnSelectionChanged" SelectedValue="{Binding SelectedTonatie}" IsReadOnly="True" ItemsSource="{Binding Donatii}" ColumnWidth="*" AutoGenerateColumns="False" x:Name="DonationDataGrid" HorizontalAlignment="Left" Height="577" Margin="-10,0,0,0" VerticalAlignment="Top" Width="405">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Data Donare" Binding="{Binding DataDonare}"/>
+                    <DataGridTextColumn Header="Etapa donatiei" Binding="{Binding EtapaDonare}"/>
+                    <DataGridTextColumn Header="Motivul Refuzului" Binding="{Binding MotivRefuz}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </materialDesign:Card>
+
+
+        <Button Command="{Binding DoneazaCommand}"  Content="Doneaza" Canvas.Left="443" Canvas.Top="542" Height="60" Width="196"></Button>
+
+
+        <materialDesign:Card Width="451" Height="140" Canvas.Left="443" Canvas.Top="19">
             <Canvas>
                 <Label>Tip:</Label>
                 <Label Content="{Binding GlobuleRosii.TipComponenta}" Canvas.Left="47" Width="210" Height="26" Canvas.Top="3"/>
@@ -39,7 +51,7 @@
             </Canvas>
         </materialDesign:Card>
 
-        <materialDesign:Card Width="451" Height="140" Canvas.Left="443" Canvas.Top="173">
+        <materialDesign:Card Width="451" Height="140" Canvas.Left="443" Canvas.Top="184">
             <Canvas>
                 <Label>Tip:</Label>
                 <Label Content="{Binding Plasma.TipComponenta}" Canvas.Left="34" Width="210" Height="32"/>
@@ -52,7 +64,7 @@
             </Canvas>
         </materialDesign:Card>
 
-        <materialDesign:Card Width="451" Height="140" Canvas.Left="443" Canvas.Top="342">
+        <materialDesign:Card Width="451" Height="140" Canvas.Left="443" Canvas.Top="358">
             <Canvas>
                 <Label>Tip:</Label>
                 <Label Content="{Binding Trombocite.TipComponenta}" Canvas.Left="39" Width="210" Height="30"/>

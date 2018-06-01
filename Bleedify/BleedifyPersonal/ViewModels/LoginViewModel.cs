@@ -23,8 +23,6 @@ namespace BleedifyPersonal.ViewModels
 			User = new UtilizatorViewModel();
 			HandleLoginCommand = new BasicCommandWithParameter(Login);
 			HandleRegister = new BasicCommand(Register);
-
-            User.Username = "Lenuta123";
 		}
 
 		private void Register()
