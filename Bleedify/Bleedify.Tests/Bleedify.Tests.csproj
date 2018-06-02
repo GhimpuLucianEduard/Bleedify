@@ -81,7 +81,6 @@
     <Compile Include="ModelsAndRepo\ComponentaTests.cs" />
     <Compile Include="Services\BatchAdd.cs" />
     <Compile Include="Services\FilterTests.cs" />
-    <Compile Include="Services\UtilizatorServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BleedifyModels\BleedifyModels.csproj">
@@ -96,6 +95,9 @@
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TesteFunctionale\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

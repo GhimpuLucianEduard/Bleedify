@@ -83,6 +83,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Utils\AppSettings.cs" />
+    <Compile Include="ViewModels\DataToBoolConverter.cs" />
     <Compile Include="ViewModels\DonatieFormViewModel.cs" />
     <Compile Include="ViewModels\IstoricViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

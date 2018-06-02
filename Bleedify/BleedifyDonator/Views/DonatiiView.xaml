@@ -16,15 +16,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BleedifyDonator.Views"
-        mc:Ignorable="d">
-    <Canvas Height="622" Width="922">
+        xmlns:converter="clr-namespace:BleedifyDonator.ViewModels"
+        mc:Ignorable="d" Height="627.2">
+    
+    <UserControl.Resources>
+        <converter:DataToBoolConverter x:Key="dateToBool"/>
+    </UserControl.Resources>
+
+    <Canvas Width="922" Margin="0,2,0,41.6">
+
         
-        
 
 
-        <materialDesign:Card Height="567" VerticalAlignment="Top" Width="405" Canvas.Left="10" Canvas.Top="10">
+        <materialDesign:Card Height="557" VerticalAlignment="Top" Width="390" Canvas.Left="10" Canvas.Top="10">
 
-            <DataGrid SelectionChanged="DonationDataGrid_OnSelectionChanged" SelectedValue="{Binding SelectedTonatie}" IsReadOnly="True" ItemsSource="{Binding Donatii}" ColumnWidth="*" AutoGenerateColumns="False" x:Name="DonationDataGrid" HorizontalAlignment="Left" Height="577" Margin="-10,0,0,0" VerticalAlignment="Top" Width="405">
+            <DataGrid SelectionChanged="DonationDataGrid_OnSelectionChanged" SelectedValue="{Binding SelectedTonatie}" IsReadOnly="True" ItemsSource="{Binding Donatii}" ColumnWidth="*" AutoGenerateColumns="False" x:Name="DonationDataGrid" HorizontalAlignment="Left" Height="557" Margin="-10,0,0,-0.2" VerticalAlignment="Top" Width="400">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Data Donare" Binding="{Binding DataDonare}"/>
                     <DataGridTextColumn Header="Etapa donatiei" Binding="{Binding EtapaDonare}"/>
@@ -35,7 +41,7 @@
         </materialDesign:Card>
 
 
-        <Button Command="{Binding DoneazaCommand}"  Content="Doneaza" Canvas.Left="443" Canvas.Top="542" Height="60" Width="196"></Button>
+        <Button IsEnabled="{Binding DataDonarePosibila, Converter={StaticResource dateToBool} }"  Command="{Binding DoneazaCommand}"  Content="Doneaza" Canvas.Left="698" Canvas.Top="512" Height="60" Width="196"></Button>
 
 
         <materialDesign:Card Width="451" Height="140" Canvas.Left="443" Canvas.Top="19">
@@ -76,6 +82,10 @@
                 <Label Content="{Binding Trombocite.Pacient}" Height="27" Width="210" Canvas.Left="71" Canvas.Top="103"></Label>
             </Canvas>
         </materialDesign:Card>
+
+       
+        <Label Canvas.Left="443" Canvas.Top="503">Urmatoarea donatie posibila in:</Label>
+        <Label Content="{Binding DataDonarePosibila}" Canvas.Left="443" Canvas.Top="530" Width="224" Height="37"></Label>
 
     </Canvas>
 </UserControl>

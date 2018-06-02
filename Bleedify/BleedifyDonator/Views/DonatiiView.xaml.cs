@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using BleedifyDonator.ViewModels;
 using MahApps.Metro.Controls;
 
@@ -25,6 +26,7 @@ namespace BleedifyDonator.Views
 		{
 			get { return DataContext as IstoricViewModel; }
 			set { DataContext = value; }
+
 		}
 
 		public DonatiiView()

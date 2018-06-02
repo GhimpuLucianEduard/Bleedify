@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Threading;
 using BleedifyDonator.Utils;
 using BleedifyDonator.Views;
 using BleedifyModels.Enums;
@@ -15,7 +17,15 @@ namespace BleedifyDonator.ViewModels
 	public class IstoricViewModel : BaseViewModel
 	{
 
-		//public DateTime DataDonarePosibila { get; set; }
+		private DateTime _dataDonarePosibila;
+	
+		public DateTime DataDonarePosibila {
+			get { return _dataDonarePosibila; }
+			set
+			{
+				SetValue(ref _dataDonarePosibila, value);
+			}
+		}
 		public ObservableCollection<Componenta> Componente { get; set; }
 
 		public ObservableCollection<DonatieViewModel> Donatii
@@ -46,13 +56,9 @@ namespace BleedifyDonator.ViewModels
 			SelectionChanged = new BasicCommand(GetComponente);
 			DoneazaCommand = new BasicCommand(DoneazaAction);
 			Componente = new ObservableCollection<Componenta>();
-			//SetTimer();
+			DataDonarePosibila = AppSettings.LoggedDonator.DataDonarePosibila;
+			StartTimer();
 		}
-
-//		public void SetTimer()
-//		{
-//			DataDonarePosibila = AppSettings.LoggedDonator.DataDonarePosibila;
-//		}
 
 		private void DoneazaAction()
 		{
@@ -62,11 +68,24 @@ namespace BleedifyDonator.ViewModels
 			viewModel.DonatieAdded += (sender, args) =>
 			{
 				Donatii.Add(new DonatieViewModel(args as Donatie));
+				DataDonarePosibila = AppSettings.LoggedDonator.DataDonarePosibila;
 				win.Close();
 			};
 			
 		}
 
+
+		public async Task StartTimer()
+		{
+
+			Task.Run(() => {
+				while (true)
+				{
+					OnPropertyChanged(nameof(DataDonarePosibila));
+				}
+			});
+
+		}
 		private void LoadData()
 		{	
 			var donations = AppService.Instance.DonatieService.GetAllByDonator(AppSettings.LoggedDonator.Id);

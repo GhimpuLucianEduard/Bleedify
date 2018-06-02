@@ -39,12 +39,13 @@ namespace BleedifyDonator.ViewModels
 			anunt.DataAnunt = DateTime.Now;
 			anunt.Mesaj = "Donatia ta a fost inregistrata cu succes!";
 
-//			//TODO modifica aici ca sa vezi diferenta mai mare de timp
-//			var date = DateTime.Now;
-//			date.AddMinutes(1);
-//			AppSettings.LoggedDonator.DataDonarePosibila = date;
-//			AppService.Instance.DonatorService.Update(AppSettings.LoggedDonator);
-//			DonatieAdded?.Invoke(this, donatie);
+			//TODO modifica aici ca sa vezi diferenta mai mare de timp
+			var date = DateTime.Now;
+			//date = date.AddMinutes(1);
+			date = date.AddSeconds(5);
+			AppSettings.LoggedDonator.DataDonarePosibila = date;
+			AppService.Instance.DonatorService.Update(AppSettings.LoggedDonator);
+			DonatieAdded?.Invoke(this, donatie);
 
 			MessageBox.Show("Donatia ta a fost inregistrata! Vino la cel mai apropiat centru pentru urmatoarea etapa!", "Succes", MessageBoxButton.OK);
 		}
