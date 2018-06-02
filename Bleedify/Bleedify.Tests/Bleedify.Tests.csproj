@@ -81,24 +81,34 @@
     <Compile Include="ModelsAndRepo\ComponentaTests.cs" />
     <Compile Include="Services\BatchAdd.cs" />
     <Compile Include="Services\FilterTests.cs" />
+    <Compile Include="TesteFunctionale\TestPrelucrareDonatie.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BleedifyModels\BleedifyModels.csproj">
       <Project>{775861A0-8BD8-4CAE-B217-201DE90FDA85}</Project>
       <Name>BleedifyModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BleedifyPersonal\BleedifyPersonal.csproj">
+      <Project>{32B68E29-663B-4E90-B73F-8BD7A472FD5E}</Project>
+      <Name>BleedifyPersonal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BleedifyServices\BleedifyServices.csproj">
       <Project>{CC81D58D-7080-4653-8F74-36072599B82A}</Project>
       <Name>BleedifyServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DomainViewModels\DomainViewModels.csproj">
+      <Project>{D509C736-6755-46D8-B935-B2DE086E6851}</Project>
+      <Name>DomainViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="GenericTest1.GenericTest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TesteFunctionale\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
