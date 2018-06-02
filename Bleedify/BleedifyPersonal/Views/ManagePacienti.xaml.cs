@@ -21,6 +21,12 @@ namespace BleedifyPersonal.Views
 	/// </summary>
 	public partial class ManagePacienti : UserControl
 	{
+		public ManagePacientiViewModel ViewModel
+		{
+			get { return DataContext as ManagePacientiViewModel; }
+			set { DataContext = value; }
+		}
+
 		public ManagePacienti()
 		{
 			InitializeComponent();

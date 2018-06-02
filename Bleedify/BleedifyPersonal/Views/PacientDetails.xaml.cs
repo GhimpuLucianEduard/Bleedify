@@ -20,6 +20,12 @@ namespace BleedifyPersonal.Views
 	/// </summary>
 	public partial class PacientDetails : Window
 	{
+		public PacientDetailsViewModel ViewModel
+		{
+			get { return DataContext as PacientDetailsViewModel; }
+			set { DataContext = value; }
+		}
+
 		public PacientDetails(DomainViewModels.PacientViewModel pacientViewModel)
 		{
 			InitializeComponent();

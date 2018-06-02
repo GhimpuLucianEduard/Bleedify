@@ -59,7 +59,7 @@ namespace DomainViewModels
 			set { SetValue(ref _grupaDeSange, value);}
 		}
 
-		public virtual InstitutieAsociata InstitutieAsociata
+		public InstitutieAsociata InstitutieAsociata
 		{
 			get { return _institutieAsociata; }
 			set { SetValue(ref _institutieAsociata, value);}
