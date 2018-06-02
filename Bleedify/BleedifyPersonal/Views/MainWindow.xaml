@@ -45,7 +45,7 @@
 
         <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="1"
                                  Height="622"
-                                 materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="16,12,19.4,0">
+                                 materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="16,12,10.4,0">
 
             <Canvas>
 
@@ -88,6 +88,24 @@
                     </Label.Style>
                 </Label>
 
+                <materialDesign:PackIcon 
+                    Foreground="{Binding Source={x:Reference labelInst}, Path=Foreground}"
+                    Kind="HospitalBuilding" Height="60" Width="87" Canvas.Top="225" Canvas.Left="3"></materialDesign:PackIcon>
+                <Label
+                    MouseLeftButtonUp="ViewInstitutii"
+                    x:Name="labelInst"
+                    FontSize="18" Content="Institutii" Canvas.Left="87" Canvas.Top="244" Height="41" Width="89">
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="Black" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
                 <materialDesign:PackIcon Kind="Account" RenderTransformOrigin="2.9,4.206" Canvas.Left="3" Canvas.Top="525" Height="21" Width="21"></materialDesign:PackIcon>
                 <Label FontSize="12" Content="{Binding NumeUtilizator}" Height="35" Width="129" Canvas.Top="525" Canvas.Left="28"/>
                 <materialDesign:PackIcon Kind="HospitalBuilding" Canvas.Top="565" Height="29" Width="21" Canvas.Left="3"/>

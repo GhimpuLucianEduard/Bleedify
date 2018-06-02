@@ -39,6 +39,12 @@ namespace BleedifyPersonal.Views
 			MainGrid.Children.Clear();
 			MainGrid.Children.Add(new ManageDonatiiView());
 		}
+
+		private void ViewInstitutii(object sender, MouseButtonEventArgs e)
+		{
+			MainGrid.Children.Clear();
+			MainGrid.Children.Add(new ManageInstitutii());
+		}
 	}
 
 

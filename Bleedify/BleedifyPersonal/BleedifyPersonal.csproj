@@ -91,6 +91,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\ManageInstitutiiViewModel.cs" />
     <Compile Include="ViewModels\RegisterPersonalViewModel.cs" />
     <Compile Include="Views\DonatieMasterDetailView.xaml.cs">
       <DependentUpon>DonatieMasterDetailView.xaml</DependentUpon>
@@ -109,6 +110,9 @@
     </Compile>
     <Compile Include="Views\ComponentaMasterDetailView.xaml.cs">
       <DependentUpon>ComponentaMasterDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManageInstitutii.xaml.cs">
+      <DependentUpon>ManageInstitutii.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterPersonal.xaml.cs">
       <DependentUpon>RegisterPersonal.xaml</DependentUpon>
@@ -178,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ComponentaMasterDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManageInstitutii.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
