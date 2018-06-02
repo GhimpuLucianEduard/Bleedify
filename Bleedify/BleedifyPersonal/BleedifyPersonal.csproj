@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="Utils\AppSettings.cs" />
     <Compile Include="ViewModels\DonatieDetailViewModel.cs" />
+    <Compile Include="ViewModels\InstitutieDetailViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ManageComponenteViewModel.cs" />
@@ -93,8 +94,12 @@
     </Compile>
     <Compile Include="ViewModels\ManageInstitutiiViewModel.cs" />
     <Compile Include="ViewModels\RegisterPersonalViewModel.cs" />
+    <Compile Include="ViewModels\StringToIntConverter.cs" />
     <Compile Include="Views\DonatieMasterDetailView.xaml.cs">
       <DependentUpon>DonatieMasterDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InstitutieDetail.xaml.cs">
+      <DependentUpon>InstitutieDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -162,6 +167,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\DonatieMasterDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InstitutieDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

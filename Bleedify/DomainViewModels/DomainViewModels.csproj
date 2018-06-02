@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdresaViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="CerereViewModel.cs" />
     <Compile Include="Commands\BasicCommand.cs" />

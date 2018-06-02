@@ -125,6 +125,7 @@
       <DependentUpon>BleedifyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AdresaRepository.cs" />
     <Compile Include="Repositories\AnuntDonatorRepository.cs" />
     <Compile Include="Repositories\ComponentaRepository.cs" />
     <Compile Include="Repositories\DonatieRepository.cs" />

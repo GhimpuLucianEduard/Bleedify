@@ -10,28 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BleedifyPersonal.ViewModels;
+using DomainViewModels;
 
 namespace BleedifyPersonal.Views
 {
 	/// <summary>
-	/// Interaction logic for ManageInstitutiixaml.xaml
+	/// Interaction logic for InstitutieDetail.xaml
 	/// </summary>
-	public partial class ManageInstitutii : UserControl
+	public partial class InstitutieDetail : Window
 	{
-		public ManageInstitutiiViewModel ViewModel
+		public InstitutieDetailViewModel ViewModel
 		{
-			get { return DataContext as ManageInstitutiiViewModel; }
+			get { return DataContext as InstitutieDetailViewModel; }
 			set { DataContext = value; }
 
 		}
 
-		public ManageInstitutii()
+		public InstitutieDetail(InstitutieAsociataViewModel viewModel)
 		{
 			InitializeComponent();
-			DataContext = new ManageInstitutiiViewModel();
+			DataContext = new InstitutieDetailViewModel(viewModel);
 		}
 	}
 }

@@ -20,18 +20,21 @@ namespace BleedifyModels.Repositories
 
         public void Add(InstitutieAsociata entity)
         {
-            throw new NotImplementedException();
-        }
+	        _val.Validate(entity);
+	        _context.InstitutieAsociatas.Add(entity);
+	        _context.SaveChanges();
+		}
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
-        }
+			_context.InstitutieAsociatas.Remove(Find(id));
+			_context.SaveChanges();
+		}
 
         public InstitutieAsociata Find(int id)
         {
-            throw new NotImplementedException();
-        }
+			return _context.InstitutieAsociatas.Find(id);
+		}
 
         public IEnumerable<InstitutieAsociata> GetAll()
         {
@@ -40,7 +43,10 @@ namespace BleedifyModels.Repositories
 
         public void Update(InstitutieAsociata entity)
         {
-            throw new NotImplementedException();
-        }
-    }
+			_val.Validate(entity);
+	        var oldEntity = Find(entity.Id);
+	        _context.Entry(oldEntity).CurrentValues.SetValues(entity);
+	        _context.SaveChanges();
+		}
+	}
 }

@@ -23,5 +23,19 @@ namespace BleedifyServices
             return _repository.GetAll();
         }
 
+	    public void Add(InstitutieAsociata institutie)
+	    {
+			_repository.Add(institutie);
+	    }
+
+	    public void Delete(int id)
+	    {
+			_repository.Delete(id);
+	    }
+
+	    public void Update(InstitutieAsociata institutie)
+	    {
+			_repository.Update(institutie);
+	    }
     }
 }

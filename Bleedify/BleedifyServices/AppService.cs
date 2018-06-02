@@ -23,6 +23,7 @@ namespace BleedifyServices
         private AnuntDonatorService _anuntDonatorService;
 	    private PersonalService _personalService;
 	    private UtilizatorService _utilizatorService;
+	    private AdresaService _adresaService;
 
         private AppService ()
         {	
@@ -37,7 +38,13 @@ namespace BleedifyServices
             _pacientService = new PacientService();
             _medicService = new MedicService();
             _anuntDonatorService = new AnuntDonatorService();
+			_adresaService = new AdresaService();
         }
+
+	    public AdresaService AdresaService
+	    {
+		    get { return _adresaService; }
+	    }
 
         public MedicService MedicService
         {
@@ -95,6 +102,7 @@ namespace BleedifyServices
                 return _instance;
             }
         }
+
 
 	    public PersonalService PersonalService
 	    {

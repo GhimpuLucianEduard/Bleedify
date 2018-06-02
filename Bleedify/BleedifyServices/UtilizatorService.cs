@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using BleedifyModels.Enums;
 using BleedifyModels.ModelsEF;
 using BleedifyModels.Repositories;
@@ -57,6 +58,11 @@ namespace BleedifyServices.Services
 		public void Register(Utilizator utilizator)
 		{
 			_repository.Add(utilizator);
+		}
+
+		public IEnumerable<Utilizator> GetAll()
+		{
+			return _repository.GetAll();
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace BleedifyModels.Validators
     {
         public void Validate(InstitutieAsociata entity)
         {
-            throw new NotImplementedException();
+            return;
         }
     }
 }
