@@ -39,24 +39,31 @@ namespace BleedifyPersonal.ViewModels
 
 		private void UpdateInstitutie()
 		{
-			var win = new InstitutieDetail(SelectedInstitutie);
-			win.Show();
-
-			win.ViewModel.InstitutieUpdated += (sender, args) =>
+			if (SelectedInstitutie == null)
 			{
-				var newInst = args;
-//				var old = Institutii.FirstOrDefault(x => x.Id == newInst.Id);
-//				old = new InstitutieAsociataViewModel(newInst);
-				Institutii.ToList().ForEach(x =>
+				MessageBox.Show("Selecteaza o Institutie", "Atentie", MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+			else
+			{
+				var win = new InstitutieDetail(SelectedInstitutie);
+				win.Show();
+
+				win.ViewModel.InstitutieUpdated += (sender, args) =>
 				{
-					if (x.Id == newInst.Id)
+					var newInst = args;
+					//				var old = Institutii.FirstOrDefault(x => x.Id == newInst.Id);
+					//				old = new InstitutieAsociataViewModel(newInst);
+					Institutii.ToList().ForEach(x =>
 					{
-						x = new InstitutieAsociataViewModel(newInst);
-					}
-				});
-				OnPropertyChanged(nameof(Institutii));
-				win.Close();
-			};
+						if (x.Id == newInst.Id)
+						{
+							x = new InstitutieAsociataViewModel(newInst);
+						}
+					});
+					OnPropertyChanged(nameof(Institutii));
+					win.Close();
+				};
+			}
 		}
 
 		private void AdaugaInstitutie()

@@ -93,6 +93,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\ManageInstitutiiViewModel.cs" />
+    <Compile Include="ViewModels\ManagePacientiViewModel.cs" />
+    <Compile Include="ViewModels\PacientDetailsViewModel.cs" />
     <Compile Include="ViewModels\RegisterPersonalViewModel.cs" />
     <Compile Include="ViewModels\StringToIntConverter.cs" />
     <Compile Include="Views\DonatieMasterDetailView.xaml.cs">
@@ -118,6 +120,12 @@
     </Compile>
     <Compile Include="Views\ManageInstitutii.xaml.cs">
       <DependentUpon>ManageInstitutii.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManagePacienti.xaml.cs">
+      <DependentUpon>ManagePacienti.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PacientDetails.xaml.cs">
+      <DependentUpon>PacientDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterPersonal.xaml.cs">
       <DependentUpon>RegisterPersonal.xaml</DependentUpon>
@@ -195,6 +203,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManageInstitutii.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManagePacienti.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PacientDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

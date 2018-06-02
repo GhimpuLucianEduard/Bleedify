@@ -107,10 +107,24 @@
                     </Label.Style>
                 </Label>
                 <materialDesign:PackIcon Kind="Account" RenderTransformOrigin="2.9,4.206" Canvas.Left="3" Canvas.Top="525" Height="21" Width="21"></materialDesign:PackIcon>
-                <Label FontSize="12" Content="{Binding NumeUtilizator}" Height="35" Width="129" Canvas.Top="525" Canvas.Left="28"/>
+                <Label FontSize="12" Content="{Binding NumeUtilizator}" Height="35" Width="148" Canvas.Top="525" Canvas.Left="28"/>
                 <materialDesign:PackIcon Kind="HospitalBuilding" Canvas.Top="565" Height="29" Width="21" Canvas.Left="3"/>
-                <Label FontSize="12" Content="{Binding InstitutieUtilizator}" Height="34" Width="130" Canvas.Top="566" Canvas.Left="28"></Label>
-
+                <Label FontSize="12" Content="{Binding InstitutieUtilizator}" Height="34" Width="158" Canvas.Top="566" Canvas.Left="28"></Label>
+                <materialDesign:PackIcon 
+                    Foreground="{Binding Source={x:Reference labelPacienti}, Path=Foreground}"
+                    Kind="Account" Height="80" Width="90" RenderTransformOrigin="0.891,7.981" Canvas.Top="308" Canvas.Left="3"></materialDesign:PackIcon>
+                <Label MouseLeftButtonUp="ViewPacienti" x:Name="labelPacienti" FontSize="18" Canvas.Left="87" Canvas.Top="340" Width="99">Pacienti
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="Black" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
             </Canvas>
 
 

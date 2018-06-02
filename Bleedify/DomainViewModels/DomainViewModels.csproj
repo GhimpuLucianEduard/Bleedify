@@ -53,6 +53,7 @@
     <Compile Include="InstitutieAsociataViewModel.cs" />
     <Compile Include="InverseBooleanConverter.cs" />
     <Compile Include="MedicViewModel.cs" />
+    <Compile Include="PacientViewModel.cs" />
     <Compile Include="PersonalViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilizatorViewModel.cs" />
