@@ -60,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExempluClasaDeTeste.cs" />
     <Compile Include="ModelsAndRepo\CerereMedicPacientRepositoryTests.cs" />
     <Compile Include="ModelsAndRepo\CerereMedicPacientTests.cs" />
     <Compile Include="ModelsAndRepo\CerereMedicPacientValidatorTests.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="ModelsAndRepo\ComponentaTests.cs" />
     <Compile Include="Services\BatchAdd.cs" />
     <Compile Include="Services\FilterTests.cs" />
+    <Compile Include="TesteFunctionale\TestModificaAnuntaDonator.cs" />
     <Compile Include="TesteFunctionale\TestPrelucrareDonatie.cs" />
   </ItemGroup>
   <ItemGroup>

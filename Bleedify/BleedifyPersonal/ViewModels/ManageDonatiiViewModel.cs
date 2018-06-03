@@ -152,7 +152,7 @@ namespace BleedifyPersonal.ViewModels
                         try
                         {
                             PrelucreazaDonatie();
-                            MessageBox.Show("You have successfully PRELUCRATED the Donation!", "Success", MessageBoxButton.OK);
+                           // MessageBox.Show("You have successfully PRELUCRATED the Donation!", "Success", MessageBoxButton.OK);
                         }
                         catch(ServiceException e)
                         {
