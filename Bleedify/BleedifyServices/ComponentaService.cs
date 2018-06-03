@@ -62,7 +62,7 @@ namespace BleedifyServices
 		    return _repository.Find(id);
 	    }
 
-        public IEnumerable<Componenta> Filter(string tipComponenta, string stare)
+        public IEnumerable<Componenta> Filter(string tipComponenta, string stare, string grupaDeSange)
         {
             return _repository.GetAll()
                 .Where(x =>
@@ -77,6 +77,12 @@ namespace BleedifyServices
                         return true;
                     return x.Stare.ToLower().Equals(stare.ToLower());
                 })
+	            .Where(x =>
+	            {
+		            if (string.IsNullOrEmpty(grupaDeSange))
+			            return true;
+		            return x.Donatie.Donator.GrupaDeSange1.Nume.ToLower().Equals(grupaDeSange.ToLower());
+				})
                 .ToList();
         }
 

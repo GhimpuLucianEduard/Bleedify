@@ -98,7 +98,7 @@ namespace BleedifyMedic.ViewModels
                 ParamTip = SelectedTipComponenta;
             }
 
-            var comp = AppService.Instance.ComponentaService.Filter(ParamTip, ParamStare);
+            var comp = AppService.Instance.ComponentaService.Filter(ParamTip, ParamStare,null);
 
             Componente.Clear();
             foreach (var c in comp)

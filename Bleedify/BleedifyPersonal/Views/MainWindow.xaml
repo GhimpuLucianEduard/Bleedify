@@ -125,6 +125,23 @@
                         </Style>
                     </Label.Style>
                 </Label>
+
+                <materialDesign:PackIcon  
+                    Foreground="{Binding Source={x:Reference labelCereri2}, Path=Foreground}"
+                    Kind="BookMultiple" Height="75" Width="77" Canvas.Top="407" RenderTransformOrigin="0.671,0.584" Canvas.Left="7"></materialDesign:PackIcon>
+                <Label MouseLeftButtonUp="ViewCereri" x:Name="labelCereri2" FontSize="18" Canvas.Left="95" Canvas.Top="422">Cereri
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="Black" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
+
             </Canvas>
 
 

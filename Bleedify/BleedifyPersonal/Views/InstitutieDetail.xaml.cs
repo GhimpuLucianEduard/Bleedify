@@ -25,7 +25,6 @@ namespace BleedifyPersonal.Views
 		{
 			get { return DataContext as InstitutieDetailViewModel; }
 			set { DataContext = value; }
-
 		}
 
 		public InstitutieDetail(InstitutieAsociataViewModel viewModel)

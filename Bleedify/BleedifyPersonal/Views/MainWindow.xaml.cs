@@ -51,6 +51,12 @@ namespace BleedifyPersonal.Views
 			MainGrid.Children.Clear();
 			MainGrid.Children.Add(new ManagePacienti());
 		}
+
+		private void ViewCereri(object sender, MouseButtonEventArgs e)
+		{
+			MainGrid.Children.Clear();
+			MainGrid.Children.Add(new ManageCereriView());
+		}
 	}
 
 

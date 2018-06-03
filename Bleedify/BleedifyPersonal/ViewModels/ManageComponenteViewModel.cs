@@ -54,6 +54,7 @@ namespace BleedifyPersonal.ViewModels
         public ICommand FilterComponenteCommand { get; private set; }
         public ICommand ClearFilterComponenteCommand { get; private set; }
 
+
         public ManageComponenteViewModel()
         {
             Stari = new ObservableCollection<string>();
@@ -78,9 +79,9 @@ namespace BleedifyPersonal.ViewModels
             DeservireComponentaCommand = new BasicCommand(DeservireComponenta);
             FilterComponenteCommand = new BasicCommand(FilterComponente);
             ClearFilterComponenteCommand = new BasicCommand(ClearFilterComponente);
-        }
+		}
 
-        private void FilterComponente()
+	    private void FilterComponente()
         {
             string ParamStare;
             string ParamTip;
@@ -117,7 +118,7 @@ namespace BleedifyPersonal.ViewModels
                 }
             }
 
-            var comp = AppService.Instance.ComponentaService.Filter(ParamTip, ParamStare);
+            var comp = AppService.Instance.ComponentaService.Filter(ParamTip, ParamStare, null);
 
             Componente.Clear();
             foreach (var c in comp)
@@ -159,7 +160,7 @@ namespace BleedifyPersonal.ViewModels
 
             _isDataLoaded = true;
 
-            var components = AppService.Instance.ComponentaService.Filter(null, null);
+            var components = AppService.Instance.ComponentaService.Filter(null, null, null);
 
             foreach (var c in components)
                 Componente.Add(new ComponentaViewModel(c));

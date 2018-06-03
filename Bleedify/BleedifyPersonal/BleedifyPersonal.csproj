@@ -85,6 +85,7 @@
     <Compile Include="ViewModels\InstitutieDetailViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\ManageCereriViewModel.cs" />
     <Compile Include="ViewModels\ManageComponenteViewModel.cs" />
     <Compile Include="ViewModels\ManageDonatiiViewModel.cs" />
     <Compile Include="ViewModels\ComponentaDetailViewModel.cs" />
@@ -108,6 +109,9 @@
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManageCereriView.xaml.cs">
+      <DependentUpon>ManageCereriView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ManageComponenteView.xaml.cs">
       <DependentUpon>ManageComponenteView.xaml</DependentUpon>
@@ -189,6 +193,10 @@
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManageCereriView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ManageComponenteView.xaml">
       <SubType>Designer</SubType>
