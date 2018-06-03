@@ -31,5 +31,10 @@ namespace BleedifyPersonal.Views
 			InitializeComponent();
 			DataContext = new PacientDetailsViewModel(pacientViewModel);
 		}
+
+		private void OnCancel(object sender, RoutedEventArgs e)
+		{
+			Close();
+		}
 	}
 }

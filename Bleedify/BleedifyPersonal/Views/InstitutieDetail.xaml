@@ -9,7 +9,7 @@
         xmlns:converter="clr-namespace:BleedifyPersonal.ViewModels"
         mc:Ignorable="d"
         Title="Detalii Institutie" Height="495.197" Width="380.332">
-    
+
     <Window.Resources>
         <converter:StringToIntConverter x:Key="stringToInt"/>
     </Window.Resources>
@@ -34,6 +34,9 @@
         <TextBox Width="198" Canvas.Left="123" Canvas.Top="261" Text="{Binding Adresa.Strada}"></TextBox>
         <TextBox Width="198" Canvas.Left="142" Canvas.Top="335" Text="{Binding Adresa.CodPostal, Converter={StaticResource stringToInt}}"></TextBox>
         <TextBox Width="52" Canvas.Left="122" Canvas.Top="297" Text="{Binding Adresa.Numarul, Converter={StaticResource stringToInt}}"></TextBox>
-        <Button Command="{Binding AddInstitutieCommand}" Canvas.Left="110" Canvas.Top="396" Width="136">Salveaza</Button>
+        <Button Command="{Binding AddInstitutieCommand}" Canvas.Left="38" Canvas.Top="397" Width="116">Salveaza</Button>
+        <Button Click="OnCancel" Canvas.Left="229" Canvas.Top="397" Width="116">
+            Cancel
+        </Button>
     </Canvas>
 </Window>

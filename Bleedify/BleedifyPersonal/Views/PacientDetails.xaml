@@ -19,6 +19,9 @@
         <DatePicker DisplayDateStart="01-01-1920" SelectedDate="{Binding Pacient.DataNastere}" Canvas.Left="139" Canvas.Top="121" Width="156"></DatePicker>
         <ComboBox ItemsSource="{Binding InstitutiiAsociate}" SelectedValue="{Binding SelectedInstitutie}" Width="214" Canvas.Left="157" Canvas.Top="166"></ComboBox>
         <ComboBox ItemsSource="{Binding GrupeDeSange}" SelectedValue="{Binding SelectedGrupa}" Width="69" Canvas.Left="157" Canvas.Top="214"></ComboBox>
-        <Button Command="{Binding SalveazaCommand}" Canvas.Left="139" Canvas.Top="275" Width="121">Salveaza</Button>
+        <Button Command="{Binding SalveazaCommand}" Canvas.Left="72" Canvas.Top="276" Width="121">Salveaza</Button>
+        <Button Click="OnCancel" Canvas.Left="230" Canvas.Top="276" Width="121">
+            Cancel
+        </Button>
     </Canvas>
 </Window>

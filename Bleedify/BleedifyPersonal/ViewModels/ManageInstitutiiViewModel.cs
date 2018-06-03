@@ -51,16 +51,25 @@ namespace BleedifyPersonal.ViewModels
 				win.ViewModel.InstitutieUpdated += (sender, args) =>
 				{
 					var newInst = args;
-					//				var old = Institutii.FirstOrDefault(x => x.Id == newInst.Id);
-					//				old = new InstitutieAsociataViewModel(newInst);
 					Institutii.ToList().ForEach(x =>
 					{
 						if (x.Id == newInst.Id)
-						{
-							x = new InstitutieAsociataViewModel(newInst);
+						{	
+							var numeInst = newInst.Nume;
+							var telInst = newInst.NumarTelefon;
+							var email = newInst.Email;
+							var tip = newInst.TipInstitutie;
+							var idAdresa = newInst.Adresa;
+							var adresa = newInst.Adresa1;
+
+							x.Nume = numeInst;
+							x.NrTel = telInst;
+							x.Email = email;
+							x.Tip = tip;
+							x.IdAdresa = idAdresa;
+							x.Adresa = adresa;
 						}
 					});
-					OnPropertyChanged(nameof(Institutii));
 					win.Close();
 				};
 			}

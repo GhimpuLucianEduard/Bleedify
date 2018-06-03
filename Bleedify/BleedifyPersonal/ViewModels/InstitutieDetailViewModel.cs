@@ -36,7 +36,19 @@ namespace BleedifyPersonal.ViewModels
 
 		public InstitutieDetailViewModel(InstitutieAsociataViewModel institutieAsociataViewModel)
 		{	
-			Institutie = institutieAsociataViewModel;
+			Institutie = new InstitutieAsociataViewModel();
+
+			if (institutieAsociataViewModel.Id != 0)
+			{
+				Institutie.Id = institutieAsociataViewModel.Id;
+				Institutie.Nume = institutieAsociataViewModel.Nume;
+				Institutie.Email = institutieAsociataViewModel.Email;
+				Institutie.NrTel = institutieAsociataViewModel.NrTel;
+				Institutie.Tip = institutieAsociataViewModel.Tip;
+				Institutie.IdAdresa = institutieAsociataViewModel.IdAdresa;
+				Institutie.Adresa = new Adresa();
+			}
+
 			if (institutieAsociataViewModel.Adresa == null)
 			{
 				Adresa = new AdresaViewModel();

@@ -51,23 +51,33 @@ namespace BleedifyPersonal.ViewModels
 			{
 				var win = new PacientDetails(SelectedPacient);
 				win.Show();
-				win.ViewModel.PacientUpdated += OnUpdate;
+				win.ViewModel.PacientUpdated += (sender, args) =>
+				{
+					Pacienti.ToList().ForEach(x =>
+					{
+						if (x.Id == args.Id)
+						{
+							var nume = args.Nume;
+							var prenume = args.Prenume;
+							var idGrupa = args.IdGrupaDeSange;
+							var idInst = args.IdInstitutieAsociata;
+							var grupa = args.GrupaDeSange;
+							var inst = args.InstitutieAsociata;
+							var data = args.DataNastere;
+
+							x.Nume = nume;
+							x.Prenume = prenume;
+							x.IdGrupaDeSange = idGrupa;
+							x.IdInstitutieAsociata = idInst;
+							x.GrupaDeSange = grupa;
+							x.InstitutieAsociata = inst;
+							x.DataNastere = data;
+						}
+					});
+					win.Close();
+				};
 			}
 		}
-
-		private void OnUpdate(object sender, PacientViewModel e)
-		{
-			Pacienti.ToList().ForEach(x =>
-			{
-				if (x.Id == e.Id)
-				{
-					x = e;
-					x.Nume = e.Nume;
-				}
-			});
-//			win.Close();
-		}
-
 
 		private void AddPacient()
 		{
