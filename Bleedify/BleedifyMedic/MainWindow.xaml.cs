@@ -40,5 +40,11 @@ namespace BleedifyMedic
 			MainGrid.Children.Clear();
 			MainGrid.Children.Add(new ManageCereriView());
 		}
+
+		private void ViewPacienti(object sender, MouseButtonEventArgs e)
+		{
+			MainGrid.Children.Clear();
+			MainGrid.Children.Add(new ManagePacienti());
+		}
 	}
 }

@@ -85,7 +85,9 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ManageCereriViewModel.cs" />
+    <Compile Include="ViewModels\ManagePacientiViewModel.cs" />
     <Compile Include="ViewModels\ManageStocViewModel.cs" />
+    <Compile Include="ViewModels\PacientDetailsViewModel.cs" />
     <Compile Include="ViewModels\RegisterMedicViewModel.cs" />
     <Compile Include="Views\CerereMasterDetailView.xaml.cs">
       <DependentUpon>CerereMasterDetailView.xaml</DependentUpon>
@@ -96,8 +98,14 @@
     <Compile Include="Views\ManageCereriView.xaml.cs">
       <DependentUpon>ManageCereriView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ManagePacienti.xaml.cs">
+      <DependentUpon>ManagePacienti.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ManageStocView.xaml.cs">
       <DependentUpon>ManageStocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PacientDetails.xaml.cs">
+      <DependentUpon>PacientDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterMedic.xaml.cs">
       <DependentUpon>RegisterMedic.xaml</DependentUpon>
@@ -126,9 +134,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ManagePacienti.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ManageStocView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PacientDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RegisterMedic.xaml">
       <SubType>Designer</SubType>

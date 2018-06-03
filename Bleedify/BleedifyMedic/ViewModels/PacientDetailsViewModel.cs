@@ -7,7 +7,7 @@ using BleedifyServices;
 using DomainViewModels;
 using DomainViewModels.Commands;
 
-namespace BleedifyPersonal.ViewModels
+namespace BleedifyMedic.ViewModels
 {
 	public class PacientDetailsViewModel : BaseViewModel
 	{
@@ -37,8 +37,7 @@ namespace BleedifyPersonal.ViewModels
 		public PacientViewModel Pacient { get; set; }
 
 		public PacientDetailsViewModel(PacientViewModel pacientViewModel)
-		{
-
+		{	
 			Pacient = new PacientViewModel();
 			if (pacientViewModel.Id != 0)
 			{
