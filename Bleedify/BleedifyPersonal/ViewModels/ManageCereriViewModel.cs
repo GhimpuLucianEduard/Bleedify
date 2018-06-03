@@ -132,6 +132,7 @@ namespace BleedifyPersonal.ViewModels
 						// modifica cererea
 						try
 						{
+							var idDonator = SelectedComponenta.Donatie.IdDonator;
 							var cerere = new CerereMedicPacient();
 							cerere.Id = SelectedCerere.Id;
 							cerere.IdPacient = SelectedCerere.IdPacient;
@@ -162,7 +163,7 @@ namespace BleedifyPersonal.ViewModels
 							// adauga anunt la donator
 							var anunt = new AnuntDonator();
 							anunt.DataAnunt = DateTime.Now;
-							anunt.IdDonator = componenta.Donatie.Donator.Id;
+							anunt.IdDonator = idDonator;
 							anunt.TipAnuntDonator = TipAnuntDonator.Info.ToString();
 							anunt.Mesaj = "Salut, \n componenta ta de tipul:" + componenta.TipComponenta + " a fost donata cu succes!";
 							AppService.Instance.AnuntDonatorService.Add(anunt);
@@ -205,8 +206,17 @@ namespace BleedifyPersonal.ViewModels
 			}
 			else
 			{
+				var filtru = "";
+				if (SelectedCerere.TipComponenta.CompareTo("GlobuleRosii") == 0)
+				{
+					filtru= "Globule Rosii";
+				}
+				else
+				{
+					filtru = SelectedCerere.TipComponenta;
+				}
 				var componente = AppService.Instance.ComponentaService.Filter(
-					SelectedCerere.TipComponenta, 
+					filtru, 
 					"In Asteptare", 
 					SelectedCerere.GrupaDeSange.Nume);
 				Componente.Clear();

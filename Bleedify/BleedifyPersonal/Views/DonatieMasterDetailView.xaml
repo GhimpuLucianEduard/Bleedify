@@ -20,8 +20,6 @@
         <DatePicker  HorizontalAlignment="Left" Margin="156,95,0,0" VerticalAlignment="Top" SelectedDate="{Binding DonatieViewModel.DataDonare}" Width="171"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="156,211,0,0" TextWrapping="Wrap" Text="{Binding MotivRefuz}" VerticalAlignment="Top" Width="171"/>
         <ComboBox ItemsSource="{Binding Institutii}" 
-                  DisplayMemberPath="Nume"
-                  SelectedValuePath="Nume"
                   SelectedValue="{Binding SelectedInstitutie}"
                   HorizontalAlignment="Left" Margin="156,170,0,0" VerticalAlignment="Top" Width="171"/>
         <Label Content="Prenume Donator" HorizontalAlignment="Left" Margin="27,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.269"/>
