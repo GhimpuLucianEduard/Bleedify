@@ -28,7 +28,7 @@ namespace BleedifyDonator.ViewModels
 				GrupaDeSange = AppSettings.LoggedDonator.GrupaDeSange,
 				IdDonator = AppSettings.LoggedDonator.Id,
 				DataDonare = DateTime.Now,
-				InstitutieAsociata = AppSettings.LoggedDonator.InstitutieAsociata,
+				InstitutieAsociata = AppSettings.LoggedDonator.Utilizator.InstitutieAsociata,
 				EtapaDonare = "De Analizat"
 			};
 			AppService.Instance.DonatieService.Add(donatie);

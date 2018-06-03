@@ -13,8 +13,8 @@ namespace BleedifyDonator.ViewModels
 
 		public MesajeViewModel()
 		{
-			Mesaje = new ObservableCollection<AnuntDonator>(AppService.Instance.AnuntDonatorService.Filter(AppSettings.LoggedDonator.Id));
-			Mesaje.OrderBy(x=>x.DataAnunt);
+			Mesaje = new ObservableCollection<AnuntDonator>
+					(AppService.Instance.AnuntDonatorService.Filter(AppSettings.LoggedDonator.Id).OrderByDescending(x => x.DataAnunt));
 		}
 	}
 }

@@ -22,7 +22,7 @@
         <ComboBox ItemsSource="{Binding Institutii}" 
                   DisplayMemberPath="Nume"
                   SelectedValuePath="Nume"
-                  SelectedItem="{Binding SelectedInstitutie}"
+                  SelectedValue="{Binding SelectedInstitutie}"
                   HorizontalAlignment="Left" Margin="156,170,0,0" VerticalAlignment="Top" Width="171"/>
         <Label Content="Prenume Donator" HorizontalAlignment="Left" Margin="27,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.269"/>
         <TextBox IsEnabled="{Binding IsAddState}" HorizontalAlignment="Left" Height="23" Margin="156,62,0,0" TextWrapping="Wrap" Text="{Binding PrenumeDonator}" VerticalAlignment="Top" Width="171"/>
