@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -36,7 +35,10 @@ namespace BleedifyPersonal.ViewModels
 			DeletePacientCommand = new BasicCommand(DeletePacient);
 			AddPacientCommand = new BasicCommand(AddPacient);
 			UpdatePacientCommand = new BasicCommand(UpdatePacient);
-			Pacienti.CollectionChanged += (sender, args) => { Debug.WriteLine("col event triggerd " + args.Action); };
+//			Pacienti.CollectionChanged += (sender, args) =>
+//			{
+//				Debug.WriteLine("col event triggerd " + args.Action);
+//			};
 		}
 
 		private void UpdatePacient()
@@ -49,19 +51,23 @@ namespace BleedifyPersonal.ViewModels
 			{
 				var win = new PacientDetails(SelectedPacient);
 				win.Show();
-				win.ViewModel.PacientUpdated += (sender, args) =>
-				{	
-					Pacienti.ToList().ForEach(x =>
-					{
-						if (x.Id == args.Id)
-						{
-							x = args;
-						}
-					});
-					win.Close();
-				};
+				win.ViewModel.PacientUpdated += OnUpdate;
 			}
 		}
+
+		private void OnUpdate(object sender, PacientViewModel e)
+		{
+			Pacienti.ToList().ForEach(x =>
+			{
+				if (x.Id == e.Id)
+				{
+					x = e;
+					x.Nume = e.Nume;
+				}
+			});
+//			win.Close();
+		}
+
 
 		private void AddPacient()
 		{

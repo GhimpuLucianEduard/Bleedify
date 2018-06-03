@@ -39,7 +39,7 @@ namespace BleedifyPersonal.ViewModels
 		public PacientDetailsViewModel(PacientViewModel pacientViewModel)
 		{
 			if (pacientViewModel.Id != 0)
-			{	
+			{
 				Pacient = new PacientViewModel();
 				Pacient.Id = pacientViewModel.Id;
 				Pacient.GrupaDeSange = pacientViewModel.GrupaDeSange;
@@ -52,7 +52,7 @@ namespace BleedifyPersonal.ViewModels
 			}
 			GrupeDeSange = new ObservableCollection<GrupaDeSange>(AppService.Instance.GrupaDeSangeService.GetAll());
 			InstitutiiAsociate = new ObservableCollection<InstitutieAsociata>(AppService.Instance.InstitutieAsociataService.GetAll());
-			if (Pacient.Id == 0)
+			if (pacientViewModel.Id == 0)
 			{
 				SelectedGrupa = GrupeDeSange[0];
 				SelectedInstitutie = InstitutiiAsociate[0];
